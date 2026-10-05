@@ -12,6 +12,7 @@ import path from "node:path";
 import { buildBlunder } from "@/lib/chess/analysis";
 import type { Blunder, EngineLine, Side } from "@/lib/chess/types";
 import { acceptableThemes, mapLichessThemes, type Theme } from "@/eval/theme-map";
+import type { TestPosition } from "@/eval/types";
 import { fetchPuzzleById, parsePuzzleCsv, pickCandidates, puzzlePosition, type RawPuzzle } from "@/eval/lichess";
 
 const ROOT = path.resolve(__dirname, "..");
@@ -39,19 +40,6 @@ const ANGLES: [angle: string, count: number][] = [
   ["rookEndgame", 3],
   ["kingsideAttack", 3],
 ];
-
-export type TestPosition = {
-  id: string;
-  source: "lichess-puzzle";
-  puzzleId: string;
-  rating: number;
-  lichessThemes: string[];
-  expectedTheme: Theme;
-  acceptableThemes: Theme[];
-  /** The puzzle's winning line (UCI) from the position after the blunder; context for the grader. */
-  solutionUci: string[];
-  blunder: Blunder;
-};
 
 async function readRaw(): Promise<RawPuzzle[]> {
   try {

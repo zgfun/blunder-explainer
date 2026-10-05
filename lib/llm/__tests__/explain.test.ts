@@ -79,15 +79,21 @@ describe("explainStream", () => {
     expect(result.truncated).toBe(true);
   });
 
-  it("keeps only the text written after a server-side fallback switch", async () => {
+  it("keeps the partial and the continuation after a mid-stream fallback", async () => {
+    const partial = '{"theme":"mate threat"}\nYour knight move ';
+    const continuation = "ignores the threat on f7.";
     const content = [
-      { type: "text", text: "declined partial", citations: null },
+      { type: "text", text: partial, citations: null },
       { type: "fallback", from: { model: "claude-sonnet-5-5" }, to: { model: "claude-opus-4-8" } },
-      { type: "text", text: GOOD_ANSWER, citations: null },
+      { type: "text", text: continuation, citations: null },
     ];
-    const { client } = fakeClient(() => fakeStream(["declined partial", GOOD_ANSWER], { content, model: "claude-opus-4-8" }));
-    const result = await explainText(SCHOLAR_BLUNDER, 1600, { client });
-    expect(result.text).toBe(GOOD_ANSWER);
+    const { client } = fakeClient(() => fakeStream([partial, continuation], { content, model: "claude-opus-4-8" }));
+    const s = explainStream(SCHOLAR_BLUNDER, 1600, { client });
+    const streamed = await collect(s);
+    const result = await s.result;
+    expect(result.text).toBe(partial + continuation);
+    expect(result.text).toBe(streamed);
+    expect(parseExplanation(result.text)).toEqual({ theme: "mate threat", text: "Your knight move ignores the threat on f7." });
     expect(result.model).toBe("claude-opus-4-8");
   });
 

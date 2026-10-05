@@ -1,0 +1,3173 @@
+[
+  {
+    "id": "lichess-0gUGh",
+    "source": "lichess-puzzle",
+    "puzzleId": "0gUGh",
+    "rating": 1002,
+    "lichessThemes": [
+      "deflection",
+      "endgame",
+      "long",
+      "mateIn3",
+      "backRankMate",
+      "hangingPiece"
+    ],
+    "expectedTheme": "back rank",
+    "acceptableThemes": [
+      "back rank",
+      "hanging piece",
+      "overloaded defender",
+      "mate threat",
+      "endgame technique",
+      "king safety"
+    ],
+    "solutionUci": [
+      "d6d1",
+      "f2f1",
+      "h6e3",
+      "g1h1",
+      "d1f1"
+    ],
+    "blunder": {
+      "ply": 48,
+      "side": "white",
+      "moveNumber": 25,
+      "san": "Bxf5",
+      "uci": "d3f5",
+      "fenBefore": "5k2/1p6/p2r3b/5q2/8/3B1P2/PPP2RPP/3R2K1 w - - 0 25",
+      "fenAfter": "5k2/1p6/p2r3b/5B2/8/5P2/PPP2RPP/3R2K1 b - - 0 25",
+      "bestUci": "g2g3",
+      "bestSan": "g3",
+      "pvSan": [
+        "g3",
+        "Qe5",
+        "Re2",
+        "Qxb2",
+        "Rde1"
+      ],
+      "pvUci": [
+        "g2g3",
+        "f5e5",
+        "f2e2",
+        "e5b2",
+        "d1e1",
+        "h6g5",
+        "e2e8",
+        "f8f7",
+        "d3c4",
+        "f7g6",
+        "e8g8",
+        "g6h6"
+      ],
+      "refutationSan": [
+        "Rxd1+",
+        "Rf1",
+        "Be3+",
+        "Kh1",
+        "Rxf1#"
+      ],
+      "refutationUci": [
+        "d6d1",
+        "f2f1",
+        "h6e3",
+        "g1h1",
+        "d1f1"
+      ],
+      "evalBeforePawns": -2.31,
+      "evalAfterPawns": -100,
+      "cpLoss": 1269,
+      "materialBalance": "Material is equal (White has a rook and four pawns for a queen)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0BmwD",
+    "source": "lichess-puzzle",
+    "puzzleId": "0BmwD",
+    "rating": 1097,
+    "lichessThemes": [
+      "endgame",
+      "short",
+      "crushing",
+      "fork"
+    ],
+    "expectedTheme": "fork",
+    "acceptableThemes": [
+      "fork",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "d8g5",
+      "g1f1",
+      "g5c1"
+    ],
+    "blunder": {
+      "ply": 52,
+      "side": "white",
+      "moveNumber": 27,
+      "san": "exd4",
+      "uci": "e3d4",
+      "fenBefore": "r2q2k1/5ppp/1p2p3/2P5/3p4/1P2PP2/P3QP1P/2R3K1 w - - 0 27",
+      "fenAfter": "r2q2k1/5ppp/1p2p3/2P5/3P4/1P3P2/P3QP1P/2R3K1 b - - 0 27",
+      "bestUci": "c5c6",
+      "bestSan": "c6",
+      "pvSan": [
+        "c6",
+        "d3",
+        "Qd2",
+        "Rc8",
+        "Rc3"
+      ],
+      "pvUci": [
+        "c5c6",
+        "d4d3",
+        "e2d2",
+        "a8c8",
+        "c1c3",
+        "h7h6",
+        "g1g2",
+        "b6b5",
+        "h2h4",
+        "d8d6",
+        "a2a3",
+        "c8c7"
+      ],
+      "refutationSan": [
+        "Qg5+",
+        "Kf1",
+        "Qxc1+",
+        "Kg2",
+        "Qg5+"
+      ],
+      "refutationUci": [
+        "d8g5",
+        "g1f1",
+        "g5c1",
+        "f1g2",
+        "c1g5",
+        "g2f1",
+        "b6c5",
+        "d4c5",
+        "g5c5",
+        "f1g2",
+        "c5g5",
+        "g2f1"
+      ],
+      "evalBeforePawns": 2.01,
+      "evalAfterPawns": -5.66,
+      "cpLoss": 767,
+      "materialBalance": "White +1 (up a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-00n3G",
+    "source": "lichess-puzzle",
+    "puzzleId": "00n3G",
+    "rating": 1120,
+    "lichessThemes": [
+      "deflection",
+      "middlegame",
+      "short",
+      "advantage",
+      "pin"
+    ],
+    "expectedTheme": "pin",
+    "acceptableThemes": [
+      "pin",
+      "overloaded defender"
+    ],
+    "solutionUci": [
+      "g6g3",
+      "f3g3",
+      "e5f4"
+    ],
+    "blunder": {
+      "ply": 62,
+      "side": "white",
+      "moveNumber": 32,
+      "san": "R1f3",
+      "uci": "f1f3",
+      "fenBefore": "1k4r1/7p/1p4r1/pPp1qp2/P1Pp1R2/3Q2NP/2P4K/5R2 w - - 4 32",
+      "fenAfter": "1k4r1/7p/1p4r1/pPp1qp2/P1Pp1R2/3Q1RNP/2P4K/8 b - - 5 32",
+      "bestUci": "d3f5",
+      "bestSan": "Qxf5",
+      "pvSan": [
+        "Qxf5",
+        "Qxf5",
+        "Nxf5",
+        "Rg2+",
+        "Kh1"
+      ],
+      "pvUci": [
+        "d3f5",
+        "e5f5",
+        "g3f5",
+        "g6g2",
+        "h2h1",
+        "g2c2",
+        "f5e7",
+        "g8e8",
+        "e7c6",
+        "b8c7",
+        "f4f7",
+        "c7d6"
+      ],
+      "refutationSan": [
+        "Rxg3",
+        "Rxg3",
+        "Qxf4",
+        "Qf3",
+        "Qxf3"
+      ],
+      "refutationUci": [
+        "g6g3",
+        "f3g3",
+        "e5f4",
+        "d3f3",
+        "f4f3",
+        "g3f3",
+        "g8e8",
+        "f3f5",
+        "e8e2",
+        "h2g3",
+        "e2c2",
+        "g3f3"
+      ],
+      "evalBeforePawns": 2.88,
+      "evalAfterPawns": -1.73,
+      "cpLoss": 461,
+      "materialBalance": "White +2 (up a knight for a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0AhrQ",
+    "source": "lichess-puzzle",
+    "puzzleId": "0AhrQ",
+    "rating": 1120,
+    "lichessThemes": [
+      "middlegame",
+      "advantage",
+      "discoveredAttack",
+      "short"
+    ],
+    "expectedTheme": "discovered attack",
+    "acceptableThemes": [
+      "discovered attack"
+    ],
+    "solutionUci": [
+      "f6d5",
+      "c4d5",
+      "e7g5"
+    ],
+    "blunder": {
+      "ply": 20,
+      "side": "white",
+      "moveNumber": 11,
+      "san": "Nd5",
+      "uci": "c3d5",
+      "fenBefore": "r2qk2r/pb2bppp/1p1p1n2/4p1B1/2P1P3/2NB4/PP3PPP/R2QK2R w KQkq - 4 11",
+      "fenAfter": "r2qk2r/pb2bppp/1p1p1n2/3Np1B1/2P1P3/3B4/PP3PPP/R2QK2R b KQkq - 5 11",
+      "bestUci": "g5e3",
+      "bestSan": "Be3",
+      "pvSan": [
+        "Be3",
+        "O-O",
+        "Qe2",
+        "a6",
+        "f3"
+      ],
+      "pvUci": [
+        "g5e3",
+        "e8g8",
+        "d1e2",
+        "a7a6",
+        "f2f3",
+        "f6d7",
+        "e1c1",
+        "d7c5",
+        "d3c2",
+        "c5e6",
+        "c1b1",
+        "e7f6"
+      ],
+      "refutationSan": [
+        "Nxd5",
+        "cxd5",
+        "Bxg5",
+        "h4",
+        "Bf6"
+      ],
+      "refutationUci": [
+        "f6d5",
+        "c4d5",
+        "e7g5",
+        "h2h4",
+        "g5f6",
+        "d3b5",
+        "e8f8",
+        "b5c6",
+        "a8b8",
+        "c6b7",
+        "b8b7",
+        "a1c1"
+      ],
+      "evalBeforePawns": 0.84,
+      "evalAfterPawns": -4.74,
+      "cpLoss": 558,
+      "materialBalance": "Material is equal",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0l5nU",
+    "source": "lichess-puzzle",
+    "puzzleId": "0l5nU",
+    "rating": 1121,
+    "lichessThemes": [
+      "deflection",
+      "endgame",
+      "advantage",
+      "skewer",
+      "long"
+    ],
+    "expectedTheme": "skewer",
+    "acceptableThemes": [
+      "skewer",
+      "overloaded defender",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "b1b7",
+      "d7c8",
+      "b7e7",
+      "h8f8",
+      "e7a7"
+    ],
+    "blunder": {
+      "ply": 41,
+      "side": "black",
+      "moveNumber": 21,
+      "san": "bxa6",
+      "uci": "b7a6",
+      "fenBefore": "1n5r/pp1knppp/N3p3/P2pP3/3P4/7P/P1P2PP1/1R2K2R b K - 0 21",
+      "fenAfter": "1n5r/p2knppp/p3p3/P2pP3/3P4/7P/P1P2PP1/1R2K2R w K - 0 22",
+      "bestUci": "b8a6",
+      "bestSan": "Nxa6",
+      "pvSan": [
+        "Nxa6",
+        "Rxb7+",
+        "Nc7",
+        "Kd2",
+        "Nc6"
+      ],
+      "pvUci": [
+        "b8a6",
+        "b1b7",
+        "a6c7",
+        "e1d2",
+        "e7c6",
+        "d2d3",
+        "f7f6",
+        "f2f4",
+        "c6a5",
+        "b7a7",
+        "a5c6",
+        "a7a4"
+      ],
+      "refutationSan": [
+        "Rb7+",
+        "Kc8",
+        "Rxe7",
+        "Rf8",
+        "Rxa7"
+      ],
+      "refutationUci": [
+        "b1b7",
+        "d7c8",
+        "b7e7",
+        "h8f8",
+        "e7a7",
+        "b8c6",
+        "a7a6",
+        "c8c7",
+        "e1g1",
+        "f8b8",
+        "a6b6",
+        "c6d4"
+      ],
+      "evalBeforePawns": -0.25,
+      "evalAfterPawns": 5.65,
+      "cpLoss": 590,
+      "materialBalance": "White +3 (up a rook and a pawn for a knight)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-03eh3",
+    "source": "lichess-puzzle",
+    "puzzleId": "03eh3",
+    "rating": 1139,
+    "lichessThemes": [
+      "mateIn2",
+      "middlegame",
+      "short",
+      "sacrifice",
+      "kingsideAttack"
+    ],
+    "expectedTheme": "mate threat",
+    "acceptableThemes": [
+      "mate threat",
+      "king safety"
+    ],
+    "solutionUci": [
+      "h3h6",
+      "g7h6",
+      "g5h6"
+    ],
+    "blunder": {
+      "ply": 47,
+      "side": "black",
+      "moveNumber": 24,
+      "san": "Ne4",
+      "uci": "f6e4",
+      "fenBefore": "r5rk/1bq2pp1/p4n1p/2p2BQ1/1p3p2/3p3R/PPP3PP/R5K1 b - - 1 24",
+      "fenAfter": "r5rk/1bq2pp1/p6p/2p2BQ1/1p2np2/3p3R/PPP3PP/R5K1 w - - 2 25",
+      "bestUci": "f6h7",
+      "bestSan": "Nh7",
+      "pvSan": [
+        "Nh7",
+        "Bxh7",
+        "Kxh7",
+        "cxd3",
+        "Rae8"
+      ],
+      "pvUci": [
+        "f6h7",
+        "f5h7",
+        "h8h7",
+        "c2d3",
+        "a8e8",
+        "a1f1",
+        "e8e6",
+        "f1f4",
+        "g8e8"
+      ],
+      "refutationSan": [
+        "Rxh6+",
+        "gxh6",
+        "Qxh6#"
+      ],
+      "refutationUci": [
+        "h3h6",
+        "g7h6",
+        "g5h6"
+      ],
+      "evalBeforePawns": -5.96,
+      "evalAfterPawns": 100,
+      "cpLoss": 2096,
+      "materialBalance": "Black +6 (up a knight and three pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-02vTI",
+    "source": "lichess-puzzle",
+    "puzzleId": "02vTI",
+    "rating": 1166,
+    "lichessThemes": [
+      "deflection",
+      "middlegame",
+      "advantage",
+      "long"
+    ],
+    "expectedTheme": "overloaded defender",
+    "acceptableThemes": [
+      "overloaded defender"
+    ],
+    "solutionUci": [
+      "g7g3",
+      "f2f1",
+      "c4e3",
+      "e2e3",
+      "g3e3"
+    ],
+    "blunder": {
+      "ply": 62,
+      "side": "white",
+      "moveNumber": 32,
+      "san": "Rg1",
+      "uci": "f1g1",
+      "fenBefore": "2k3r1/2p2pq1/p3p3/3p4/1PnP1P2/P1N1P3/4QKP1/R4R2 w - - 7 32",
+      "fenAfter": "2k3r1/2p2pq1/p3p3/3p4/1PnP1P2/P1N1P3/4QKP1/R5R1 b - - 8 32",
+      "bestUci": "g2g4",
+      "bestSan": "g4",
+      "pvSan": [
+        "g4",
+        "f6",
+        "Rh1",
+        "c6",
+        "Rh5"
+      ],
+      "pvUci": [
+        "g2g4",
+        "f7f6",
+        "f1h1",
+        "c7c6",
+        "h1h5",
+        "g8h8",
+        "h5h8",
+        "g7h8",
+        "f2g2",
+        "e6e5",
+        "a1h1"
+      ],
+      "refutationSan": [
+        "Qg3+",
+        "Kf1",
+        "Nxe3+",
+        "Qxe3",
+        "Qxe3"
+      ],
+      "refutationUci": [
+        "g7g3",
+        "f2f1",
+        "c4e3",
+        "e2e3",
+        "g3e3",
+        "c3e2",
+        "f7f6",
+        "a1d1",
+        "e6e5",
+        "d4e5",
+        "f6e5",
+        "f4e5"
+      ],
+      "evalBeforePawns": 4.92,
+      "evalAfterPawns": -5.24,
+      "cpLoss": 1016,
+      "materialBalance": "White +6 (up a rook and a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0CFMn",
+    "source": "lichess-puzzle",
+    "puzzleId": "0CFMn",
+    "rating": 1185,
+    "lichessThemes": [
+      "endgame",
+      "oneMove",
+      "mateIn1",
+      "pillsburysMate"
+    ],
+    "expectedTheme": "mate threat",
+    "acceptableThemes": [
+      "mate threat",
+      "endgame technique",
+      "king safety"
+    ],
+    "solutionUci": [
+      "a7a5"
+    ],
+    "blunder": {
+      "ply": 61,
+      "side": "black",
+      "moveNumber": 31,
+      "san": "Kb5",
+      "uci": "c5b5",
+      "fenBefore": "3r4/R6p/2p2np1/2k5/1pN5/1Bb5/6PP/7K b - - 13 31",
+      "fenAfter": "3r4/R6p/2p2np1/1k6/1pN5/1Bb5/6PP/7K w - - 14 32",
+      "bestUci": "f6e4",
+      "bestSan": "Ne4",
+      "pvSan": [
+        "Ne4",
+        "g3",
+        "g5",
+        "Re7",
+        "Nd2"
+      ],
+      "pvUci": [
+        "f6e4",
+        "g2g3",
+        "g6g5",
+        "a7e7",
+        "e4d2",
+        "c4d2",
+        "d8d2",
+        "e7h7",
+        "d2b2",
+        "b3g8",
+        "b4b3",
+        "h2h4"
+      ],
+      "refutationSan": [
+        "Ra5#"
+      ],
+      "refutationUci": [
+        "a7a5"
+      ],
+      "evalBeforePawns": -3.89,
+      "evalAfterPawns": 100,
+      "cpLoss": 1889,
+      "materialBalance": "Black +2 (up two pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-22g0C",
+    "source": "lichess-puzzle",
+    "puzzleId": "22g0C",
+    "rating": 1199,
+    "lichessThemes": [
+      "endgame",
+      "rookEndgame",
+      "crushing",
+      "short"
+    ],
+    "expectedTheme": "endgame technique",
+    "acceptableThemes": [
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "b3b2",
+      "c1c3",
+      "b2c3"
+    ],
+    "blunder": {
+      "ply": 112,
+      "side": "white",
+      "moveNumber": 57,
+      "san": "h5",
+      "uci": "h4h5",
+      "fenBefore": "8/8/8/8/7P/1kp3P1/3r1P2/2R1K3 w - - 6 57",
+      "fenAfter": "8/8/8/7P/8/1kp3P1/3r1P2/2R1K3 b - - 0 57",
+      "bestUci": "c1b1",
+      "bestSan": "Rb1+",
+      "pvSan": [
+        "Rb1+",
+        "Rb2",
+        "Rc1",
+        "Rc2",
+        "Rd1"
+      ],
+      "pvUci": [
+        "c1b1",
+        "d2b2",
+        "b1c1",
+        "b2c2",
+        "c1d1",
+        "c2a2",
+        "d1d8",
+        "a2a1",
+        "e1e2",
+        "c3c2",
+        "d8b8",
+        "b3a2"
+      ],
+      "refutationSan": [
+        "Kb2",
+        "Rxc3",
+        "Kxc3",
+        "h6",
+        "Rd6"
+      ],
+      "refutationUci": [
+        "b3b2",
+        "c1c3",
+        "b2c3",
+        "h5h6",
+        "d2d6",
+        "e1e2",
+        "c3d4",
+        "e2f3",
+        "d6h6",
+        "f3g4",
+        "h6h8",
+        "g4f5"
+      ],
+      "evalBeforePawns": 0,
+      "evalAfterPawns": -4.55,
+      "cpLoss": 455,
+      "materialBalance": "White +2 (up two pawns)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0iLMS",
+    "source": "lichess-puzzle",
+    "puzzleId": "0iLMS",
+    "rating": 1227,
+    "lichessThemes": [
+      "short",
+      "capturingDefender",
+      "advantage",
+      "middlegame"
+    ],
+    "expectedTheme": "overloaded defender",
+    "acceptableThemes": [
+      "overloaded defender"
+    ],
+    "solutionUci": [
+      "g4f3",
+      "g2f3",
+      "g6g5"
+    ],
+    "blunder": {
+      "ply": 20,
+      "side": "white",
+      "moveNumber": 11,
+      "san": "Nc4",
+      "uci": "d2c4",
+      "fenBefore": "r4rk1/ppp1nppp/1bnp2q1/6B1/3P2b1/2P2NP1/PP1NPPBP/R2Q1RK1 w - - 7 11",
+      "fenAfter": "r4rk1/ppp1nppp/1bnp2q1/6B1/2NP2b1/2P2NP1/PP2PPBP/R2Q1RK1 b - - 8 11",
+      "bestUci": "h2h3",
+      "bestSan": "h3",
+      "pvSan": [
+        "h3",
+        "Be6",
+        "e4",
+        "f6",
+        "Bf4"
+      ],
+      "pvUci": [
+        "h2h3",
+        "g4e6",
+        "e2e4",
+        "f7f6",
+        "g5f4",
+        "d6d5",
+        "f1e1",
+        "g6f7",
+        "b2b4",
+        "d5e4",
+        "d2e4",
+        "e7g6"
+      ],
+      "refutationSan": [
+        "Bxf3",
+        "exf3",
+        "Qxg5",
+        "f4",
+        "Qf6"
+      ],
+      "refutationUci": [
+        "g4f3",
+        "e2f3",
+        "g6g5",
+        "f3f4",
+        "g5f6",
+        "c4e3",
+        "a8d8",
+        "b2b4",
+        "d6d5",
+        "a2a4",
+        "a7a6",
+        "a4a5"
+      ],
+      "evalBeforePawns": 2.23,
+      "evalAfterPawns": -3.51,
+      "cpLoss": 574,
+      "materialBalance": "White +1 (up a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-2hq7S",
+    "source": "lichess-puzzle",
+    "puzzleId": "2hq7S",
+    "rating": 1240,
+    "lichessThemes": [
+      "exposedKing",
+      "middlegame",
+      "advantage",
+      "long"
+    ],
+    "expectedTheme": "king safety",
+    "acceptableThemes": [
+      "king safety"
+    ],
+    "solutionUci": [
+      "h8f8",
+      "e7d7",
+      "f1f7",
+      "e6f7",
+      "f8f7"
+    ],
+    "blunder": {
+      "ply": 75,
+      "side": "black",
+      "moveNumber": 38,
+      "san": "Ke7",
+      "uci": "f7e7",
+      "fenBefore": "5n1Q/pp3k2/2p1q3/8/8/2Pr4/PP4r1/RK3R2 b - - 3 38",
+      "fenAfter": "5n1Q/pp2k3/2p1q3/8/8/2Pr4/PP4r1/RK3R2 w - - 4 39",
+      "bestUci": "f7g6",
+      "bestSan": "Kg6",
+      "pvSan": [
+        "Kg6",
+        "Rf6+",
+        "Qxf6",
+        "Qg8+",
+        "Qg7"
+      ],
+      "pvUci": [
+        "f7g6",
+        "f1f6",
+        "e6f6",
+        "h8g8",
+        "f6g7",
+        "g8b3",
+        "d3d2",
+        "a2a4",
+        "g7f7",
+        "a1a3",
+        "d2b2",
+        "b3b2"
+      ],
+      "refutationSan": [
+        "Qxf8+",
+        "Kd7",
+        "Rf7+",
+        "Qxf7",
+        "Qxf7+"
+      ],
+      "refutationUci": [
+        "h8f8",
+        "e7d7",
+        "f1f7",
+        "e6f7",
+        "f8f7",
+        "d7c8",
+        "f7f5",
+        "d3d7",
+        "a2a4",
+        "g2g1",
+        "b1a2",
+        "g1a1"
+      ],
+      "evalBeforePawns": -8.58,
+      "evalAfterPawns": 4.94,
+      "cpLoss": 1352,
+      "materialBalance": "Black +3 (up a knight)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0SbHv",
+    "source": "lichess-puzzle",
+    "puzzleId": "0SbHv",
+    "rating": 1248,
+    "lichessThemes": [
+      "clearance",
+      "endgame",
+      "advancedPawn",
+      "crushing",
+      "long",
+      "promotion"
+    ],
+    "expectedTheme": "pawn structure",
+    "acceptableThemes": [
+      "pawn structure",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "a1f1",
+      "f3g2",
+      "a2a1q",
+      "a8a1",
+      "f1a1"
+    ],
+    "blunder": {
+      "ply": 80,
+      "side": "white",
+      "moveNumber": 41,
+      "san": "fxg3",
+      "uci": "f2g3",
+      "fenBefore": "R7/8/5p2/5pk1/1n6/5KpP/p2R1P2/r7 w - - 0 41",
+      "fenAfter": "R7/8/5p2/5pk1/1n6/5KPP/p2R4/r7 b - - 0 41",
+      "bestUci": "d2b2",
+      "bestSan": "Rb2",
+      "pvSan": [
+        "Rb2",
+        "Nd3",
+        "Rbxa2",
+        "Ne1+",
+        "Kxg3"
+      ],
+      "pvUci": [
+        "d2b2",
+        "b4d3",
+        "b2a2",
+        "d3e1",
+        "f3g3",
+        "f5f4",
+        "g3h2",
+        "e1f3",
+        "h2g2",
+        "f3h4",
+        "g2h2"
+      ],
+      "refutationSan": [
+        "Rf1+",
+        "Kg2",
+        "a1=Q",
+        "h4+",
+        "Kg6"
+      ],
+      "refutationUci": [
+        "a1f1",
+        "f3g2",
+        "a2a1q",
+        "h3h4",
+        "g5g6",
+        "a8a1",
+        "f1a1",
+        "d2d6",
+        "a1a3",
+        "h4h5",
+        "g6h5",
+        "d6f6"
+      ],
+      "evalBeforePawns": 0,
+      "evalAfterPawns": -5.21,
+      "cpLoss": 521,
+      "materialBalance": "Material is equal (White has a rook for a knight and two pawns)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0FXlP",
+    "source": "lichess-puzzle",
+    "puzzleId": "0FXlP",
+    "rating": 1299,
+    "lichessThemes": [
+      "endgame",
+      "advantage",
+      "attraction",
+      "fork",
+      "long"
+    ],
+    "expectedTheme": "fork",
+    "acceptableThemes": [
+      "fork",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "d2f2",
+      "g1f2",
+      "d8d2",
+      "f2e1",
+      "d2c2"
+    ],
+    "blunder": {
+      "ply": 44,
+      "side": "white",
+      "moveNumber": 23,
+      "san": "Rb1",
+      "uci": "a1b1",
+      "fenBefore": "b2r4/2p2ppk/P5p1/8/8/2P1P3/1PBr1RPP/R5K1 w - - 2 23",
+      "fenAfter": "b2r4/2p2ppk/P5p1/8/8/2P1P3/1PBr1RPP/1R4K1 b - - 3 23",
+      "bestUci": "a1f1",
+      "bestSan": "Raf1",
+      "pvSan": [
+        "Raf1",
+        "R2d6",
+        "Rxf7",
+        "Rxa6",
+        "Rf8"
+      ],
+      "pvUci": [
+        "a1f1",
+        "d2d6",
+        "f2f7",
+        "d6a6",
+        "f7f8",
+        "d8f8",
+        "f1f8",
+        "a6a1",
+        "g1f2",
+        "a8d5",
+        "f2g3",
+        "c7c5"
+      ],
+      "refutationSan": [
+        "Rxf2",
+        "Kxf2",
+        "Rd2+",
+        "Ke1",
+        "Rxc2"
+      ],
+      "refutationUci": [
+        "d2f2",
+        "g1f2",
+        "d8d2",
+        "f2e1",
+        "d2c2",
+        "b2b4",
+        "f7f5",
+        "b4b5",
+        "a8g2",
+        "b1b4",
+        "c2c3",
+        "e1d2"
+      ],
+      "evalBeforePawns": 4.28,
+      "evalAfterPawns": -3.48,
+      "cpLoss": 776,
+      "materialBalance": "White +2 (up two pawns)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-03BAr",
+    "source": "lichess-puzzle",
+    "puzzleId": "03BAr",
+    "rating": 1323,
+    "lichessThemes": [
+      "short",
+      "hangingPiece",
+      "endgame",
+      "mateIn2"
+    ],
+    "expectedTheme": "hanging piece",
+    "acceptableThemes": [
+      "hanging piece",
+      "mate threat",
+      "endgame technique",
+      "king safety"
+    ],
+    "solutionUci": [
+      "c2c8",
+      "g5d8",
+      "c8d8"
+    ],
+    "blunder": {
+      "ply": 77,
+      "side": "black",
+      "moveNumber": 39,
+      "san": "Qxg5",
+      "uci": "d8g5",
+      "fenBefore": "2rq2k1/1p3p1p/p3p1pP/3pP1Q1/1P1P4/5N2/2R2PP1/6K1 b - - 0 39",
+      "fenAfter": "2r3k1/1p3p1p/p3p1pP/3pP1q1/1P1P4/5N2/2R2PP1/6K1 w - - 0 40",
+      "bestUci": "d8f8",
+      "bestSan": "Qf8",
+      "pvSan": [
+        "Qf8",
+        "Rxc8",
+        "Qxc8",
+        "Nh2",
+        "b6"
+      ],
+      "pvUci": [
+        "d8f8",
+        "c2c8",
+        "f8c8",
+        "f3h2",
+        "b7b6",
+        "h2g4",
+        "c8c7",
+        "g4f6",
+        "g8h8",
+        "g5e3",
+        "a6a5",
+        "b4a5"
+      ],
+      "refutationSan": [
+        "Rxc8+",
+        "Qd8",
+        "Rxd8#"
+      ],
+      "refutationUci": [
+        "c2c8",
+        "g5d8",
+        "c8d8"
+      ],
+      "evalBeforePawns": 6.11,
+      "evalAfterPawns": 100,
+      "cpLoss": 889,
+      "materialBalance": "White +2 (up a knight for a pawn)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-05Fzd",
+    "source": "lichess-puzzle",
+    "puzzleId": "05Fzd",
+    "rating": 1353,
+    "lichessThemes": [
+      "short",
+      "crushing",
+      "sacrifice",
+      "pin",
+      "master",
+      "middlegame"
+    ],
+    "expectedTheme": "pin",
+    "acceptableThemes": [
+      "pin"
+    ],
+    "solutionUci": [
+      "e8e3",
+      "d2e3",
+      "g7d4"
+    ],
+    "blunder": {
+      "ply": 36,
+      "side": "white",
+      "moveNumber": 19,
+      "san": "Ng3",
+      "uci": "e2g3",
+      "fenBefore": "2r1r1k1/p2q1pbp/1p4p1/2pP4/b1P5/4BP2/P2QN1PP/2R2RK1 w - - 1 19",
+      "fenAfter": "2r1r1k1/p2q1pbp/1p4p1/2pP4/b1P5/4BPN1/P2Q2PP/2R2RK1 b - - 2 19",
+      "bestUci": "f1e1",
+      "bestSan": "Rfe1",
+      "pvSan": [
+        "Rfe1",
+        "Re5",
+        "Bf4",
+        "Re7",
+        "Nc3"
+      ],
+      "pvUci": [
+        "f1e1",
+        "e8e5",
+        "e3f4",
+        "e5e7",
+        "e2c3",
+        "e7e1",
+        "c1e1",
+        "c8e8",
+        "c3e4",
+        "f7f5",
+        "e4g5",
+        "e8e1"
+      ],
+      "refutationSan": [
+        "Rxe3",
+        "Qxe3",
+        "Bd4",
+        "Rce1",
+        "Bxe3+"
+      ],
+      "refutationUci": [
+        "e8e3",
+        "d2e3",
+        "g7d4",
+        "c1e1",
+        "d4e3",
+        "e1e3",
+        "a4c2",
+        "g3e4",
+        "d7a4",
+        "f1e1",
+        "c2e4",
+        "e3e4"
+      ],
+      "evalBeforePawns": 0.41,
+      "evalAfterPawns": -5.5,
+      "cpLoss": 591,
+      "materialBalance": "Material is equal (White has a knight for a bishop)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-1gHJd",
+    "source": "lichess-puzzle",
+    "puzzleId": "1gHJd",
+    "rating": 1371,
+    "lichessThemes": [
+      "short",
+      "masterVsMaster",
+      "crushing",
+      "skewer",
+      "master",
+      "middlegame"
+    ],
+    "expectedTheme": "skewer",
+    "acceptableThemes": [
+      "skewer"
+    ],
+    "solutionUci": [
+      "f5g4",
+      "e2e3",
+      "g4d1"
+    ],
+    "blunder": {
+      "ply": 48,
+      "side": "white",
+      "moveNumber": 25,
+      "san": "fxe5",
+      "uci": "f4e5",
+      "fenBefore": "4r1k1/pp3rpp/2p3q1/4nb2/2P2P2/6P1/PP1RQ1BP/3R2K1 w - - 0 25",
+      "fenAfter": "4r1k1/pp3rpp/2p3q1/4Pb2/2P5/6P1/PP1RQ1BP/3R2K1 b - - 0 25",
+      "bestUci": "d2d8",
+      "bestSan": "Rd8",
+      "pvSan": [
+        "Rd8",
+        "Rff8",
+        "Rxe8",
+        "Rxe8",
+        "fxe5"
+      ],
+      "pvUci": [
+        "d2d8",
+        "f7f8",
+        "d8e8",
+        "f8e8",
+        "f4e5",
+        "f5g4",
+        "g2f3",
+        "g4f3",
+        "e2f3",
+        "e8e5",
+        "d1d8",
+        "e5e8"
+      ],
+      "refutationSan": [
+        "Bg4",
+        "Qe3",
+        "Bxd1",
+        "Rxd1",
+        "Qh5"
+      ],
+      "refutationUci": [
+        "f5g4",
+        "e2e3",
+        "g4d1",
+        "d2d1",
+        "g6h5",
+        "d1e1",
+        "f7e7",
+        "e3a7",
+        "e7e5",
+        "e1f1",
+        "e5e1",
+        "a2a3"
+      ],
+      "evalBeforePawns": 0.01,
+      "evalAfterPawns": -4.44,
+      "cpLoss": 445,
+      "materialBalance": "Black +2 (up a knight for a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0jRZJ",
+    "source": "lichess-puzzle",
+    "puzzleId": "0jRZJ",
+    "rating": 1373,
+    "lichessThemes": [
+      "middlegame",
+      "crushing",
+      "trappedPiece",
+      "long"
+    ],
+    "expectedTheme": "trapped piece",
+    "acceptableThemes": [
+      "trapped piece"
+    ],
+    "solutionUci": [
+      "h3h6",
+      "g7h8",
+      "c1g5",
+      "d8g5",
+      "h6g5"
+    ],
+    "blunder": {
+      "ply": 23,
+      "side": "black",
+      "moveNumber": 12,
+      "san": "Rg8",
+      "uci": "h8g8",
+      "fenBefore": "r1bqn2r/pppp2kp/6p1/4P3/4P3/2P4Q/P1P2PPP/R1B1K2R b KQ - 3 12",
+      "fenAfter": "r1bqn1r1/pppp2kp/6p1/4P3/4P3/2P4Q/P1P2PPP/R1B1K2R w KQ - 4 13",
+      "bestUci": "h7h5",
+      "bestSan": "h5",
+      "pvSan": [
+        "h5",
+        "c4",
+        "d6",
+        "Qg3",
+        "h4"
+      ],
+      "pvUci": [
+        "h7h5",
+        "c3c4",
+        "d7d6",
+        "h3g3",
+        "h5h4",
+        "g3d3",
+        "g7h7",
+        "c1b2",
+        "h8f8",
+        "e1g1",
+        "e8g7",
+        "e5d6"
+      ],
+      "refutationSan": [
+        "Qh6+",
+        "Kf7",
+        "Bg5",
+        "d6",
+        "Bxd8"
+      ],
+      "refutationUci": [
+        "h3h6",
+        "g7f7",
+        "c1g5",
+        "d7d6",
+        "g5d8",
+        "g8g7",
+        "e1c1",
+        "d6e5",
+        "h6h4",
+        "f7g8",
+        "c3c4",
+        "c8e6"
+      ],
+      "evalBeforePawns": -1.84,
+      "evalAfterPawns": 7.07,
+      "cpLoss": 891,
+      "materialBalance": "Black +1 (up a knight for two pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0jMQs",
+    "source": "lichess-puzzle",
+    "puzzleId": "0jMQs",
+    "rating": 1496,
+    "lichessThemes": [
+      "middlegame",
+      "short",
+      "crushing",
+      "fork"
+    ],
+    "expectedTheme": "fork",
+    "acceptableThemes": [
+      "fork"
+    ],
+    "solutionUci": [
+      "d8d4",
+      "g1h1",
+      "d4e5"
+    ],
+    "blunder": {
+      "ply": 66,
+      "side": "white",
+      "moveNumber": 34,
+      "san": "Be4",
+      "uci": "d5e4",
+      "fenBefore": "3q1r1k/8/5rpp/p2BR3/1b6/5P2/4Q1PP/2R3K1 w - - 2 34",
+      "fenAfter": "3q1r1k/8/5rpp/p3R3/1b2B3/5P2/4Q1PP/2R3K1 b - - 3 34",
+      "bestUci": "c1b1",
+      "bestSan": "Rb1",
+      "pvSan": [
+        "Rb1",
+        "Rf5",
+        "Rxf5",
+        "Rxf5",
+        "Be4"
+      ],
+      "pvUci": [
+        "c1b1",
+        "f6f5",
+        "e5f5",
+        "f8f5",
+        "d5e4",
+        "f5f6",
+        "g1h1",
+        "f6d6",
+        "g2g3",
+        "h8g7",
+        "e2c2",
+        "d8e7"
+      ],
+      "refutationSan": [
+        "Qd4+",
+        "Kh1",
+        "Qxe5",
+        "g3",
+        "Rd8"
+      ],
+      "refutationUci": [
+        "d8d4",
+        "g1h1",
+        "d4e5",
+        "g2g3",
+        "f8d8",
+        "f3f4",
+        "e5e8",
+        "e2c2",
+        "d8d2",
+        "c2c8",
+        "e8c8",
+        "c1c8"
+      ],
+      "evalBeforePawns": 0.08,
+      "evalAfterPawns": -5.65,
+      "cpLoss": 573,
+      "materialBalance": "Material is equal",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-256YU",
+    "source": "lichess-puzzle",
+    "puzzleId": "256YU",
+    "rating": 1596,
+    "lichessThemes": [
+      "veryLong",
+      "clearance",
+      "middlegame",
+      "sacrifice",
+      "mateIn4",
+      "backRankMate"
+    ],
+    "expectedTheme": "back rank",
+    "acceptableThemes": [
+      "back rank",
+      "mate threat",
+      "king safety"
+    ],
+    "solutionUci": [
+      "f2g2",
+      "f4g2",
+      "c2f2",
+      "g1h1",
+      "f2f1",
+      "a1f1",
+      "f8f1"
+    ],
+    "blunder": {
+      "ply": 42,
+      "side": "white",
+      "moveNumber": 22,
+      "san": "Qxd7",
+      "uci": "e6d7",
+      "fenBefore": "5r1k/pp1n2pp/2p1Q3/4R1B1/2PP1N2/2P5/P1q2rPP/R5K1 w - - 8 22",
+      "fenAfter": "5r1k/pp1Q2pp/2p5/4R1B1/2PP1N2/2P5/P1q2rPP/R5K1 b - - 0 22",
+      "bestUci": "e5e1",
+      "bestSan": "Ree1",
+      "pvSan": [
+        "Ree1",
+        "Nb6",
+        "Qe3",
+        "h6",
+        "Bxh6"
+      ],
+      "pvUci": [
+        "e5e1",
+        "d7b6",
+        "e6e3",
+        "h7h6",
+        "g5h6",
+        "g7h6",
+        "e3f2",
+        "c2f2",
+        "g1f2",
+        "b6a4",
+        "f2g1",
+        "f8f4"
+      ],
+      "refutationSan": [
+        "Rxg2+",
+        "Nxg2",
+        "Qf2+",
+        "Kh1",
+        "Qf1+"
+      ],
+      "refutationUci": [
+        "f2g2",
+        "f4g2",
+        "c2f2",
+        "g1h1",
+        "f2f1",
+        "a1f1",
+        "f8f1"
+      ],
+      "evalBeforePawns": 6.13,
+      "evalAfterPawns": -100,
+      "cpLoss": 2113,
+      "materialBalance": "White +4 (up a bishop and a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-07XXn",
+    "source": "lichess-puzzle",
+    "puzzleId": "07XXn",
+    "rating": 1600,
+    "lichessThemes": [
+      "endgame",
+      "long",
+      "discoveredAttack",
+      "discoveredCheck",
+      "crushing"
+    ],
+    "expectedTheme": "discovered attack",
+    "acceptableThemes": [
+      "discovered attack",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "g1d1",
+      "b3a3",
+      "e3c2",
+      "a3a4",
+      "c2d4"
+    ],
+    "blunder": {
+      "ply": 52,
+      "side": "white",
+      "moveNumber": 27,
+      "san": "Qxe6",
+      "uci": "f6e6",
+      "fenBefore": "8/2p4p/2p1pQpk/p7/3PN3/1KP1n1P1/PP6/6q1 w - - 2 27",
+      "fenAfter": "8/2p4p/2p1Q1pk/p7/3PN3/1KP1n1P1/PP6/6q1 b - - 0 27",
+      "bestUci": "f6f4",
+      "bestSan": "Qf4+",
+      "pvSan": [
+        "Qf4+",
+        "Kg7",
+        "Qxc7+",
+        "Kh6",
+        "Qf4+"
+      ],
+      "pvUci": [
+        "f6f4",
+        "h6g7",
+        "f4c7",
+        "g7h6",
+        "c7f4",
+        "h6g7",
+        "f4f6",
+        "g7h6",
+        "f6g5",
+        "h6g7",
+        "g5e7",
+        "g7h6"
+      ],
+      "refutationSan": [
+        "Qd1+",
+        "Ka3",
+        "Nc2+",
+        "Ka4",
+        "Nxd4+"
+      ],
+      "refutationUci": [
+        "g1d1",
+        "b3a3",
+        "e3c2",
+        "a3a4",
+        "c2d4",
+        "a4a5",
+        "d4e6",
+        "e4f6",
+        "d1d6",
+        "f6g8",
+        "h6g5",
+        "a5a6"
+      ],
+      "evalBeforePawns": 4.61,
+      "evalAfterPawns": -8.95,
+      "cpLoss": 1356,
+      "materialBalance": "Black +1 (up a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-09aaY",
+    "source": "lichess-puzzle",
+    "puzzleId": "09aaY",
+    "rating": 1600,
+    "lichessThemes": [
+      "middlegame",
+      "short",
+      "advantage",
+      "pin"
+    ],
+    "expectedTheme": "pin",
+    "acceptableThemes": [
+      "pin"
+    ],
+    "solutionUci": [
+      "f1f7",
+      "g7h6",
+      "f7f6"
+    ],
+    "blunder": {
+      "ply": 53,
+      "side": "black",
+      "moveNumber": 27,
+      "san": "Rh8",
+      "uci": "f8h8",
+      "fenBefore": "3r1r2/pp3pk1/2p3b1/2b1P3/7P/1B4R1/PPP3P1/5R1K b - - 0 27",
+      "fenAfter": "3r3r/pp3pk1/2p3b1/2b1P3/7P/1B4R1/PPP3P1/5R1K w - - 1 28",
+      "bestUci": "d8d4",
+      "bestSan": "Rd4",
+      "pvSan": [
+        "Rd4",
+        "Rh3",
+        "Rg4",
+        "c3",
+        "Kh8"
+      ],
+      "pvUci": [
+        "d8d4",
+        "g3h3",
+        "d4g4",
+        "c2c3",
+        "g7h8",
+        "e5e6"
+      ],
+      "refutationSan": [
+        "Rxf7+",
+        "Kh6",
+        "Rf6",
+        "Rhg8",
+        "Bf7"
+      ],
+      "refutationUci": [
+        "f1f7",
+        "g7h6",
+        "f7f6",
+        "h8g8",
+        "b3f7",
+        "d8f8",
+        "e5e6",
+        "c5e7",
+        "f6g6",
+        "g8g6",
+        "g3g6",
+        "h6h5"
+      ],
+      "evalBeforePawns": -4.73,
+      "evalAfterPawns": 4.25,
+      "cpLoss": 898,
+      "materialBalance": "Black +1 (up a bishop for two pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0cKrk",
+    "source": "lichess-puzzle",
+    "puzzleId": "0cKrk",
+    "rating": 1600,
+    "lichessThemes": [
+      "exposedKing",
+      "endgame",
+      "long",
+      "mateIn3"
+    ],
+    "expectedTheme": "mate threat",
+    "acceptableThemes": [
+      "mate threat",
+      "king safety",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "e4c2",
+      "d1e1",
+      "b4d3",
+      "e1f1",
+      "c2d1"
+    ],
+    "blunder": {
+      "ply": 60,
+      "side": "white",
+      "moveNumber": 31,
+      "san": "Ne6",
+      "uci": "f4e6",
+      "fenBefore": "6k1/4p1b1/3p2Q1/5P2/1nN1qN2/1P6/1P4P1/3K4 w - - 0 31",
+      "fenAfter": "6k1/4p1b1/3pN1Q1/5P2/1nN1q3/1P6/1P4P1/3K4 b - - 1 31",
+      "bestUci": "g6e6",
+      "bestSan": "Qe6+",
+      "pvSan": [
+        "Qe6+",
+        "Qxe6",
+        "Nxe6",
+        "d5",
+        "Nb6"
+      ],
+      "pvUci": [
+        "g6e6",
+        "e4e6",
+        "f4e6",
+        "d6d5",
+        "c4b6",
+        "g7b2",
+        "g2g4",
+        "b2a1",
+        "g4g5",
+        "d5d4",
+        "e6f4",
+        "a1c3"
+      ],
+      "refutationSan": [
+        "Qc2+",
+        "Ke1",
+        "Nd3+",
+        "Kf1",
+        "Qd1#"
+      ],
+      "refutationUci": [
+        "e4c2",
+        "d1e1",
+        "b4d3",
+        "e1f1",
+        "c2d1"
+      ],
+      "evalBeforePawns": 2.71,
+      "evalAfterPawns": -100,
+      "cpLoss": 1771,
+      "materialBalance": "White +2 (up a knight and two pawns for a bishop)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0Minj",
+    "source": "lichess-puzzle",
+    "puzzleId": "0Minj",
+    "rating": 1600,
+    "lichessThemes": [
+      "endgame",
+      "advancedPawn",
+      "master",
+      "short",
+      "crushing",
+      "rookEndgame"
+    ],
+    "expectedTheme": "pawn structure",
+    "acceptableThemes": [
+      "pawn structure",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "a6a7",
+      "d3d2",
+      "b7d7"
+    ],
+    "blunder": {
+      "ply": 69,
+      "side": "black",
+      "moveNumber": 35,
+      "san": "c4",
+      "uci": "c5c4",
+      "fenBefore": "8/1R3ppk/PP5p/2p5/8/3p2P1/1r3PPK/8 b - - 0 35",
+      "fenAfter": "8/1R3ppk/PP5p/8/2p5/3p2P1/1r3PPK/8 w - - 0 36",
+      "bestUci": "d3d2",
+      "bestSan": "d2",
+      "pvSan": [
+        "d2",
+        "Rd7",
+        "Rxb6",
+        "a7",
+        "Ra6"
+      ],
+      "pvUci": [
+        "d3d2",
+        "b7d7",
+        "b2b6",
+        "a6a7",
+        "b6a6",
+        "d7d2",
+        "a6a7",
+        "h2h3",
+        "a7a6",
+        "h3g4",
+        "h7g6",
+        "g4f4"
+      ],
+      "refutationSan": [
+        "a7",
+        "c3",
+        "a8=Q",
+        "d2",
+        "Rd7"
+      ],
+      "refutationUci": [
+        "a6a7",
+        "c4c3",
+        "a7a8q",
+        "d3d2",
+        "b7d7",
+        "b2b6",
+        "a8e4",
+        "b6g6",
+        "e4b1",
+        "h7g8",
+        "d7d8",
+        "g8h7"
+      ],
+      "evalBeforePawns": -1.1,
+      "evalAfterPawns": 5.63,
+      "cpLoss": 673,
+      "materialBalance": "Material is equal",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-1t51l",
+    "source": "lichess-puzzle",
+    "puzzleId": "1t51l",
+    "rating": 1618,
+    "lichessThemes": [
+      "short",
+      "crushing",
+      "trappedPiece",
+      "master",
+      "middlegame"
+    ],
+    "expectedTheme": "trapped piece",
+    "acceptableThemes": [
+      "trapped piece"
+    ],
+    "solutionUci": [
+      "e3f2",
+      "h5e2",
+      "f2h4"
+    ],
+    "blunder": {
+      "ply": 39,
+      "side": "black",
+      "moveNumber": 20,
+      "san": "Nxf6",
+      "uci": "e4f6",
+      "fenBefore": "r4rk1/pp4pp/1bp2P2/3p3b/3PnP1q/3BB2P/PPQ1N1P1/R4RK1 b - - 0 20",
+      "fenAfter": "r4rk1/pp4pp/1bp2n2/3p3b/3P1P1q/3BB2P/PPQ1N1P1/R4RK1 w - - 0 21",
+      "bestUci": "a8e8",
+      "bestSan": "Rae8",
+      "pvSan": [
+        "Rae8",
+        "fxg7",
+        "Rf7",
+        "Rae1",
+        "Rxg7"
+      ],
+      "pvUci": [
+        "a8e8",
+        "f6g7",
+        "f8f7",
+        "a1e1",
+        "f7g7",
+        "f4f5",
+        "b6a5",
+        "e2c3",
+        "h5f3",
+        "f5f6",
+        "e4f6",
+        "e3g5"
+      ],
+      "refutationSan": [
+        "Bf2",
+        "Qxf2+",
+        "Rxf2",
+        "Bxe2",
+        "Rxe2"
+      ],
+      "refutationUci": [
+        "e3f2",
+        "h4f2",
+        "f1f2",
+        "h5e2",
+        "f2e2",
+        "f6h5",
+        "f4f5",
+        "h5g3",
+        "e2e6",
+        "a8e8",
+        "a1e1",
+        "e8e6"
+      ],
+      "evalBeforePawns": -1.14,
+      "evalAfterPawns": 4.67,
+      "cpLoss": 581,
+      "materialBalance": "White +1 (up a pawn)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0n0F6",
+    "source": "lichess-puzzle",
+    "puzzleId": "0n0F6",
+    "rating": 1697,
+    "lichessThemes": [
+      "short",
+      "masterVsMaster",
+      "crushing",
+      "superGM",
+      "hangingPiece",
+      "defensiveMove",
+      "master",
+      "middlegame"
+    ],
+    "expectedTheme": "hanging piece",
+    "acceptableThemes": [
+      "hanging piece"
+    ],
+    "solutionUci": [
+      "g6h5",
+      "f3g3",
+      "g7h6"
+    ],
+    "blunder": {
+      "ply": 50,
+      "side": "white",
+      "moveNumber": 26,
+      "san": "Rf3",
+      "uci": "f1f3",
+      "fenBefore": "r4r2/4b1k1/p3p1p1/1p1p1p1R/2qP1P1P/2P5/PP1B2P1/3Q1RK1 w - - 1 26",
+      "fenAfter": "r4r2/4b1k1/p3p1p1/1p1p1p1R/2qP1P1P/2P2R2/PP1B2P1/3Q2K1 b - - 2 26",
+      "bestUci": "h5g5",
+      "bestSan": "Rg5",
+      "pvSan": [
+        "Rg5",
+        "Rh8",
+        "Qe1",
+        "Rae8",
+        "Qg3"
+      ],
+      "pvUci": [
+        "h5g5",
+        "f8h8",
+        "d1e1",
+        "a8e8",
+        "e1g3",
+        "h8h6",
+        "f1e1",
+        "g7f7",
+        "h4h5",
+        "h6h5",
+        "g5h5",
+        "g6h5"
+      ],
+      "refutationSan": [
+        "gxh5",
+        "Rg3+",
+        "Kh6",
+        "Rg5",
+        "Bxg5"
+      ],
+      "refutationUci": [
+        "g6h5",
+        "f3g3",
+        "g7h6",
+        "g3g5",
+        "e7g5",
+        "f4g5",
+        "h6g6",
+        "d1e1",
+        "c4c6",
+        "d2f4",
+        "a8e8",
+        "g2g4"
+      ],
+      "evalBeforePawns": -0.14,
+      "evalAfterPawns": -3.58,
+      "cpLoss": 344,
+      "materialBalance": "White +1 (up a pawn)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-02pdf",
+    "source": "lichess-puzzle",
+    "puzzleId": "02pdf",
+    "rating": 1760,
+    "lichessThemes": [
+      "mateIn2",
+      "middlegame",
+      "short",
+      "kingsideAttack"
+    ],
+    "expectedTheme": "mate threat",
+    "acceptableThemes": [
+      "mate threat",
+      "king safety"
+    ],
+    "solutionUci": [
+      "e2e8",
+      "g8g7",
+      "e8f8"
+    ],
+    "blunder": {
+      "ply": 51,
+      "side": "black",
+      "moveNumber": 26,
+      "san": "Qxh4",
+      "uci": "f4h4",
+      "fenBefore": "r1b3k1/pp5p/2p3r1/3p4/2Pb1q1P/3P1R2/PP2Q1B1/R4K2 b - - 2 26",
+      "fenAfter": "r1b3k1/pp5p/2p3r1/3p4/2Pb3q/3P1R2/PP2Q1B1/R4K2 w - - 0 27",
+      "bestUci": "f4f3",
+      "bestSan": "Qxf3+",
+      "pvSan": [
+        "Qxf3+",
+        "Qxf3",
+        "Bg4",
+        "h5",
+        "Bxf3"
+      ],
+      "pvUci": [
+        "f4f3",
+        "e2f3",
+        "c8g4",
+        "h4h5",
+        "g4f3",
+        "h5g6",
+        "f3h5",
+        "c4d5",
+        "h5g6",
+        "g2e4",
+        "a8f8",
+        "f1e1"
+      ],
+      "refutationSan": [
+        "Qe8+",
+        "Kg7",
+        "Qf8#"
+      ],
+      "refutationUci": [
+        "e2e8",
+        "g8g7",
+        "e8f8"
+      ],
+      "evalBeforePawns": -6.67,
+      "evalAfterPawns": 100,
+      "cpLoss": 2167,
+      "materialBalance": "Black +3 (up a bishop)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-1d982",
+    "source": "lichess-puzzle",
+    "puzzleId": "1d982",
+    "rating": 1831,
+    "lichessThemes": [
+      "crushing",
+      "skewer",
+      "veryLong",
+      "middlegame"
+    ],
+    "expectedTheme": "skewer",
+    "acceptableThemes": [
+      "skewer"
+    ],
+    "solutionUci": [
+      "c2e4",
+      "c8c1",
+      "d1c1",
+      "d5c5",
+      "e4b7",
+      "c5c1",
+      "e1c1"
+    ],
+    "blunder": {
+      "ply": 41,
+      "side": "black",
+      "moveNumber": 21,
+      "san": "Qd5",
+      "uci": "d4d5",
+      "fenBefore": "2r2rk1/pb1n1pp1/1p5p/8/3q4/P7/1PBN2PP/2RQR2K b - - 1 21",
+      "fenAfter": "2r2rk1/pb1n1pp1/1p5p/3q4/8/P7/1PBN2PP/2RQR2K w - - 2 22",
+      "bestUci": "d4b2",
+      "bestSan": "Qxb2",
+      "pvSan": [
+        "Qxb2",
+        "Re7",
+        "Nc5",
+        "Nc4",
+        "Qf6"
+      ],
+      "pvUci": [
+        "d4b2",
+        "e1e7",
+        "d7c5",
+        "d2c4",
+        "b2f6",
+        "d1e2",
+        "b7a6",
+        "e7a7",
+        "f8e8",
+        "e2g4",
+        "g7g6",
+        "c4e5"
+      ],
+      "refutationSan": [
+        "Be4",
+        "Qd4",
+        "Bxb7",
+        "Rxc1",
+        "Qxc1"
+      ],
+      "refutationUci": [
+        "c2e4",
+        "d5d4",
+        "e4b7",
+        "c8c1",
+        "d1c1",
+        "d7c5",
+        "b7e4",
+        "f8e8",
+        "e4b1",
+        "e8e1",
+        "c1e1",
+        "g7g6"
+      ],
+      "evalBeforePawns": -4.64,
+      "evalAfterPawns": 4.2,
+      "cpLoss": 884,
+      "materialBalance": "Black +1 (up a pawn)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-2ABKy",
+    "source": "lichess-puzzle",
+    "puzzleId": "2ABKy",
+    "rating": 1889,
+    "lichessThemes": [
+      "mateIn5",
+      "middlegame",
+      "xRayAttack",
+      "sacrifice",
+      "backRankMate",
+      "deflection",
+      "veryLong"
+    ],
+    "expectedTheme": "back rank",
+    "acceptableThemes": [
+      "back rank",
+      "skewer",
+      "overloaded defender",
+      "mate threat",
+      "king safety"
+    ],
+    "solutionUci": [
+      "f5f7",
+      "f8f7",
+      "e1e8",
+      "g6f8",
+      "d5e7",
+      "g8h8",
+      "e8f8",
+      "f7f8",
+      "f1f8"
+    ],
+    "blunder": {
+      "ply": 51,
+      "side": "black",
+      "moveNumber": 26,
+      "san": "Rxa3",
+      "uci": "c3a3",
+      "fenBefore": "5rk1/5ppp/6n1/1p1N1Q2/p2q4/P1r5/6PP/4RR1K b - - 0 26",
+      "fenAfter": "5rk1/5ppp/6n1/1p1N1Q2/p2q4/r7/6PP/4RR1K w - - 0 27",
+      "bestUci": "c3c8",
+      "bestSan": "Rcc8",
+      "pvSan": [
+        "Rcc8",
+        "Re4",
+        "Qd2",
+        "Ne3",
+        "Qd3"
+      ],
+      "pvUci": [
+        "c3c8",
+        "e1e4",
+        "d4d2",
+        "d5e3",
+        "d2d3",
+        "h2h3",
+        "h7h6",
+        "f1d1",
+        "d3a3"
+      ],
+      "refutationSan": [
+        "Qxf7+",
+        "Rxf7",
+        "Re8+",
+        "Nf8",
+        "Ne7+"
+      ],
+      "refutationUci": [
+        "f5f7",
+        "f8f7",
+        "e1e8",
+        "g6f8",
+        "d5e7",
+        "g8h8",
+        "e8f8",
+        "f7f8",
+        "f1f8"
+      ],
+      "evalBeforePawns": -2.47,
+      "evalAfterPawns": 100,
+      "cpLoss": 1747,
+      "materialBalance": "Black +2 (up two pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-00cxg",
+    "source": "lichess-puzzle",
+    "puzzleId": "00cxg",
+    "rating": 1900,
+    "lichessThemes": [
+      "advantage",
+      "long",
+      "fork",
+      "middlegame"
+    ],
+    "expectedTheme": "fork",
+    "acceptableThemes": [
+      "fork"
+    ],
+    "solutionUci": [
+      "d2d4",
+      "e4h1",
+      "d4h8",
+      "e8d7",
+      "h8d8"
+    ],
+    "blunder": {
+      "ply": 33,
+      "side": "black",
+      "moveNumber": 17,
+      "san": "g6",
+      "uci": "g7g6",
+      "fenBefore": "r2qk2r/1p2bpp1/p2pp3/8/4b2P/4B3/PPPQB3/2K3RR b kq - 1 17",
+      "fenAfter": "r2qk2r/1p2bp2/p2pp1p1/8/4b2P/4B3/PPPQB3/2K3RR w kq - 0 18",
+      "bestUci": "a8c8",
+      "bestSan": "Rc8",
+      "pvSan": [
+        "Rc8",
+        "c3",
+        "Bxh1",
+        "Rxg7",
+        "Be4"
+      ],
+      "pvUci": [
+        "a8c8",
+        "c2c3",
+        "e4h1",
+        "g1g7",
+        "h1e4",
+        "d2d4",
+        "d6d5",
+        "g7g1",
+        "e7f6",
+        "d4a4",
+        "d8d7"
+      ],
+      "refutationSan": [
+        "Qd4",
+        "Bxh1",
+        "Qxh8+",
+        "Kd7",
+        "Qxd8+"
+      ],
+      "refutationUci": [
+        "d2d4",
+        "e4h1",
+        "d4h8",
+        "e8d7",
+        "h8d8",
+        "a8d8",
+        "g1h1",
+        "f7f5",
+        "h4h5",
+        "g6g5",
+        "h5h6",
+        "d8h8"
+      ],
+      "evalBeforePawns": -5.09,
+      "evalAfterPawns": 3.5,
+      "cpLoss": 859,
+      "materialBalance": "Black +2 (up two pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-01M1X",
+    "source": "lichess-puzzle",
+    "puzzleId": "01M1X",
+    "rating": 1911,
+    "lichessThemes": [
+      "middlegame",
+      "crushing",
+      "hangingPiece",
+      "short"
+    ],
+    "expectedTheme": "hanging piece",
+    "acceptableThemes": [
+      "hanging piece"
+    ],
+    "solutionUci": [
+      "e4f3",
+      "d2d4",
+      "f7f6"
+    ],
+    "blunder": {
+      "ply": 58,
+      "side": "white",
+      "moveNumber": 30,
+      "san": "exd6",
+      "uci": "e5d6",
+      "fenBefore": "4r3/4bpkp/3p2pN/4P1P1/1p2qn1P/5N2/1P1Q1P2/3R2K1 w - - 0 30",
+      "fenAfter": "4r3/4bpkp/3P2pN/6P1/1p2qn1P/5N2/1P1Q1P2/3R2K1 b - - 0 30",
+      "bestUci": "d2e3",
+      "bestSan": "Qe3",
+      "pvSan": [
+        "Qe3",
+        "d5",
+        "Kh2",
+        "Ne6",
+        "Qxe4"
+      ],
+      "pvUci": [
+        "d2e3",
+        "d6d5",
+        "g1h2",
+        "f4e6",
+        "e3e4",
+        "d5e4",
+        "f3d4",
+        "e6g5",
+        "h4g5",
+        "e7g5",
+        "h6g4",
+        "h7h5"
+      ],
+      "refutationSan": [
+        "Qxf3",
+        "Qxf4",
+        "Qxf4",
+        "dxe7",
+        "Qxh4"
+      ],
+      "refutationUci": [
+        "e4f3",
+        "d2f4",
+        "f3f4",
+        "d6e7",
+        "f4h4",
+        "d1d5",
+        "f7f6",
+        "d5f5",
+        "h4g5",
+        "f5g5",
+        "f6g5",
+        "h6g4"
+      ],
+      "evalBeforePawns": 0.12,
+      "evalAfterPawns": -6.39,
+      "cpLoss": 651,
+      "materialBalance": "Material is equal (White has a knight for a bishop)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0J6Gj",
+    "source": "lichess-puzzle",
+    "puzzleId": "0J6Gj",
+    "rating": 1952,
+    "lichessThemes": [
+      "endgame",
+      "crushing",
+      "long",
+      "rookEndgame"
+    ],
+    "expectedTheme": "endgame technique",
+    "acceptableThemes": [
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "g8f8",
+      "g5e5",
+      "d8e8",
+      "e5e2",
+      "e8e2"
+    ],
+    "blunder": {
+      "ply": 58,
+      "side": "white",
+      "moveNumber": 30,
+      "san": "Rxg5+",
+      "uci": "f5g5",
+      "fenBefore": "3r2k1/pp3p1p/5P2/5Rp1/6P1/2P4P/PP2p2K/8 w - - 0 30",
+      "fenAfter": "3r2k1/pp3p1p/5P2/6R1/6P1/2P4P/PP2p2K/8 b - - 0 30",
+      "bestUci": "f5e5",
+      "bestSan": "Re5",
+      "pvSan": [
+        "Re5",
+        "e1=B",
+        "Rxe1",
+        "Rd2+",
+        "Kg3"
+      ],
+      "pvUci": [
+        "f5e5",
+        "e2e1b",
+        "e5e1",
+        "d8d2",
+        "h2g3",
+        "h7h6",
+        "g3f3",
+        "d2b2",
+        "e1e7",
+        "b2a2",
+        "e7b7",
+        "a2c2"
+      ],
+      "refutationSan": [
+        "Kf8",
+        "Re5",
+        "Re8",
+        "Re7",
+        "e1=Q"
+      ],
+      "refutationUci": [
+        "g8f8",
+        "g5e5",
+        "d8e8",
+        "e5e7",
+        "e2e1q",
+        "e7e1",
+        "e8e1",
+        "h2g3",
+        "e1e2",
+        "g3f4",
+        "e2b2",
+        "f4e3"
+      ],
+      "evalBeforePawns": -0.03,
+      "evalAfterPawns": -6.53,
+      "cpLoss": 650,
+      "materialBalance": "Material is equal",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0TIyQ",
+    "source": "lichess-puzzle",
+    "puzzleId": "0TIyQ",
+    "rating": 1969,
+    "lichessThemes": [
+      "endgame",
+      "advancedPawn",
+      "master",
+      "short",
+      "crushing",
+      "quietMove",
+      "promotion"
+    ],
+    "expectedTheme": "pawn structure",
+    "acceptableThemes": [
+      "pawn structure",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "d5e6",
+      "a1c2",
+      "c7c8q"
+    ],
+    "blunder": {
+      "ply": 95,
+      "side": "black",
+      "moveNumber": 48,
+      "san": "Rbd8",
+      "uci": "b8d8",
+      "fenBefore": "1r3r1k/2PP4/3P3p/3B2pP/6P1/8/6K1/n7 b - - 0 48",
+      "fenAfter": "3r1r1k/2PP4/3P3p/3B2pP/6P1/8/6K1/n7 w - - 1 49",
+      "bestUci": "a1c2",
+      "bestSan": "Nc2",
+      "pvSan": [
+        "Nc2",
+        "Bb7",
+        "Ne3+",
+        "Kg3",
+        "Nc4"
+      ],
+      "pvUci": [
+        "a1c2",
+        "d5b7",
+        "c2e3",
+        "g2g3",
+        "e3c4",
+        "b7c8",
+        "b8b3",
+        "g3h2",
+        "b3b2",
+        "h2g1",
+        "b2b1",
+        "g1h2"
+      ],
+      "refutationSan": [
+        "Be6",
+        "Nc2",
+        "c8=Q",
+        "Rxc8",
+        "dxc8=R"
+      ],
+      "refutationUci": [
+        "d5e6",
+        "a1c2",
+        "c7c8q",
+        "d8c8",
+        "d7c8r",
+        "f8c8",
+        "e6c8",
+        "c2d4",
+        "g2f2",
+        "h8g7",
+        "f2e3",
+        "d4c6"
+      ],
+      "evalBeforePawns": 0,
+      "evalAfterPawns": 3.68,
+      "cpLoss": 368,
+      "materialBalance": "Black +7 (up two rooks and a knight for a bishop and three pawns)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0GqWR",
+    "source": "lichess-puzzle",
+    "puzzleId": "0GqWR",
+    "rating": 2000,
+    "lichessThemes": [
+      "deflection",
+      "clearance",
+      "endgame",
+      "crushing",
+      "long",
+      "kingsideAttack"
+    ],
+    "expectedTheme": "overloaded defender",
+    "acceptableThemes": [
+      "overloaded defender",
+      "king safety",
+      "endgame technique"
+    ],
+    "solutionUci": [
+      "f4h4",
+      "f3h4",
+      "h6e3",
+      "g1h2",
+      "f5f1"
+    ],
+    "blunder": {
+      "ply": 56,
+      "side": "white",
+      "moveNumber": 29,
+      "san": "Qxh4",
+      "uci": "f2h4",
+      "fenBefore": "2k5/1pp3p1/p3p2b/P3Pr2/1P1P1q1p/2P2N1P/5QP1/5RK1 w - - 6 29",
+      "fenAfter": "2k5/1pp3p1/p3p2b/P3Pr2/1P1P1q1Q/2P2N1P/6P1/5RK1 b - - 0 29",
+      "bestUci": "f1e1",
+      "bestSan": "Re1",
+      "pvSan": [
+        "Re1",
+        "Bg5",
+        "Re2",
+        "Bd8",
+        "Qe1"
+      ],
+      "pvUci": [
+        "f1e1",
+        "h6g5",
+        "e1e2",
+        "g5d8",
+        "f2e1",
+        "f4h6",
+        "c3c4",
+        "c7c6",
+        "e1b1",
+        "c8b8",
+        "g1h1",
+        "f5f8"
+      ],
+      "refutationSan": [
+        "Qxh4",
+        "Nxh4",
+        "Be3+",
+        "Kh2",
+        "Rxf1"
+      ],
+      "refutationUci": [
+        "f4h4",
+        "f3h4",
+        "h6e3",
+        "g1h2",
+        "f5f1",
+        "h4g6",
+        "f1c1",
+        "d4d5",
+        "c1c3",
+        "d5e6",
+        "c8d8",
+        "g2g4"
+      ],
+      "evalBeforePawns": 1.94,
+      "evalAfterPawns": -5.94,
+      "cpLoss": 788,
+      "materialBalance": "White +1 (up a knight and a pawn for a bishop)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-1DTdR",
+    "source": "lichess-puzzle",
+    "puzzleId": "1DTdR",
+    "rating": 2000,
+    "lichessThemes": [
+      "crushing",
+      "attraction",
+      "long",
+      "sacrifice",
+      "kingsideAttack",
+      "master",
+      "middlegame"
+    ],
+    "expectedTheme": "king safety",
+    "acceptableThemes": [
+      "king safety"
+    ],
+    "solutionUci": [
+      "d3h7",
+      "g8h7",
+      "f3d3",
+      "h4e4",
+      "e1e4"
+    ],
+    "blunder": {
+      "ply": 45,
+      "side": "black",
+      "moveNumber": 23,
+      "san": "Ng5",
+      "uci": "e6g5",
+      "fenBefore": "2r2rk1/1p1b1p1p/p3n2p/3pP3/P6q/3B1QP1/1P1B1P2/R3R1K1 b - - 0 23",
+      "fenAfter": "2r2rk1/1p1b1p1p/p6p/3pP1n1/P6q/3B1QP1/1P1B1P2/R3R1K1 w - - 1 24",
+      "bestUci": "e6d4",
+      "bestSan": "Nd4",
+      "pvSan": [
+        "Nd4",
+        "Qxd5",
+        "Qg4",
+        "Be4",
+        "Nc2"
+      ],
+      "pvUci": [
+        "e6d4",
+        "f3d5",
+        "h4g4",
+        "d3e4",
+        "d4c2",
+        "d2h6",
+        "c2e1",
+        "a1e1",
+        "f8e8",
+        "e4f3",
+        "g4e6",
+        "d5d2"
+      ],
+      "refutationSan": [
+        "Bxh7+",
+        "Kxh7",
+        "Qd3+",
+        "Ne4",
+        "gxh4"
+      ],
+      "refutationUci": [
+        "d3h7",
+        "g8h7",
+        "f3d3",
+        "g5e4",
+        "g3h4",
+        "f8g8",
+        "g1h2",
+        "c8c5",
+        "e1g1",
+        "d7g4",
+        "d2f4",
+        "c5c4"
+      ],
+      "evalBeforePawns": 0.13,
+      "evalAfterPawns": 4.64,
+      "cpLoss": 451,
+      "materialBalance": "Black +1 (up a knight and a pawn for a bishop)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0H8LG",
+    "source": "lichess-puzzle",
+    "puzzleId": "0H8LG",
+    "rating": 2028,
+    "lichessThemes": [
+      "middlegame",
+      "operaMate",
+      "discoveredCheck",
+      "oneMove",
+      "mateIn1",
+      "pillsburysMate",
+      "doubleCheck"
+    ],
+    "expectedTheme": "discovered attack",
+    "acceptableThemes": [
+      "discovered attack",
+      "mate threat",
+      "king safety"
+    ],
+    "solutionUci": [
+      "e3d3"
+    ],
+    "blunder": {
+      "ply": 40,
+      "side": "white",
+      "moveNumber": 21,
+      "san": "Nxd5",
+      "uci": "c3d5",
+      "fenBefore": "2k1r3/ppp2ppp/b7/3p4/P2P1b2/1BN1rP2/1PPK2PP/R2R4 w - - 4 21",
+      "fenAfter": "2k1r3/ppp2ppp/b7/3N4/P2P1b2/1B2rP2/1PPK2PP/R2R4 b - - 0 21",
+      "bestUci": "d2c1",
+      "bestSan": "Kc1",
+      "pvSan": [
+        "Kc1",
+        "Rxc3+",
+        "Kb1",
+        "Rxb3",
+        "cxb3"
+      ],
+      "pvUci": [
+        "d2c1",
+        "e3c3",
+        "c1b1",
+        "c3b3",
+        "c2b3",
+        "e8e2",
+        "b3b4",
+        "a6c4",
+        "a1a3",
+        "e2g2",
+        "a3c3",
+        "g2h2"
+      ],
+      "refutationSan": [
+        "Rd3#"
+      ],
+      "refutationUci": [
+        "e3d3"
+      ],
+      "evalBeforePawns": -7.34,
+      "evalAfterPawns": -100,
+      "cpLoss": 766,
+      "materialBalance": "Material is equal (White has a knight for a bishop)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-07CCA",
+    "source": "lichess-puzzle",
+    "puzzleId": "07CCA",
+    "rating": 2045,
+    "lichessThemes": [
+      "exposedKing",
+      "advancedPawn",
+      "discoveredCheck",
+      "advantage",
+      "long",
+      "opening",
+      "discoveredAttack"
+    ],
+    "expectedTheme": "discovered attack",
+    "acceptableThemes": [
+      "discovered attack",
+      "king safety",
+      "pawn structure",
+      "tempo / development"
+    ],
+    "solutionUci": [
+      "d4c3",
+      "d1c1",
+      "c3c2",
+      "e1f2",
+      "b4a4"
+    ],
+    "blunder": {
+      "ply": 26,
+      "side": "white",
+      "moveNumber": 14,
+      "san": "c3",
+      "uci": "c2c3",
+      "fenBefore": "2kr2nr/pp4pp/4pp2/4Pb2/Bq1p1P2/5N2/PPP1N1PP/R2QK2R w KQ - 2 14",
+      "fenAfter": "2kr2nr/pp4pp/4pp2/4Pb2/Bq1p1P2/2P2N2/PP2N1PP/R2QK2R b KQ - 0 14",
+      "bestUci": "d1d2",
+      "bestSan": "Qd2",
+      "pvSan": [
+        "Qd2",
+        "Qxa4",
+        "Nexd4",
+        "Ne7",
+        "O-O"
+      ],
+      "pvUci": [
+        "d1d2",
+        "b4a4",
+        "e2d4",
+        "g8e7",
+        "e1g1",
+        "f5g4",
+        "b2b3",
+        "a4a6",
+        "d2f2",
+        "e7g6",
+        "f2g3",
+        "g4f3"
+      ],
+      "refutationSan": [
+        "dxc3",
+        "Qc1",
+        "c2+",
+        "Kf2",
+        "Qxa4"
+      ],
+      "refutationUci": [
+        "d4c3",
+        "d1c1",
+        "c3c2",
+        "e1f2",
+        "b4a4",
+        "b2b3",
+        "a4b4",
+        "a2a3",
+        "b4c5",
+        "c1e3",
+        "c5e3",
+        "f2e3"
+      ],
+      "evalBeforePawns": 1.39,
+      "evalAfterPawns": -3.27,
+      "cpLoss": 466,
+      "materialBalance": "White +3 (up a knight)",
+      "sideToMove": "white"
+    }
+  },
+  {
+    "id": "lichess-0g5z0",
+    "source": "lichess-puzzle",
+    "puzzleId": "0g5z0",
+    "rating": 2046,
+    "lichessThemes": [
+      "crushing",
+      "capturingDefender",
+      "short",
+      "middlegame"
+    ],
+    "expectedTheme": "overloaded defender",
+    "acceptableThemes": [
+      "overloaded defender"
+    ],
+    "solutionUci": [
+      "c7c5",
+      "b6c5",
+      "g7f8"
+    ],
+    "blunder": {
+      "ply": 45,
+      "side": "black",
+      "moveNumber": 23,
+      "san": "Bc5",
+      "uci": "e7c5",
+      "fenBefore": "r2k1r2/p1R1bpQ1/1p2p3/3pP3/7P/8/Pq3PP1/2R3K1 b - - 0 23",
+      "fenAfter": "r2k1r2/p1R2pQ1/1p2p3/2bpP3/7P/8/Pq3PP1/2R3K1 w - - 1 24",
+      "bestUci": "d5d4",
+      "bestSan": "d4",
+      "pvSan": [
+        "d4",
+        "R1c2",
+        "Qb4",
+        "Kh2",
+        "d3"
+      ],
+      "pvUci": [
+        "d5d4",
+        "c1c2",
+        "b2b4",
+        "g1h2",
+        "d4d3",
+        "c2c4",
+        "b4e1",
+        "c7e7"
+      ],
+      "refutationSan": [
+        "R7xc5",
+        "bxc5",
+        "Qxf8+",
+        "Kd7",
+        "Qxf7+"
+      ],
+      "refutationUci": [
+        "c7c5",
+        "b6c5",
+        "g7f8",
+        "d8d7",
+        "f8f7",
+        "d7d8",
+        "f7f8",
+        "d8d7",
+        "f8d6",
+        "d7e8",
+        "d6e6",
+        "e8f8"
+      ],
+      "evalBeforePawns": -2.01,
+      "evalAfterPawns": 6.94,
+      "cpLoss": 895,
+      "materialBalance": "Black +3 (up a bishop)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0Og0U",
+    "source": "lichess-puzzle",
+    "puzzleId": "0Og0U",
+    "rating": 2053,
+    "lichessThemes": [
+      "advantage",
+      "hangingPiece",
+      "short",
+      "middlegame"
+    ],
+    "expectedTheme": "hanging piece",
+    "acceptableThemes": [
+      "hanging piece"
+    ],
+    "solutionUci": [
+      "g1g2",
+      "c8h3",
+      "g2g3"
+    ],
+    "blunder": {
+      "ply": 31,
+      "side": "black",
+      "moveNumber": 16,
+      "san": "Nxg2",
+      "uci": "f4g2",
+      "fenBefore": "2b2rk1/r1p2pp1/p2p1q1p/np1Pp3/4Pn2/N1P2N2/PPBQ1PPP/R3R1K1 b - - 6 16",
+      "fenAfter": "2b2rk1/r1p2pp1/p2p1q1p/np1Pp3/4P3/N1P2N2/PPBQ1PnP/R3R1K1 w - - 0 17",
+      "bestUci": "c8h3",
+      "bestSan": "Bh3",
+      "pvSan": [
+        "Bh3",
+        "g3",
+        "Ng2",
+        "Qd3",
+        "Nxe1"
+      ],
+      "pvUci": [
+        "c8h3",
+        "g2g3",
+        "f4g2",
+        "d2d3",
+        "g2e1",
+        "f3e1",
+        "c7c6",
+        "d5c6",
+        "a5c6",
+        "c2b3",
+        "f8c8",
+        "e1g2"
+      ],
+      "refutationSan": [
+        "Kxg2",
+        "Bh3+",
+        "Kg3",
+        "Bd7",
+        "h3"
+      ],
+      "refutationUci": [
+        "g1g2",
+        "c8h3",
+        "g2g3",
+        "h3d7",
+        "h2h3",
+        "d7h3",
+        "e1h1",
+        "h3c8",
+        "a1g1",
+        "c7c6",
+        "b2b4",
+        "a5b7"
+      ],
+      "evalBeforePawns": -2.87,
+      "evalAfterPawns": 2.89,
+      "cpLoss": 576,
+      "materialBalance": "Material is equal",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0hFRn",
+    "source": "lichess-puzzle",
+    "puzzleId": "0hFRn",
+    "rating": 2077,
+    "lichessThemes": [
+      "advantage",
+      "pin",
+      "long",
+      "middlegame"
+    ],
+    "expectedTheme": "pin",
+    "acceptableThemes": [
+      "pin"
+    ],
+    "solutionUci": [
+      "e2g4",
+      "e5e6",
+      "h2h6",
+      "f6h6",
+      "h1h6"
+    ],
+    "blunder": {
+      "ply": 55,
+      "side": "black",
+      "moveNumber": 28,
+      "san": "Rxe5",
+      "uci": "e8e5",
+      "fenBefore": "2r1r1k1/5pp1/p4q1p/1p1pN3/2n5/P1PB2P1/1P2QPKR/7R b - - 0 28",
+      "fenAfter": "2r3k1/5pp1/p4q1p/1p1pr3/2n5/P1PB2P1/1P2QPKR/7R w - - 0 29",
+      "bestUci": "c4e5",
+      "bestSan": "Nxe5",
+      "pvSan": [
+        "Nxe5",
+        "Rh5",
+        "Rcd8",
+        "Rf5",
+        "Qd6"
+      ],
+      "pvUci": [
+        "c4e5",
+        "h2h5",
+        "c8d8",
+        "h5f5",
+        "f6d6",
+        "h1d1",
+        "g7g6",
+        "f5f4",
+        "d6c6",
+        "f4d4",
+        "g8g7",
+        "e2c2"
+      ],
+      "refutationSan": [
+        "Qg4",
+        "Rc6",
+        "Rxh6",
+        "g6",
+        "Qh3"
+      ],
+      "refutationUci": [
+        "e2g4",
+        "c8c6",
+        "h2h6",
+        "g7g6",
+        "g4h3",
+        "e5h5",
+        "h6h5",
+        "g6h5",
+        "h3h5",
+        "g8f8",
+        "d3c4",
+        "d5c4"
+      ],
+      "evalBeforePawns": -1.4,
+      "evalAfterPawns": 3.54,
+      "cpLoss": 494,
+      "materialBalance": "White +2 (up a bishop for a pawn)",
+      "sideToMove": "black"
+    }
+  },
+  {
+    "id": "lichess-0FzgS",
+    "source": "lichess-puzzle",
+    "puzzleId": "0FzgS",
+    "rating": 2081,
+    "lichessThemes": [
+      "trappedPiece",
+      "short",
+      "advantage",
+      "middlegame"
+    ],
+    "expectedTheme": "trapped piece",
+    "acceptableThemes": [
+      "trapped piece"
+    ],
+    "solutionUci": [
+      "d7a4",
+      "b3b6",
+      "a7b6"
+    ],
+    "blunder": {
+      "ply": 24,
+      "side": "white",
+      "moveNumber": 13,
+      "san": "exd5",
+      "uci": "e4d5",
+      "fenBefore": "4kb1r/p2b1ppp/1n6/q2np3/4P3/1QN5/PP3PPP/R1B1K1NR w KQk - 0 13",
+      "fenAfter": "4kb1r/p2b1ppp/1n6/q2Pp3/8/1QN5/PP3PPP/R1B1K1NR b KQk - 0 13",
+      "bestUci": "c1d2",
+      "bestSan": "Bd2",
+      "pvSan": [
+        "Bd2",
+        "Nb4",
+        "Nf3",
+        "Be6",
+        "Nd5"
+      ],
+      "pvUci": [
+        "c1d2",
+        "d5b4",
+        "g1f3",
+        "d7e6",
+        "c3d5",
+        "b6d5",
+        "e4d5",
+        "e6d5",
+        "b3c3",
+        "a5a6",
+        "c3e5",
+        "e8d7"
+      ],
+      "refutationSan": [
+        "Ba4",
+        "Qxb6",
+        "axb6",
+        "Nf3",
+        "Bb4"
+      ],
+      "refutationUci": [
+        "d7a4",
+        "b3b6",
+        "a7b6",
+        "g1f3",
+        "f8b4",
+        "e1g1",
+        "b4c3",
+        "b2c3",
+        "a5d5",
+        "c3c4",
+        "d5d6",
+        "a1b1"
+      ],
+      "evalBeforePawns": 2.29,
+      "evalAfterPawns": -2.64,
+      "cpLoss": 493,
+      "materialBalance": "White +3 (up a rook and a pawn for a bishop)",
+      "sideToMove": "white"
+    }
+  }
+]

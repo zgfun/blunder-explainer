@@ -1,11 +1,16 @@
 import type Anthropic from "@anthropic-ai/sdk";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createRateLimiter } from "../../rate-limit";
-import { fakeClient, fakeStream, GOOD_ANSWER, SCHOLAR_INPUT } from "./fixtures";
+import { deriveBlunder } from "../derive";
+import { explanationKey } from "../key";
+import { fakeClient, fakeStream, GOOD_ANSWER, SCHOLAR_BLUNDER, SCHOLAR_INPUT } from "./fixtures";
 
 const state = vi.hoisted(() => ({
   client: null as Anthropic | null,
   cached: null as { theme: string | null; text: string; model: string } | null,
+  lookup: null as (() => Promise<unknown>) | null,
+  lookups: [] as { promptVersion: string }[],
+  today: 0,
   saved: [] as unknown[],
   limiter: null as ReturnType<typeof createRateLimiter> | null,
 }));
@@ -18,7 +23,12 @@ vi.mock("../client", () => ({
 
 vi.mock("../cache", async (importOriginal) => ({
   ...(await importOriginal<typeof import("../cache")>()),
-  findExplanation: vi.fn(async () => state.cached),
+  findExplanation: vi.fn(async (key: { promptVersion: string }) => {
+    state.lookups.push(key);
+    if (state.lookup) return state.lookup();
+    return state.cached;
+  }),
+  countExplanationsToday: vi.fn(async () => state.today),
   saveExplanation: vi.fn(async (key: unknown, value: unknown) => {
     state.saved.push({ key, value });
   }),
@@ -46,6 +56,9 @@ const VALID = { ...SCHOLAR_INPUT, level: 1600 };
 beforeEach(() => {
   state.client = null;
   state.cached = null;
+  state.lookup = null;
+  state.lookups = [];
+  state.today = 0;
   state.saved = [];
   state.limiter = createRateLimiter({ perHour: 30, dailyCap: 500 });
 });
@@ -62,6 +75,8 @@ describe("POST /api/explain validation", () => {
     ["illegal played move", { ...VALID, playedUci: "e8e6" }, "illegal-move"],
     ["illegal best move", { ...VALID, bestUci: "a1a8" }, "illegal-best-move"],
     ["played equals best", { ...VALID, playedUci: "g7g6" }, "not-a-mistake"],
+    ["move that lost almost nothing", { ...VALID, evalBeforeCp: -29, evalAfterCp: 0 }, "not-a-mistake"],
+    ["illegal refutation format", { ...VALID, refutationUci: ["Qxf7#"] }, "invalid-request"],
   ])("rejects %s", async (_, body, code) => {
     const res = await post(body);
     expect(res.status).toBe(400);
@@ -90,7 +105,29 @@ describe("POST /api/explain without a key", () => {
     expect(res.headers.get("content-type")).toBe("text/plain; charset=utf-8");
     expect(await res.text()).toBe('{"theme":"mate threat"}\nCached prose.');
   });
+
+  it("treats a hanging database as a miss within the time budget", async () => {
+    state.lookup = () => new Promise(() => {});
+    const t0 = Date.now();
+    const res = await post(VALID);
+    expect(res.status).toBe(503);
+    expect(Date.now() - t0).toBeLessThan(2500);
+  });
+
+  it("keys the cache on the server-derived engine data, not just the position", async () => {
+    await post(VALID);
+    await post({ ...VALID, bestUci: "d8e7", pvUci: ["d8e7"] });
+    await post({ ...VALID, evalBeforeCp: 300 });
+    const versions = state.lookups.map((k) => k.promptVersion);
+    expect(new Set(versions).size).toBe(3);
+    expect(versions[0]).toBe(explanationKey(SCHOLAR_BLUNDER, 1600).promptVersion);
+    expect(versions[0]).toMatch(/^v2-[0-9a-f]{8}:[0-9a-f]{12}$/);
+  });
 });
+
+async function settle() {
+  await new Promise((r) => setTimeout(r, 0));
+}
 
 describe("POST /api/explain with a client", () => {
   it("streams the model output, then caches it with usage", async () => {
@@ -101,9 +138,10 @@ describe("POST /api/explain with a client", () => {
     expect(res.headers.get("x-cache")).toBe("miss");
     expect(await res.text()).toBe(GOOD_ANSWER);
     expect(stream).toHaveBeenCalledTimes(1);
+    await settle();
     expect(state.saved).toEqual([
       {
-        key: { fen: VALID.fenBefore, playedUci: "g8f6", level: 1600, promptVersion: "v2" },
+        key: explanationKey(SCHOLAR_BLUNDER, 1600),
         value: { rawText: GOOD_ANSWER, model: "claude-sonnet-5-5", inputTokens: 940, outputTokens: 60 },
       },
     ]);
@@ -120,6 +158,7 @@ describe("POST /api/explain with a client", () => {
       pvSan: [injected],
       materialBalance: injected,
       pvUci: [...VALID.pvUci.slice(0, 3), "h1h8", "d2d3"],
+      refutationUci: ["h5f7", "e8e7"],
     }).then((r) => r.text());
     const params = stream.mock.calls[0][0] as { messages: { content: string }[]; system: unknown };
     const prompt = JSON.stringify(params);
@@ -127,12 +166,17 @@ describe("POST /api/explain with a client", () => {
     // The PV is truncated at the first illegal move (h1h8).
     expect(params.messages[0].content).toContain("Engine line: g6 Qd1 Bg7\n");
     expect(params.messages[0].content).toContain("Material before the move: Material is equal");
+    // The reply line is checked from the position after the move: e8e7 is illegal after Qxf7#.
+    expect(params.messages[0].content).toContain("Engine reply line: Qxf7#\n");
   });
 
-  it("does not cache a truncated answer", async () => {
+  it("errors the body and does not cache a truncated answer", async () => {
     const { client } = fakeClient(() => fakeStream(["cut off"], { stop_reason: "max_tokens" }));
     state.client = client;
-    expect(await (await post(VALID)).text()).toBe("cut off");
+    const res = await post(VALID);
+    expect(res.status).toBe(200);
+    await expect(res.text()).rejects.toThrow();
+    await settle();
     expect(state.saved).toEqual([]);
   });
 
@@ -151,12 +195,33 @@ describe("POST /api/explain with a client", () => {
     expect(res.status).toBe(502);
   });
 
-  it("appends a note when the stream breaks midway", async () => {
+  it("errors the body when the stream breaks midway, so the client can tell", async () => {
     const { client } = fakeClient(() => fakeStream(["Hello", " world"], {}, { failAfter: 1 }));
     state.client = client;
-    const text = await (await post(VALID)).text();
-    expect(text).toMatch(/^Hello\n\n\(The explanation was interrupted/);
+    const reader = (await post(VALID)).body!.getReader();
+    expect(new TextDecoder().decode((await reader.read()).value)).toBe("Hello");
+    await expect(reader.read()).rejects.toThrow(/interrupted/);
+    await settle();
     expect(state.saved).toEqual([]);
+  });
+
+  it("enforces the daily cap from the database across instances", async () => {
+    const { client, stream } = fakeClient(() => fakeStream([GOOD_ANSWER]));
+    state.client = client;
+    state.today = 500;
+    const res = await post(VALID);
+    expect(res.status).toBe(429);
+    expect(await res.json()).toMatchObject({ error: "rate-limited", reason: "daily" });
+    expect(stream).not.toHaveBeenCalled();
+  });
+
+  it("accepts a refutation line and passes it to the prompt", async () => {
+    const { client, stream } = fakeClient(() => fakeStream([GOOD_ANSWER]));
+    state.client = client;
+    await post({ ...VALID, refutationUci: ["h5f7"] }).then((r) => r.text());
+    const params = stream.mock.calls[0][0] as { messages: { content: string }[] };
+    expect(params.messages[0].content).toContain("Engine reply line: Qxf7#");
+    expect(deriveBlunder({ ...SCHOLAR_INPUT, refutationUci: ["h5f7"] }).refutationSan).toEqual(["Qxf7#"]);
   });
 
   it("rate-limits fresh calls per IP with 429 and retryAfter", async () => {

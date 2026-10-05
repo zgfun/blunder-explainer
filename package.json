@@ -13,6 +13,9 @@
     "db:migrate": "drizzle-kit migrate",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
+    "eval": "tsx scripts/eval.ts",
+    "testset:build": "tsx scripts/build-testset.ts",
+    "sample:precompute": "tsx scripts/precompute-sample.ts",
     "vercel-build": "drizzle-kit migrate && next build"
   },
   "dependencies": {

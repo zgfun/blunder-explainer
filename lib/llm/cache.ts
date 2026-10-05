@@ -1,17 +1,13 @@
-import { and, eq } from "drizzle-orm";
+import { and, count, eq, gte } from "drizzle-orm";
 import { db as defaultDb, explanations } from "../../db";
-import { toTheme, type Level, type Theme } from "../../prompts";
+import { toTheme, type Theme } from "../../prompts";
 import { parseExplanation } from "./explain";
+
+import type { ExplanationKey } from "./key";
 
 type Db = typeof defaultDb;
 
-export type ExplanationKey = {
-  /** Use the FEN exactly as chess.js prints it (Chess#fen()), so client and scripts agree. */
-  fen: string;
-  playedUci: string;
-  level: Level;
-  promptVersion: string;
-};
+export type { ExplanationKey } from "./key";
 
 export type CachedExplanation = { theme: Theme | null; text: string; model: string };
 
@@ -62,4 +58,14 @@ export async function saveExplanation(
       target: [explanations.fen, explanations.playedUci, explanations.level, explanations.promptVersion],
       set: { model: row.model, theme: row.theme, text: row.text, inputTokens: row.inputTokens, outputTokens: row.outputTokens },
     });
+}
+
+/**
+ * Explanations written since the start of the current UTC day, across every instance; backs the
+ * global daily LLM cap, which an in-memory counter alone can't enforce on serverless.
+ */
+export async function countExplanationsToday(now = Date.now(), database: Db = defaultDb): Promise<number> {
+  const start = new Date(Math.floor(now / 86_400_000) * 86_400_000);
+  const rows = await database.select({ n: count() }).from(explanations).where(gte(explanations.createdAt, start));
+  return Number(rows[0]?.n ?? 0);
 }

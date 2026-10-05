@@ -19,7 +19,7 @@ export function SampleClient({ game, lines, note }: { game: GameInput; lines?: E
             <Heading as="h1" fontSize={{ base: "2xl", md: "3xl" }} letterSpacing="-0.02em">
               Three moves that decided this game
             </Heading>
-            <Text color="fg.muted" fontSize="sm">
+            <Text fontSize="sm" color="fg.muted">
               Engine analysis is precomputed so this page is instant. Switch sides or the explanation level to explore.
             </Text>
           </Stack>

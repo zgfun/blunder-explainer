@@ -1236,5 +1236,69 @@
     ],
     "moves": "e4 e5 f4 Bc5 Nf3 Nc6 c3 Bb6 fxe5 Nxe5 d4 Nxf3+ Qxf3 Nf6 Bd3 d6 O-O O-O Bg5 c5 e5 dxe5 dxe5 c4+ Kh1 Qxd3 Qxd3 cxd3 exf6 g6 Nd2 Bg4 Nf3 Rfe8 Rae1 Rad8 Rd1 Re2 Rd2 Be3 Bxe3 Rxe3 Nd4 Be2 Rf2 Bg4 h3 Bh5 Kh2 g5 g4 Bg6 Nf5 Bxf5 Rxf5 Re2+ Rxe2 dxe2 Rxg5+",
     "angle": "rookEndgame"
+  },
+  {
+    "puzzleId": "0vwnv",
+    "gameId": "9IqVc6P0",
+    "rating": 1122,
+    "themes": [
+      "mateIn2",
+      "middlegame",
+      "short",
+      "operaMate",
+      "kingsideAttack"
+    ],
+    "initialPly": 63,
+    "solution": [
+      "d1d8",
+      "e7d8",
+      "f1f8"
+    ],
+    "moves": "f4 c6 Nf3 d5 g3 g6 Bg2 Bg7 O-O Nf6 d3 O-O Nbd2 e6 Qe1 Re8 c3 Nbd7 a3 b6 b4 Bb7 e4 dxe4 dxe4 c5 Bb2 Re7 Rd1 Qc7 Nc4 Rae8 Nd6 Rd8 e5 Nd5 Ng5 Bf8 Ndxf7 Rxf7 Nxf7 Kxf7 f5 gxf5 Qd2 Nxe5 Qg5 Nc4 Bc1 Qe7 Qh5+ Kg8 g4 Qf7 Qg5+ Qg6 Qh4 Be7 Qh3 Qxg4 Qxg4+ fxg4 Bh6 Nde3",
+    "angle": "kingsideAttack"
+  },
+  {
+    "puzzleId": "1BULW",
+    "gameId": "rUXW0Ucb",
+    "rating": 1600,
+    "themes": [
+      "mateIn2",
+      "middlegame",
+      "short",
+      "sacrifice",
+      "kingsideAttack"
+    ],
+    "initialPly": 40,
+    "solution": [
+      "h7h3",
+      "g2h3",
+      "h8h3"
+    ],
+    "moves": "f4 d5 Nf3 e6 e3 Nf6 h3 Bc5 Be2 Nc6 b3 Bd7 Bb2 Qe7 Nc3 a6 Na4 Ba7 O-O h6 Ne5 O-O-O c4 dxc4 Nxc4 g5 fxg5 hxg5 Bxf6 Qf8 Bf3 Rh7 Bxd8 Nxd8 Rc1 Nc6 Qc2 f5 Kh1 Qh8 e4",
+    "angle": "kingsideAttack"
+  },
+  {
+    "puzzleId": "1DTdR",
+    "gameId": "7J04fLYK",
+    "rating": 2000,
+    "themes": [
+      "crushing",
+      "attraction",
+      "long",
+      "sacrifice",
+      "kingsideAttack",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 45,
+    "solution": [
+      "d3h7",
+      "g8h7",
+      "f3d3",
+      "h4e4",
+      "e1e4"
+    ],
+    "moves": "e4 c5 d4 cxd4 c3 e6 cxd4 d5 e5 Bd7 Nf3 Qb6 a4 Nc6 Nc3 a6 Bd3 Nge7 O-O Ng6 h4 Be7 h5 Nf8 Ne2 Rc8 Nf4 Nxd4 Nxd4 Qxd4 Be3 Qb4 Re1 Bg5 Nxd5 exd5 Bxg5 Ne6 Bd2 Qh4 Qf3 O-O h6 gxh6 g3 Ng5",
+    "angle": "kingsideAttack"
   }
 ]

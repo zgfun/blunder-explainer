@@ -14,31 +14,49 @@ export type ExplainState = {
   message?: string;
 };
 
+// Session memo: only explanations that streamed to a clean end, so failures are retried.
 const done = new Map<string, ExplainState>();
+// A deployment without a key stays that way for the session; don't re-ask on every toggle.
+let unavailable = false;
+let rateLimitedUntil = 0;
+let rateLimitedMessage = "";
 
 function keyOf(b: Blunder, level: Level) {
-  return `${b.fenBefore}|${b.uci}|${level}`;
+  return `${b.fenBefore}|${b.uci}|${b.bestUci}|${b.pvUci.join(" ")}|${level}`;
 }
 
-function minutes(seconds: unknown): string {
-  const s = typeof seconds === "number" && seconds > 0 ? seconds : 3600;
-  const m = Math.max(1, Math.ceil(s / 60));
+function minutes(seconds: number): string {
+  const m = Math.max(1, Math.ceil(seconds / 60));
   return m === 1 ? "a minute" : `${m} minutes`;
 }
 
 const LOADING: ExplainState = { status: "loading", theme: null, text: "", cached: false };
+const UNAVAILABLE: ExplainState = { status: "unavailable", theme: null, text: "", cached: false };
+
+/** What to show without a request: a memoised answer or a session-wide failure. */
+function known(key: string): ExplainState | null {
+  const hit = done.get(key);
+  if (hit) return hit;
+  if (unavailable) return UNAVAILABLE;
+  if (Date.now() < rateLimitedUntil) {
+    return { status: "rate-limited", theme: null, text: "", cached: false, message: rateLimitedMessage };
+  }
+  return null;
+}
 
 export function useExplanation(b: Blunder, level: Level): ExplainState {
   const key = keyOf(b, level);
-  const [state, setState] = useState<{ key: string; value: ExplainState }>(() => ({ key, value: done.get(key) ?? LOADING }));
-  if (state.key !== key) setState({ key, value: done.get(key) ?? LOADING });
+  const [state, setState] = useState<{ key: string; value: ExplainState }>(() => ({ key, value: known(key) ?? LOADING }));
+  if (state.key !== key) setState({ key, value: known(key) ?? LOADING });
 
   useEffect(() => {
-    if (done.has(key)) return;
+    // Render already initialised the state from known(key).
+    if (known(key)) return;
     const ctrl = new AbortController();
     const set = (value: ExplainState) => {
       if (!ctrl.signal.aborted) setState({ key, value });
     };
+    let partial = { theme: null as string | null, text: "", cached: false };
 
     (async () => {
       const res = await fetch("/api/explain", {
@@ -51,6 +69,7 @@ export function useExplanation(b: Blunder, level: Level): ExplainState {
           level,
           bestUci: b.bestUci,
           pvUci: b.pvUci.slice(0, 12),
+          refutationUci: (b.refutationUci ?? []).slice(0, 12),
           evalBeforeCp: Math.round(b.evalBeforePawns * 100),
           evalAfterCp: Math.round(b.evalAfterPawns * 100),
         }),
@@ -59,15 +78,13 @@ export function useExplanation(b: Blunder, level: Level): ExplainState {
       if (!res.ok || !res.body) {
         const data = (await res.json().catch(() => ({}))) as { error?: string; message?: string; retryAfter?: number };
         if (res.status === 503 || data.error === "explanations-unavailable") {
-          set({ status: "unavailable", theme: null, text: "", cached: false });
+          unavailable = true;
+          set(UNAVAILABLE);
         } else if (res.status === 429) {
-          set({
-            status: "rate-limited",
-            theme: null,
-            text: "",
-            cached: false,
-            message: `Explanation limit reached. Try again in ${minutes(data.retryAfter)}.`,
-          });
+          const seconds = typeof data.retryAfter === "number" && data.retryAfter > 0 ? data.retryAfter : 3600;
+          rateLimitedUntil = Date.now() + seconds * 1000;
+          rateLimitedMessage = `Explanation limit reached. Try again in ${minutes(seconds)}.`;
+          set({ status: "rate-limited", theme: null, text: "", cached: false, message: rateLimitedMessage });
         } else {
           set({ status: "error", theme: null, text: "", cached: false, message: "The explanation could not be generated." });
         }
@@ -79,23 +96,31 @@ export function useExplanation(b: Blunder, level: Level): ExplainState {
       const decoder = new TextDecoder();
       let buffer = "";
       for (;;) {
+        // The server errors the body when the text is incomplete, so this throws in that case.
         const { value, done: finished } = await reader.read();
         if (finished) break;
         buffer += decoder.decode(value, { stream: true });
         const part = splitExplanation(buffer, false);
-        set({ status: part.pending ? "loading" : "streaming", theme: part.theme, text: part.body, cached });
+        partial = { theme: part.theme, text: part.body, cached };
+        set({ status: part.pending ? "loading" : "streaming", ...partial });
       }
       buffer += decoder.decode();
       const final = splitExplanation(buffer, true);
-      const result: ExplainState = final.body
-        ? { status: "done", theme: final.theme, text: final.body, cached }
-        : { status: "error", theme: null, text: "", cached, message: "The explanation came back empty." };
-      if (result.status === "done") done.set(key, result);
+      if (!final.body) {
+        set({ status: "error", theme: null, text: "", cached, message: "The explanation came back empty." });
+        return;
+      }
+      const result: ExplainState = { status: "done", theme: final.theme, text: final.body, cached };
+      done.set(key, result);
       set(result);
     })().catch((err: unknown) => {
       if (ctrl.signal.aborted) return;
       console.error(err);
-      set({ status: "error", theme: null, text: "", cached: false, message: "Lost the connection while explaining." });
+      set({
+        status: "error",
+        ...partial,
+        message: partial.text ? "The explanation was cut off." : "Lost the connection while explaining.",
+      });
     });
 
     return () => ctrl.abort();

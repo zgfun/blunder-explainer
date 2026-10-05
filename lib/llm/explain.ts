@@ -61,17 +61,13 @@ export function buildExplainRequest(
   };
 }
 
-/** Text from the model that actually finished: on a server-side fallback, drop the declined partial. */
+/**
+ * All text blocks in order. On a mid-stream server-side fallback the API keeps the declined
+ * partial and the fallback model continues from it, so partial + continuation is the answer
+ * (and exactly what the client was streamed); the `fallback` block is only a marker.
+ */
 export function finalText(message: BetaMessage): string {
-  const blocks = message.content;
-  let start = 0;
-  blocks.forEach((block, i) => {
-    if (block.type === "fallback") start = i + 1;
-  });
-  return blocks
-    .slice(start)
-    .map((block) => (block.type === "text" ? block.text : ""))
-    .join("");
+  return message.content.map((block) => (block.type === "text" ? block.text : "")).join("");
 }
 
 function summarize(message: BetaMessage): ExplainResult {

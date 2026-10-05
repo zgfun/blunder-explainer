@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { SampleClient } from "@/components/analyze/SampleClient";
-import type { EngineLine } from "@/lib/chess/types";
-import { SAMPLE_GAME } from "@/lib/sample";
-import sampleData from "@/lib/sample-data.json";
+import { SAMPLE_GAME, SAMPLE_LINES } from "@/lib/sample";
 
 export const metadata: Metadata = {
   title: "Sample game · Blunder Explainer",
@@ -10,12 +8,20 @@ export const metadata: Metadata = {
 };
 
 export default function SamplePage() {
-  const lines = (sampleData as unknown as { lines?: EngineLine[] }).lines;
   return (
     <SampleClient
-      game={{ id: SAMPLE_GAME.id, url: SAMPLE_GAME.url, pgn: SAMPLE_GAME.pgn, white: SAMPLE_GAME.white, black: SAMPLE_GAME.black }}
+      game={{
+        id: SAMPLE_GAME.id,
+        url: SAMPLE_GAME.url,
+        pgn: SAMPLE_GAME.pgn,
+        white: SAMPLE_GAME.white,
+        black: SAMPLE_GAME.black,
+        whiteElo: SAMPLE_GAME.whiteElo ?? undefined,
+        blackElo: SAMPLE_GAME.blackElo ?? undefined,
+        timeClass: SAMPLE_GAME.timeClass,
+      }}
       note={SAMPLE_GAME.note}
-      lines={lines}
+      lines={SAMPLE_LINES}
     />
   );
 }

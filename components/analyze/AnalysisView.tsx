@@ -1,7 +1,7 @@
 "use client";
 
 import { Alert, Badge, Box, Button, Card, Flex, HStack, Link, Progress, SegmentGroup, Stack, Text } from "@chakra-ui/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { pickBlunders, scoreToWhiteCp, toPawnsClamped } from "@/lib/chess/analysis";
 import { parsePgn } from "@/lib/chess/pgn";
 import type { EngineLine, ParsedGame, Side } from "@/lib/chess/types";
@@ -65,6 +65,7 @@ export function AnalysisView({
       .analyseAll(fens, {
         depth: ENGINE_DEPTH,
         signal: ctrl.signal,
+        game: { startFen: parsedGame.startFen, moves: parsedGame.plies.map((p) => p.uci) },
         onProgress: (done, total) => {
           if (!ctrl.signal.aborted) setPhase({ kind: "running", done, total });
         },
@@ -157,22 +158,36 @@ export function AnalysisView({
             {lines && (
               <Stack gap="3" align={{ base: "stretch", md: "flex-end" }}>
                 <ControlRow label="Side">
-                  <SegmentGroup.Root size="sm" value={side} onValueChange={(e) => e.value && setSide(e.value as Side | "both")}>
-                    <SegmentGroup.Indicator />
-                    <SegmentGroup.Items
-                      items={[
-                        { value: "white", label: "White" },
-                        { value: "black", label: "Black" },
-                        { value: "both", label: "Both" },
-                      ]}
-                    />
-                  </SegmentGroup.Root>
+                  {(labelId) => (
+                    <SegmentGroup.Root
+                      size="sm"
+                      ids={{ label: labelId }}
+                      value={side}
+                      onValueChange={(e) => e.value && setSide(e.value as Side | "both")}
+                    >
+                      <SegmentGroup.Indicator />
+                      <SegmentGroup.Items
+                        items={[
+                          { value: "white", label: "White" },
+                          { value: "black", label: "Black" },
+                          { value: "both", label: "Both" },
+                        ]}
+                      />
+                    </SegmentGroup.Root>
+                  )}
                 </ControlRow>
                 <ControlRow label="Explain like I'm">
-                  <SegmentGroup.Root size="sm" value={String(level)} onValueChange={(e) => e.value && setLevel(Number(e.value) as Level)}>
-                    <SegmentGroup.Indicator />
-                    <SegmentGroup.Items items={LEVELS.map((l) => ({ value: String(l), label: String(l) }))} />
-                  </SegmentGroup.Root>
+                  {(labelId) => (
+                    <SegmentGroup.Root
+                      size="sm"
+                      ids={{ label: labelId }}
+                      value={String(level)}
+                      onValueChange={(e) => e.value && setLevel(Number(e.value) as Level)}
+                    >
+                      <SegmentGroup.Indicator />
+                      <SegmentGroup.Items items={LEVELS.map((l) => ({ value: String(l), label: String(l) }))} />
+                    </SegmentGroup.Root>
+                  )}
                 </ControlRow>
               </Stack>
             )}
@@ -235,8 +250,8 @@ export function AnalysisView({
         <Card.Root variant="subtle">
           <Card.Body>
             <Text fontWeight="semibold">No big mistakes found{side !== "both" ? ` for ${side === "white" ? "White" : "Black"}` : ""}.</Text>
-            <Text color="fg.muted" fontSize="sm">
-              No move lost a full pawn or more by Stockfish&apos;s count. Try the other side, or a different game.
+            <Text fontSize="sm" color="fg.muted">
+              By Stockfish&apos;s count, no move both lost a full pawn and noticeably changed the likely result. Try the other side, or a different game.
             </Text>
           </Card.Body>
         </Card.Root>
@@ -249,13 +264,15 @@ export function AnalysisView({
   );
 }
 
-function ControlRow({ label, children }: { label: string; children: React.ReactNode }) {
+// The segment group's radiogroup is aria-labelledby this id, so the visible text names it.
+function ControlRow({ label, children }: { label: string; children: (labelId: string) => React.ReactNode }) {
+  const labelId = useId();
   return (
     <Flex align="center" gap="3" justify={{ base: "space-between", md: "flex-end" }}>
-      <Text fontSize="xs" color="fg.muted" whiteSpace="nowrap">
+      <Text id={labelId} fontSize="xs" color="fg.muted" whiteSpace="nowrap">
         {label}
       </Text>
-      {children}
+      {children(labelId)}
     </Flex>
   );
 }

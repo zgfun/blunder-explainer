@@ -1,8 +1,10 @@
 /**
  * The sample game behind the one-click demo.
  *
- *   pnpm tsx scripts/precompute-sample.ts           # cache Claude explanations for its blunders (needs ANTHROPIC_API_KEY + DB)
- *   pnpm tsx scripts/precompute-sample.ts --lines   # re-fetch the game from chess.com and recompute lib/sample-data.json
+ *   pnpm tsx scripts/precompute-sample.ts                   # cache Claude explanations for its blunders (needs ANTHROPIC_API_KEY + DB)
+ *   pnpm tsx scripts/precompute-sample.ts --force           # ...regenerating rows that already exist
+ *   pnpm tsx scripts/precompute-sample.ts --lines           # re-fetch the game from chess.com and recompute lib/sample-data.json
+ *   pnpm tsx scripts/precompute-sample.ts --lines --offline # recompute the engine lines for the stored PGN only
  */
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -10,7 +12,7 @@ import { config } from "dotenv";
 import { pickBlunders } from "@/lib/chess/analysis";
 import { parsePgn } from "@/lib/chess/pgn";
 import type { Blunder, EngineLine } from "@/lib/chess/types";
-import { CURRENT_PROMPT, LEVELS } from "@/prompts";
+import { LEVELS } from "@/prompts";
 
 config({ path: [".env.local", ".env"], quiet: true });
 
@@ -23,28 +25,53 @@ const SAMPLE_NOTE =
   "GothamChess (2928) vs BeztDonut (2756), 3+0 blitz on chess.com, 1 October 2026. An offbeat 1.Nh3 opening; " +
   "both sides go wrong around move 17, then Black's king walks into a mating attack.";
 
-async function buildLines() {
+async function loadGame(offline: boolean) {
+  if (offline) {
+    const { readFile } = await import("node:fs/promises");
+    const stored = JSON.parse(await readFile(DATA_FILE, "utf8")) as {
+      id: string;
+      url: string;
+      pgn: string;
+      white: string;
+      black: string;
+      whiteElo: number | null;
+      blackElo: number | null;
+      timeClass: string;
+      endTime: number;
+    };
+    return {
+      ...stored,
+      id: stored.id.replace(/^chesscom:/, ""),
+      whiteElo: stored.whiteElo ?? undefined,
+      blackElo: stored.blackElo ?? undefined,
+    };
+  }
   const { fetchGameByUrl } = await import("@/lib/chesscom");
+  return fetchGameByUrl(SAMPLE_URL, SAMPLE_USERNAME);
+}
+
+async function buildLines(offline: boolean) {
   const { analyseFenNode, closeNodeEngine } = await import("@/lib/engine/node-engine");
-  const game = await fetchGameByUrl(SAMPLE_URL, SAMPLE_USERNAME);
+  const game = await loadGame(offline);
   const parsed = parsePgn(game.pgn);
   const fens = [...parsed.plies.map((p) => p.fenBefore), parsed.plies.at(-1)?.fenAfter ?? parsed.startFen];
+  const moves = parsed.plies.map((p) => p.uci);
   const lines: EngineLine[] = [];
   for (const [i, fen] of fens.entries()) {
-    lines.push(await analyseFenNode(fen, DEPTH));
+    lines.push(await analyseFenNode(fen, DEPTH, { startFen: parsed.startFen, moves: moves.slice(0, i) }));
     process.stdout.write(`\rAnalysed ${i + 1} / ${fens.length}`);
   }
   closeNodeEngine();
   console.log();
 
-  for (const side of ["white", "black"] as const) {
+  for (const side of ["white", "black", "both"] as const) {
     const found = pickBlunders(parsed, lines, { side, minCpLoss: 200 });
     console.log(`${side}: ${found.map((b) => `${b.moveNumber}${b.side === "white" ? "." : "..."}${b.san} (${b.cpLoss})`).join(", ")}`);
   }
-  const best = Math.max(
-    ...(["white", "black"] as const).map((side) => pickBlunders(parsed, lines, { side, minCpLoss: 200 }).length),
-  );
-  if (best < 3) throw new Error("The sample game no longer has 3 clear blunders for either side; pick another game.");
+  // The demo opens on "both", so that view must show three clear (> 2 pawn, result-changing) mistakes.
+  if (pickBlunders(parsed, lines, { side: "both", minCpLoss: 200 }).length < 3) {
+    throw new Error("The sample game no longer has 3 clear blunders; pick another game.");
+  }
 
   const data = {
     id: `chesscom:${game.id}`,
@@ -92,14 +119,17 @@ async function precomputeExplanations() {
   const { SAMPLE_GAME, SAMPLE_LINES } = await import("@/lib/sample");
   const { explainText } = await import("@/lib/llm/explain");
   const { findExplanation, saveExplanation } = await import("@/lib/llm/cache");
+  const { explanationKey } = await import("@/lib/llm/key");
+  const force = process.argv.includes("--force");
 
   const blunders = sampleBlunders(SAMPLE_GAME.pgn, SAMPLE_LINES);
   let fresh = 0;
   for (const b of blunders) {
     for (const level of LEVELS) {
-      const key = { fen: b.fenBefore, playedUci: b.uci, level, promptVersion: CURRENT_PROMPT.version };
+      // The key hashes the exact prompt, so an existing row was written from these same inputs.
+      const key = explanationKey(b, level);
       const label = `${b.moveNumber}${b.side === "white" ? "." : "..."}${b.san} @${level}`;
-      if (await findExplanation(key)) {
+      if (!force && (await findExplanation(key))) {
         console.log(`${label}: cached`);
         continue;
       }
@@ -122,7 +152,7 @@ async function precomputeExplanations() {
 }
 
 async function main() {
-  if (process.argv.includes("--lines")) await buildLines();
+  if (process.argv.includes("--lines")) await buildLines(process.argv.includes("--offline"));
   else await precomputeExplanations();
   process.exit(0);
 }

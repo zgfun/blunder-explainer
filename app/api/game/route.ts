@@ -5,6 +5,7 @@ import { db, games } from "@/db";
 import { parsePgn } from "@/lib/chess/pgn";
 import { CHESSCOM_HTTP_STATUS, ChessComError, fetchGameByUrl, parseGameUrl, USERNAME_RE } from "@/lib/chesscom";
 import { SAMPLE_GAME } from "@/lib/sample";
+import { optional } from "@/lib/optional";
 
 export const maxDuration = 30;
 
@@ -38,19 +39,7 @@ function fail(status: number, error: string, message: string) {
 // The cache is an optimisation: an unreachable or unconfigured DB must never fail the request or stall it.
 async function withDb<T>(fn: () => Promise<T>): Promise<T | undefined> {
   if (!process.env.DATABASE_URL) return undefined;
-  let timer: ReturnType<typeof setTimeout> | undefined;
-  try {
-    return await Promise.race([
-      fn(),
-      new Promise<undefined>((resolve) => {
-        timer = setTimeout(() => resolve(undefined), 2000);
-      }),
-    ]);
-  } catch {
-    return undefined;
-  } finally {
-    clearTimeout(timer);
-  }
+  return optional(fn, 2000);
 }
 
 async function readCached(id: string): Promise<GameResponse | undefined> {

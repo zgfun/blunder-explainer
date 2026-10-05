@@ -39,6 +39,27 @@ function clamp(v: number, limit: number): number {
 }
 
 /**
+ * Lichess's win-probability model: maps a centipawn score to an expected result in [-1, 1].
+ * Mates (encoded near ±MATE_CP) saturate to ±1.
+ */
+export function winChance(cp: number): number {
+  if (cp >= MATE_CP / 2) return 1;
+  if (cp <= -MATE_CP / 2) return -1;
+  return 2 / (1 + Math.exp(-0.00368208 * cp)) - 1;
+}
+
+/**
+ * Share of the game result (0..1, mover's perspective) the move threw away. Unlike raw
+ * centipawns this is near zero in already-decided positions (+9 to +13 changes nothing) and
+ * large when a move turns a win into a draw or a draw into a loss, so it is what we rank on.
+ */
+export function winChanceLossForMove(before: EngineLine, after: EngineLine): number {
+  const wcBefore = winChance(scoreToMoverCp(before.score));
+  const wcAfter = winChance(-scoreToMoverCp(after.score));
+  return Math.max(0, (wcBefore - wcAfter) / 2);
+}
+
+/**
  * Loss from the mover's perspective. `before` is the engine line for the position before the
  * move (mover to play), `after` for the position after it (opponent to play).
  */
@@ -62,6 +83,7 @@ export function buildBlunder(
   const mover = ply.side;
   const opponent: Side = mover === "white" ? "black" : "white";
   const pvUci = legalUciPrefix(ply.fenBefore, before.pvUci.slice(0, MAX_PV_UCI));
+  const refutationUci = legalUciPrefix(ply.fenAfter, after.pvUci.slice(0, MAX_PV_UCI));
   let bestSan = "";
   try {
     bestSan = before.bestUci ? uciToSan(ply.fenBefore, before.bestUci) : "";
@@ -80,6 +102,8 @@ export function buildBlunder(
     bestSan,
     pvSan: uciLineToSan(ply.fenBefore, pvUci, 5),
     pvUci,
+    refutationSan: uciLineToSan(ply.fenAfter, refutationUci, 5),
+    refutationUci,
     evalBeforePawns: toPawnsClamped(scoreToWhiteCp(before.score, mover)),
     evalAfterPawns: toPawnsClamped(scoreToWhiteCp(after.score, opponent)),
     cpLoss: cpLossForMove(before, after, mover),
@@ -88,30 +112,36 @@ export function buildBlunder(
   };
 }
 
+/** Lichess calls a win-chance drop of 0.2 on its [-1, 1] scale (0.1 here) a mistake. */
+export const MIN_WIN_CHANCE_LOSS = 0.1;
+
 /**
  * lines[i] is the analysis of the position BEFORE ply i; lines[plies.length] is the final
- * position. Plies without both surrounding lines are ignored.
+ * position. Plies without both surrounding lines are ignored. Candidates must clear both
+ * minCpLoss and minWinChanceLoss, and are ranked by win-chance loss, then cp loss, then ply.
  */
 export function pickBlunders(
   game: ParsedGame,
   lines: EngineLine[],
-  opts: { side: Side | "both"; count?: number; minCpLoss?: number },
+  opts: { side: Side | "both"; count?: number; minCpLoss?: number; minWinChanceLoss?: number },
 ): Blunder[] {
   const count = opts.count ?? 3;
   const minCpLoss = opts.minCpLoss ?? 100;
-  const candidates: Blunder[] = [];
+  const minWinLoss = opts.minWinChanceLoss ?? MIN_WIN_CHANCE_LOSS;
+  const candidates: { b: Blunder; winLoss: number }[] = [];
   for (const ply of game.plies) {
     if (opts.side !== "both" && ply.side !== opts.side) continue;
     const before = lines[ply.ply];
     const after = lines[ply.ply + 1];
     if (!before || !after || !before.bestUci) continue;
     if (ply.uci === before.bestUci) continue;
-    const loss = cpLossForMove(before, after, ply.side);
-    if (loss < minCpLoss) continue;
-    candidates.push(buildBlunder(ply, before, after));
+    if (cpLossForMove(before, after, ply.side) < minCpLoss) continue;
+    const winLoss = winChanceLossForMove(before, after);
+    if (winLoss < minWinLoss) continue;
+    candidates.push({ b: buildBlunder(ply, before, after), winLoss });
   }
-  candidates.sort((a, b) => b.cpLoss - a.cpLoss || a.ply - b.ply);
-  return candidates.slice(0, count);
+  candidates.sort((x, y) => y.winLoss - x.winLoss || y.b.cpLoss - x.b.cpLoss || x.b.ply - y.b.ply);
+  return candidates.slice(0, count).map((c) => c.b);
 }
 
 /** White-perspective evals in pawns per position (length = lines.length), for the eval graph. */

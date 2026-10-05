@@ -16,13 +16,14 @@ You receive these fields, all produced by the engine and the rules of chess:
 - Position before the move (FEN) and Side to move.
 - Move played (SAN), the mistake.
 - Engine best move and Engine line: the best continuation from the position before the move, in SAN.
+- Engine reply line: the engine's best continuation for the opponent after the move played, in SAN. It shows what the mistake allowed.
 - Evaluation before and Evaluation after, both from the point of view of the side that made the mistake. Positive means good for that side. "Before" assumes best play; "after" is the position after the move played.
 - Material before the move.
 
 Rules:
 1. Use only the information given. The engine line is the ground truth: never contradict it and never claim a different evaluation.
-2. The only moves you may write in chess notation are the move played and moves from the engine line. Never suggest or name any other move. If you need the opponent's reply to the mistake and it is not in the engine line, describe it in words ("the queen can now take the pawn on f7") without notation.
-3. Give exactly one concrete reason the move was bad (what it allowed or what it neglected) and exactly one better plan, built on the engine best move.
+2. The only moves you may write in chess notation are the move played, moves from the engine line and moves from the engine reply line. Never suggest or name any other move; describe other ideas in words without notation.
+3. Give exactly one concrete reason the move was bad, taken from the engine reply line (what the move allowed), and exactly one better plan, built on the engine best move. If the reply line is missing, describe only what the evaluations and the position make certain.
 4. At most 80 words of prose. No headings, no lists, no move-by-move commentary, no praise or filler.
 5. Speak to the student as "you". Adapt vocabulary to the level:
    - 1000: ${LEVEL_GUIDE[1000]}.
@@ -40,14 +41,15 @@ Position before the move (FEN): r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1
 Side to move: Black
 Move played: 3...Nf6
 Engine best move: g6
-Engine line: g6 Qd1 Bg7 d3 Na5
+Engine line: g6 Qd1 Nf6 Nc3 Bg7
+Engine reply line: Qxf7#
 Evaluation before (Black's view): +0.3 pawns
 Evaluation after (Black's view): forced mate for White
 Material before the move: Material is equal
 
 Example output:
 {"theme":"mate threat"}
-Your knight move ignores White's threat. The queen on h5 and the bishop on c4 are both aiming at your pawn on f7, and only your king protects it, so White's queen can now take on f7 with checkmate. The better plan was g6: it chases the queen away, and after Qd1 Bg7 your pieces come out safely.
+Your knight move ignores White's threat. The queen on h5 and the bishop on c4 are both aiming at your pawn on f7, and only your king protects it, so White plays Qxf7# right away. The better plan was g6: it chases the queen away, and after Qd1 Nf6 your pieces come out safely.
 
 Example input:
 Level: 1600
@@ -55,14 +57,15 @@ Position before the move (FEN): rn1qkbnr/ppp2ppp/8/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R
 Side to move: Black
 Move played: 6...Nf6
 Engine best move: Qd7
-Engine line: Qd7 Qb3 c6 Be3 Nf6
-Evaluation before (Black's view): -1.4 pawns
-Evaluation after (Black's view): -2.7 pawns
+Engine line: Qd7 Nc3 Nf6 Nd5 Nxd5
+Engine reply line: Qb3 Bc5 Bxf7+ Ke7 Bc4
+Evaluation before (Black's view): -1.5 pawns
+Evaluation after (Black's view): -2.5 pawns
 Material before the move: Material is equal (White has a bishop for a knight)
 
 Example output:
 {"theme":"fork"}
-Nf6 develops but leaves two targets loose. White's queen can jump to b3, attacking the pawn on b7 while backing up the bishop on c4 against f7. You cannot meet both threats, so you drop material. The better plan was Qd7: it guards f7 in advance, and after Qb3 c6 the queen also protects b7, so you can develop with Nf6 next.`;
+Nf6 develops but leaves f7 too weak. After Qb3 the queen joins the bishop on c4 against f7 and also eyes b7, and after Bc5 Bxf7+ your king must walk to e7: you lose a pawn and the right to castle. The better plan was Qd7, which guards f7 in advance; after Nc3 Nf6 you finish developing safely.`;
 
 function buildUser(b: Blunder, level: Level): string {
   const evals = moverEvals(b);
@@ -74,6 +77,7 @@ function buildUser(b: Blunder, level: Level): string {
     `Move played: ${moveLabel(b)}`,
     `Engine best move: ${b.bestSan}`,
     `Engine line: ${b.pvSan.slice(0, 5).join(" ")}`,
+    `Engine reply line: ${b.refutationSan.length ? b.refutationSan.slice(0, 5).join(" ") : "(not available)"}`,
     `Evaluation before (${mover}'s view): ${formatMoverEval(evals.before, b.side)}`,
     `Evaluation after (${mover}'s view): ${formatMoverEval(evals.after, b.side)}`,
     `Material before the move: ${b.materialBalance}`,

@@ -5,7 +5,8 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Side } from "@/lib/chess/types";
 import { sideOfUser, type GameInput } from "./format";
 
-type GameResponse = GameInput & { id: string; source: string };
+// PGN uploads without player headers come back with null names.
+type GameResponse = Omit<GameInput, "white" | "black"> & { id: string; source: string; white: string | null; black: string | null };
 type GameSummary = {
   url: string;
   id: string;
@@ -39,8 +40,8 @@ function toInput(g: GameResponse): GameInput {
     id: g.id,
     url: g.url,
     pgn: g.pgn,
-    white: g.white,
-    black: g.black,
+    white: g.white ?? "White",
+    black: g.black ?? "Black",
     whiteElo: g.whiteElo,
     blackElo: g.blackElo,
     timeClass: g.timeClass,
@@ -126,7 +127,7 @@ function UrlForm({ onLoaded, initial }: { onLoaded: (l: Loaded) => void; initial
       }
       onLoaded({
         game: toInput(data),
-        defaultSide: sideOfUser(name || undefined, data.white, data.black),
+        defaultSide: sideOfUser(name || undefined, data.white ?? "", data.black ?? ""),
         query: { url: u.trim(), username: name || undefined },
       });
     } catch {
@@ -154,7 +155,7 @@ function UrlForm({ onLoaded, initial }: { onLoaded: (l: Loaded) => void; initial
       <Stack gap="3">
         <Field.Root>
           <Field.Label>chess.com game link</Field.Label>
-          <Flex gap="2" direction={{ base: "column", sm: "row" }}>
+          <Flex w="full" gap="2" direction={{ base: "column", sm: "row" }}>
             <Input
               value={url}
               onChange={(e) => setUrl(e.target.value)}
@@ -229,7 +230,7 @@ function UsernameForm({ onLoaded }: { onLoaded: (l: Loaded) => void }) {
       }
       onLoaded({
         game: { ...toInput(data), url: data.url ?? g.url, timeClass: data.timeClass ?? g.timeClass },
-        defaultSide: sideOfUser(searched, data.white, data.black),
+        defaultSide: sideOfUser(searched, data.white ?? "", data.black ?? ""),
         query: { url: g.url, username: searched },
       });
     } catch {
@@ -244,7 +245,7 @@ function UsernameForm({ onLoaded }: { onLoaded: (l: Loaded) => void }) {
       <form onSubmit={search}>
         <Field.Root>
           <Field.Label>chess.com username</Field.Label>
-          <Flex gap="2" direction={{ base: "column", sm: "row" }}>
+          <Flex w="full" gap="2" direction={{ base: "column", sm: "row" }}>
             <Input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="e.g. hikaru" autoComplete="off" spellCheck={false} size="lg" />
             <Button type="submit" colorPalette="green" size="lg" loading={busy} loadingText="Searching" flexShrink={0}>
               Find games

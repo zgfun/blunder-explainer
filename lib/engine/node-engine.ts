@@ -3,7 +3,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { createInterface } from "node:readline";
 import type { EngineLine } from "@/lib/chess/types";
-import { terminalLine } from "./terminal";
+import { positionCommand, terminalLine, terminalLineForGame, type GameHistory } from "./terminal";
 import { UciAccumulator } from "./uci";
 
 const ANALYSE_TIMEOUT_MS = 120_000;
@@ -69,11 +69,16 @@ class NodeEngine {
     return new Promise((resolve) => this.waiters.push({ match, resolve }));
   }
 
-  analyse(fen: string, depth: number): Promise<EngineLine> {
+  analyse(fen: string, depth: number, history?: GameHistory): Promise<EngineLine> {
     const run = async (): Promise<EngineLine> => {
       await this.ready;
       this.ref();
       try {
+        // A fresh hash per search: single-threaded Stockfish at a fixed depth is then
+        // deterministic, so the test set and sample data rebuild byte-for-byte.
+        this.send("ucinewgame");
+        this.send("isready");
+        await this.waitFor((l) => l === "readyok");
         const acc = new UciAccumulator();
         const result = new Promise<EngineLine>((resolve, reject) => {
           const timer = setTimeout(() => {
@@ -89,7 +94,7 @@ class NodeEngine {
             }
           };
         });
-        this.send(`position fen ${fen}`);
+        this.send(positionCommand(fen, history));
         this.send(`go depth ${depth}`);
         return await result;
       } finally {
@@ -115,11 +120,12 @@ class NodeEngine {
 
 let instance: NodeEngine | null = null;
 
-export async function analyseFenNode(fen: string, depth = 16): Promise<EngineLine> {
-  const terminal = terminalLine(fen);
+/** `history` (the moves that led to `fen`) lets Stockfish and the draw check see repetitions. */
+export async function analyseFenNode(fen: string, depth = 16, history?: GameHistory): Promise<EngineLine> {
+  const terminal = history ? terminalLineForGame(history) : terminalLine(fen);
   if (terminal) return terminal;
   instance ??= new NodeEngine();
-  return instance.analyse(fen, depth);
+  return instance.analyse(fen, depth, history);
 }
 
 export function closeNodeEngine(): void {

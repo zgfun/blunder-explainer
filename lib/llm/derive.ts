@@ -4,12 +4,16 @@ import { legalUciPrefix, materialBalance, sideToMove, uciLineToSan, uciToSan } f
 import type { Blunder } from "../chess/types";
 
 export const MAX_PV_UCI = 12;
+/** Below this the move isn't worth an LLM call; stops arbitrary positions draining the budget. */
+export const MIN_EXPLAIN_CP_LOSS = 50;
 
 export type ExplainInput = {
   fenBefore: string;
   playedUci: string;
   bestUci: string;
   pvUci: string[];
+  /** Engine line from the position after the played move (the punishment); optional. */
+  refutationUci?: string[];
   /** White's perspective, centipawns (mate-encoded values are fine; they clamp to ±100 pawns). */
   evalBeforeCp: number;
   evalAfterCp: number;
@@ -70,6 +74,11 @@ export function deriveBlunder(input: ExplainInput): Blunder {
     0,
     Math.round(clamp(input.evalBeforeCp * sign, LOSS_CLAMP_CP) - clamp(input.evalAfterCp * sign, LOSS_CLAMP_CP)),
   );
+  if (cpLoss < MIN_EXPLAIN_CP_LOSS) {
+    throw new DeriveError("not-a-mistake", "The evaluations show this move lost almost nothing");
+  }
+  const fenAfter = after.fen();
+  const refutationUci = legalUciPrefix(fenAfter, (input.refutationUci ?? []).slice(0, MAX_PV_UCI));
   const fullmove = Number(fenBefore.split(" ")[5]) || 1;
 
   return {
@@ -79,11 +88,13 @@ export function deriveBlunder(input: ExplainInput): Blunder {
     san,
     uci: input.playedUci,
     fenBefore,
-    fenAfter: after.fen(),
+    fenAfter,
     bestUci: input.bestUci,
     bestSan: pvSan[0],
     pvSan,
     pvUci,
+    refutationSan: uciLineToSan(fenAfter, refutationUci, 5),
+    refutationUci,
     evalBeforePawns: toPawnsClamped(input.evalBeforeCp),
     evalAfterPawns: toPawnsClamped(input.evalAfterCp),
     cpLoss,

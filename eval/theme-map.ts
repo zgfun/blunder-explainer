@@ -1,6 +1,6 @@
-import type { THEMES } from "@/prompts";
+import type { Theme } from "@/prompts";
 
-export type Theme = (typeof THEMES)[number];
+export type { Theme };
 
 /**
  * Lichess puzzle themes describe the tactic the SOLVER plays; the blunder is the move that allowed it.

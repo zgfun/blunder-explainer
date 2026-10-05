@@ -5,6 +5,8 @@ import {
   pickBlunders,
   scoreToWhiteCp,
   toPawnsClamped,
+  winChance,
+  winChanceLossForMove,
 } from "@/lib/chess/analysis";
 import { parsePgn } from "@/lib/chess/pgn";
 import type { EngineLine, Score } from "@/lib/chess/types";
@@ -103,6 +105,8 @@ describe("pickBlunders", () => {
       bestSan: "Nc6",
       pvSan: ["Nc6", "Bb5", "a6", "Ba4", "Nf6"],
       pvUci: ["b8c6", "f1b5", "a7a6", "b5a4", "g8f6", "e1g1"],
+      refutationSan: ["Nxg5"],
+      refutationUci: ["f3g5"],
       evalBeforePawns: 0.4,
       evalAfterPawns: 9,
       cpLoss: 860,
@@ -137,6 +141,45 @@ describe("pickBlunders", () => {
 
   it("produces a white-perspective eval series", () => {
     expect(evalSeriesPawns(game, HUNG_QUEEN_LINES)).toEqual([0.3, -1.5, 0.3, 0.4, 9, 8.8]);
+  });
+});
+
+describe("winChance", () => {
+  it("is symmetric, saturates on mates and is flat in decided positions", () => {
+    expect(winChance(0)).toBe(0);
+    expect(winChance(300)).toBeCloseTo(-winChance(-300));
+    expect(winChance(99_700)).toBe(1);
+    expect(winChance(-100_000)).toBe(-1);
+    const decided = winChance(1342) - winChance(977);
+    const swing = winChance(263) - winChance(27);
+    expect(decided).toBeLessThan(0.05);
+    expect(swing).toBeGreaterThan(0.35);
+  });
+
+  it("measures loss from the mover's perspective in [0, 1]", () => {
+    // Black to move at +0.4 (Black's view); after, White to move at +9.
+    expect(winChanceLossForMove(line({ cp: 40 }, "b8c6"), line({ cp: 900 }, "f3g5"))).toBeGreaterThan(0.45);
+    expect(winChanceLossForMove(line({ mate: 2 }, "a1a8"), line({ mate: 1 }, "h7h6"))).toBe(1);
+    expect(winChanceLossForMove(line({ cp: 10 }, "e2e4"), line({ cp: -300 }, "a7a6"))).toBe(0);
+  });
+});
+
+describe("pickBlunders ranking", () => {
+  // Same swings as the sample game's 19.Qb3 (+2.63 → +0.27) and 23...Kxg6 (13.42 → 9.77 for the mover).
+  const game = parsePgn("1. e4 e5 2. Nf3 Nc6 *");
+  it("ranks a thrown-away advantage above a bigger cp swing in a lost position", () => {
+    const lines: EngineLine[] = [
+      line({ cp: 263 }, "d2d4"), // before 1. e4: White +2.63
+      line({ cp: -27 }, "c7c5"), // after: White +0.27 (Black to move)
+      line({ cp: 1342 }, "b1c3"), // before 2. Nf3: White +13.42
+      line({ cp: -977 }, "g8f6"), // after: White +9.77
+      line({ cp: 977 }, "d2d4"),
+    ];
+    const out = pickBlunders(game, lines, { side: "white" });
+    expect(out.map((b) => b.san)).toEqual(["e4"]);
+    expect(out[0].cpLoss).toBe(236);
+    // The decided-position move clears minCpLoss but not the win-chance threshold.
+    expect(pickBlunders(game, lines, { side: "white", minWinChanceLoss: 0 }).map((b) => b.san)).toEqual(["e4", "Nf3"]);
   });
 });
 

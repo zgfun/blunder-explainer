@@ -38,6 +38,9 @@ export type Blunder = {
   /** first 5 plies from fenBefore, SAN */
   pvSan: string[];
   pvUci: string[];
+  /** engine's best reply line from fenAfter (what the move allowed), first 5 plies, SAN */
+  refutationSan: string[];
+  refutationUci: string[];
   /** white's perspective, pawns, mate clamped to ±100 */
   evalBeforePawns: number;
   /** white's perspective, pawns, mate clamped to ±100 */

@@ -38,9 +38,21 @@ describe("createRateLimiter", () => {
 });
 
 describe("clientIp", () => {
-  it("prefers the first x-forwarded-for entry", () => {
-    expect(clientIp(new Headers({ "x-forwarded-for": "1.2.3.4, 10.0.0.1" }))).toBe("1.2.3.4");
-    expect(clientIp(new Headers({ "x-real-ip": "5.6.7.8" }))).toBe("5.6.7.8");
-    expect(clientIp(new Headers())).toBe("unknown");
+  it("takes the entry the trusted proxy appended, never the client-written left-most one", () => {
+    const spoofed = new Headers({ "x-forwarded-for": "6.6.6.6, 1.2.3.4" });
+    expect(clientIp(spoofed, { trustedHops: 1, vercel: false })).toBe("1.2.3.4");
+    expect(clientIp(new Headers({ "x-forwarded-for": "6.6.6.6, 1.2.3.4, 10.0.0.1" }), { trustedHops: 2, vercel: false })).toBe("1.2.3.4");
+    expect(clientIp(new Headers({ "x-forwarded-for": "1.2.3.4" }), { trustedHops: 3, vercel: false })).toBe("1.2.3.4");
+  });
+
+  it("uses x-real-ip on Vercel and as a fallback", () => {
+    const h = new Headers({ "x-forwarded-for": "6.6.6.6", "x-real-ip": "5.6.7.8" });
+    expect(clientIp(h, { vercel: true })).toBe("5.6.7.8");
+    expect(clientIp(new Headers({ "x-real-ip": "5.6.7.8" }), { trustedHops: 1, vercel: false })).toBe("5.6.7.8");
+  });
+
+  it("puts everyone in one bucket when no proxy is trusted or nothing is known", () => {
+    expect(clientIp(new Headers({ "x-forwarded-for": "1.2.3.4" }), { trustedHops: 0, vercel: false })).toBe("unknown");
+    expect(clientIp(new Headers(), { trustedHops: 1, vercel: false })).toBe("unknown");
   });
 });

@@ -12,8 +12,9 @@ export type RateLimiterOptions = {
 };
 
 /**
- * In-memory limits for fresh LLM calls: a sliding one-hour window per IP plus a global cap
- * per UTC day. Per-instance only, which is enough to bound a portfolio demo's spend.
+ * In-memory limits for fresh LLM calls: a sliding one-hour window per IP plus a cap per UTC day.
+ * Both are per instance; the explain route also checks the day's total in Postgres, which holds
+ * across instances and cold starts.
  */
 export function createRateLimiter({ perHour, dailyCap, now = Date.now }: RateLimiterOptions) {
   const hits = new Map<string, number[]>();
@@ -72,12 +73,37 @@ let shared: RateLimiter | null = null;
 export function getRateLimiter(): RateLimiter {
   shared ??= createRateLimiter({
     perHour: envInt("RATE_LIMIT_PER_HOUR", 30),
-    dailyCap: envInt("DAILY_LLM_CAP", 500),
+    dailyCap: dailyCap(),
   });
   return shared;
 }
 
-export function clientIp(headers: Headers): string {
-  const forwarded = headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return forwarded || headers.get("x-real-ip")?.trim() || "unknown";
+export type ClientIpOptions = {
+  /** Proxies in front of the app that append to X-Forwarded-For (TRUSTED_PROXY_HOPS, default 1). */
+  trustedHops?: number;
+  /** On Vercel the platform sets x-real-ip itself and it can't be forged. */
+  vercel?: boolean;
+};
+
+/**
+ * The client IP for rate limiting. Never the left-most X-Forwarded-For entry: the client writes
+ * that one. Each trusted proxy appends the address it saw, so the entry `trustedHops` from the
+ * right is the last one a trusted party added. With no proxy (hops 0) every header is
+ * client-controlled, so all callers share one bucket.
+ */
+export function clientIp(headers: Headers, opts: ClientIpOptions = {}): string {
+  const vercel = opts.vercel ?? Boolean(process.env.VERCEL);
+  const hops = opts.trustedHops ?? envInt("TRUSTED_PROXY_HOPS", 1);
+  const forwarded = (headers.get("x-forwarded-for") ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (vercel) return headers.get("x-real-ip")?.trim() || forwarded.at(-1) || "unknown";
+  if (hops <= 0) return "unknown";
+  if (forwarded.length) return forwarded[Math.max(0, forwarded.length - hops)];
+  return headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+export function dailyCap(): number {
+  return envInt("DAILY_LLM_CAP", 500);
 }

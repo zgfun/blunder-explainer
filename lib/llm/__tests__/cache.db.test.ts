@@ -4,7 +4,8 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { SCHOLAR_INPUT } from "./fixtures";
+import { explanationKey } from "../key";
+import { SCHOLAR_BLUNDER, SCHOLAR_INPUT } from "./fixtures";
 
 config({ path: ".env.local", quiet: true });
 
@@ -34,7 +35,7 @@ const available = await reachable();
 describe.skipIf(!available)("explanations cache (TEST_DATABASE_URL)", () => {
   const sql = available ? postgres(url!, { max: 1, onnotice: () => {} }) : null;
   const testDb = sql ? drizzle(sql) : null;
-  const key = { fen: SCHOLAR_INPUT.fenBefore, playedUci: "g8f6", level: 1000 as const, promptVersion: "v2" };
+  const key = explanationKey(SCHOLAR_BLUNDER, 1000);
 
   beforeAll(async () => {
     try {
@@ -71,6 +72,12 @@ describe.skipIf(!available)("explanations cache (TEST_DATABASE_URL)", () => {
     });
     expect(await findExplanation({ ...key, level: 2200 })).toBeNull();
     expect(await findExplanation({ ...key, promptVersion: "v1" })).toBeNull();
+  });
+
+  it("counts today's explanations for the global daily cap", async () => {
+    const { countExplanationsToday } = await import("../cache");
+    expect(await countExplanationsToday()).toBeGreaterThanOrEqual(1);
+    expect(await countExplanationsToday(Date.now() + 86_400_000)).toBe(0);
   });
 
   it("serves the cached text from the route without an API key", async () => {

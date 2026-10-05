@@ -176,8 +176,18 @@ export function BlunderCard({ blunder: b, rank, level, id }: { blunder: Blunder;
               </Wrap>
             </Box>
 
+            {b.refutationSan?.length > 0 && (
+              <Text fontSize="sm" color="fg.muted">
+                After {b.san}, Stockfish answers{" "}
+                <Text as="span" fontFamily="mono" color="fg">
+                  {b.refutationSan.join(" ")}
+                  {b.refutationUci.length > b.refutationSan.length ? " …" : ""}
+                </Text>
+              </Text>
+            )}
+
             <Text fontSize="xs" color="fg.muted">
-              Material: {b.materialBalance}
+              {b.materialBalance.startsWith("Material") ? b.materialBalance : `Material: ${b.materialBalance}`}
             </Text>
 
             <Box borderLeftWidth="3px" borderColor="purple.solid" pl="4" py="1" minH="20">
@@ -215,6 +225,18 @@ function ExplanationBody({ state }: { state: ReturnType<typeof useExplanation> }
         AI explanations are switched off on this deployment, so here is the engine&apos;s view only: compare the red arrow (what was
         played) with the green one (what Stockfish wanted) and step through the line above.
       </Text>
+    );
+  }
+  if (state.status === "error" && state.text) {
+    return (
+      <Stack gap="2">
+        <Text fontSize={{ base: "sm", md: "md" }} lineHeight="1.7" whiteSpace="pre-wrap">
+          {state.text}
+        </Text>
+        <Text fontSize="sm" color="fg.error">
+          {state.message} Change the level and back, or reload, to try again.
+        </Text>
+      </Stack>
     );
   }
   if (state.status === "rate-limited" || state.status === "error") {
