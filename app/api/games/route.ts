@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { CHESSCOM_HTTP_STATUS, ChessComError, listRecentGames, USERNAME_RE } from "@/lib/chesscom";
+import { limitGameRequest } from "@/lib/rate-limit";
 
 export const maxDuration = 30;
 
@@ -13,6 +14,8 @@ export async function GET(request: Request) {
       { status: 400 },
     );
   }
+  const limited = limitGameRequest(request);
+  if (limited) return limited;
   try {
     return Response.json({ games: await listRecentGames(q.data.username) });
   } catch (e) {

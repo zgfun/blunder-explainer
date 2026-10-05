@@ -2,6 +2,12 @@
   "name": "blunder-explainer",
   "version": "0.1.0",
   "private": true,
+  "description": "Stockfish in the browser finds your worst chess.com moves; Claude explains them, grounded in the engine's lines",
+  "homepage": "https://blunder-explainer.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zgfun/blunder-explainer"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

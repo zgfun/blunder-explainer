@@ -75,7 +75,7 @@ export function parseGameUrl(input: string): { kind: GameKind; id: string } | nu
 }
 
 function userAgent(): string {
-  return `BlunderExplainer/1.0 (+contact: ${process.env.CHESSCOM_CONTACT ?? "unknown"})`;
+  return `BlunderExplainer/1.0 (+contact: ${process.env.CHESSCOM_CONTACT || "https://github.com/zgfun/blunder-explainer"})`;
 }
 
 type FetchResult = { ok: true; data: unknown } | { ok: false; status: number };

@@ -1,6 +1,6 @@
 import { integer, jsonb, pgTable, primaryKey, real, text, timestamp } from "drizzle-orm/pg-core";
 
-/** A fetched game, keyed by source + id, e.g. "chesscom:184830086652" or "pgn:<sha256>". */
+/** A game fetched from chess.com, keyed by source + id, e.g. "chesscom:184830086652". Pasted PGNs are not stored. */
 export const games = pgTable("games", {
   id: text("id").primaryKey(),
   source: text("source").$type<"chesscom" | "pgn" | "sample">().notNull(),

@@ -68,8 +68,11 @@ function envInt(name: string, fallback: number): number {
   return Number.isFinite(n) && n >= 0 ? n : fallback;
 }
 
-/** Whose key pays for the call: the deployment's ("server") or the visitor's own ("byok"). */
-export type LimiterKind = "server" | "byok";
+/**
+ * Whose key pays for an explain call: the deployment's ("server") or the visitor's own ("byok").
+ * "games" covers the game-loading routes, which call chess.com with this app's User-Agent.
+ */
+export type LimiterKind = "server" | "byok" | "games";
 
 const shared: Partial<Record<LimiterKind, RateLimiter>> = {};
 
@@ -81,8 +84,23 @@ export function getRateLimiter(kind: LimiterKind = "server"): RateLimiter {
   shared[kind] ??=
     kind === "byok"
       ? createRateLimiter({ perHour: envInt("RATE_LIMIT_PER_HOUR_BYOK", 120), dailyCap: Number.POSITIVE_INFINITY })
-      : createRateLimiter({ perHour: envInt("RATE_LIMIT_PER_HOUR", 30), dailyCap: dailyCap() });
+      : kind === "games"
+        ? createRateLimiter({ perHour: envInt("RATE_LIMIT_PER_HOUR_GAMES", 60), dailyCap: Number.POSITIVE_INFINITY })
+        : createRateLimiter({ perHour: envInt("RATE_LIMIT_PER_HOUR", 30), dailyCap: dailyCap() });
   return shared[kind];
+}
+
+/**
+ * Per-IP limit for the game-loading routes (/api/game, /api/games). Returns a 429 response when the
+ * caller is over it, otherwise null. Keeps the deployment from being used to hammer chess.com.
+ */
+export function limitGameRequest(request: Request): Response | null {
+  const limit = getRateLimiter("games").consume(clientIp(request.headers));
+  if (limit.ok) return null;
+  return Response.json(
+    { error: "too-many-requests", message: "Too many games loaded from your connection. Try again later.", retryAfter: limit.retryAfter },
+    { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
+  );
 }
 
 export type ClientIpOptions = {

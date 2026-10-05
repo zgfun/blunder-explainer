@@ -256,3 +256,15 @@ describe("listRecentGames", () => {
     expect(await listRecentGames("newbie")).toEqual([]);
   });
 });
+
+describe("User-Agent", () => {
+  afterEach(() => vi.unstubAllEnvs());
+
+  it("falls back to the repo URL when CHESSCOM_CONTACT is empty", async () => {
+    vi.stubEnv("CHESSCOM_CONTACT", "");
+    await listRecentGames("hikaru").catch(() => undefined);
+    const fetchMock = vi.mocked(fetch);
+    const ua = new Headers(fetchMock.mock.calls[0][1]?.headers).get("User-Agent");
+    expect(ua).toBe("BlunderExplainer/1.0 (+contact: https://github.com/zgfun/blunder-explainer)");
+  });
+});

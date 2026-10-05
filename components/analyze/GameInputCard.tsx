@@ -29,8 +29,8 @@ async function readJson<T>(res: Response): Promise<T & ApiError> {
 }
 
 function friendly(status: number, data: ApiError, fallback: string): string {
-  if (status === 429) return "chess.com is rate-limiting us right now. Wait a minute and try again.";
   if (data.message) return data.message;
+  if (status === 429) return "Too many requests right now. Wait a minute and try again.";
   if (status === 404) return "Not found on chess.com.";
   return fallback;
 }

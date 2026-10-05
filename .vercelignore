@@ -1,0 +1,12 @@
+# Local-only data that must never be uploaded by a `vercel` CLI deploy.
+.pgdata/
+.venv/
+.env*
+!.env.example
+.next/
+node_modules/
+coverage/
+*.tsbuildinfo
+eval/results/
+# Rebuilt by the postinstall script.
+public/engine/

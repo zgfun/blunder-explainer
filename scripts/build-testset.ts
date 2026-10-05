@@ -7,7 +7,8 @@
  *   --fetch-only                                       # stop before the engine step
  *
  * Reproducible: the raw puzzles (as returned by GET /api/puzzle/{id}) are committed in eval/raw-puzzles.json.
- */import { readFile, writeFile } from "node:fs/promises";
+ */
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { buildBlunder } from "@/lib/chess/analysis";
 import type { Blunder, EngineLine, Side } from "@/lib/chess/types";

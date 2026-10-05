@@ -1,12 +1,14 @@
 # Blunder Explainer
 
+**Live:** https://blunder-explainer.vercel.app (no setup needed: [sample game](https://blunder-explainer.vercel.app/sample))
+
 ![Sample game: three blunders with engine arrows and a grounded explanation](docs/sample-desktop.png)
 
 Paste a chess.com game. Stockfish analyses every position **in your browser**, finds the three moves that cost the most, and Claude explains each one in plain language: why it was bad, what the opponent's punishing reply is, and the better plan. The explanation is grounded in the engine's lines, so it can't invent tactics.
 
-**Try it:** `/sample` opens a preloaded game with no setup. Explanations use **your own Anthropic API key** (bring your own key; the site owner pays for nothing).
+**Try it:** the [sample game](https://blunder-explainer.vercel.app/sample) is preloaded and needs no key. New explanations use **your own Anthropic API key** (bring your own key; the site owner pays for nothing).
 
-**The number:** _"Explanations graded on a 40-position test set, X% rated correct."_ The test set, grader and runner are in [`eval/`](eval/README.md). The score needs about $1 of API credit per run and is still pending (see [What I'd do next](#what-id-do-next)).
+**Eval:** a 40-position test set with known answers, a Claude grader and a runner, all in [`eval/`](eval/README.md). A run costs about $1 of API credit; the score is not published yet (see [What I'd do next](#what-id-do-next)).
 
 ## Why
 
@@ -16,6 +18,9 @@ Every chess site shows you an evaluation graph and a "best move". Neither tells 
 
 1. **Input.** A chess.com game URL, a chess.com username (pick from recent games), or a pasted PGN. chess.com has no official single-game endpoint, so the server reads the players from the game page's JSON and then takes the PGN from the **official** monthly archive API, matched by URL.
 2. **Engine in the browser.** Stockfish 19 (lite, single-threaded WASM, 1.8 MB) runs in a Web Worker with a small `Engine` class: UCI over `postMessage`, one position at a time, sent with its full move history so repetition draws are recognised. A 146-ply blitz game takes about 5 s on a laptop, with a progress bar and Cancel.
+
+   ![Analysis running in the browser, with a progress bar and Cancel](docs/analysis-progress.png)
+
 3. **Blunder detection.** Centipawn loss from the mover's perspective (sign flipped for Black). Mate scores are mapped to large numbers and never averaged. Moves are ranked by **lost winning chances** (the Lichess win-probability curve), so a slip in an already-lost position doesn't outrank the move that decided the game.
 4. **Grounded explanation.** The client sends only a FEN, UCI moves and numbers. The server **re-derives everything**: it checks the move is legal, replays the engine line until the first illegal move, and computes SAN, material and side to move itself. So no free text from the browser can reach the prompt. The prompt gets the move played, the engine's best line, the opponent's refutation, the evaluation before and after, and strict rules: only moves from the given lines, 80 words or fewer, one reason and one plan. The model answers with a one-line JSON header (`{"theme":"pin"}`) followed by prose, streamed into the card as it's written.
 5. **Cache.** Every explanation is stored in Postgres, keyed by position, move, level and a hash of the prompt. Repeated views cost nothing, and editing the prompt can never serve stale text.
@@ -31,7 +36,7 @@ Every chess site shows you an evaluation graph and a "best move". Neither tells 
 - vocabulary tuned to the 1000 / 1600 / 2200 slider
 - few-shot examples taken from real Stockfish output
 
-v2's stable prefix is also long enough for prompt caching to apply. The before/after eval scores for v1 and v2 go here once the eval has run.
+v2's stable prefix is also long enough for prompt caching to apply.
 
 ## Bring your own key
 
@@ -47,11 +52,11 @@ pnpm db:migrate
 pnpm dev                     # http://localhost:3000, /sample works immediately
 ```
 
-`pnpm test` runs Vitest (224 tests: chess math, the UCI parser, chess.com parsing against fixtures, prompt grounding, the explain route with a mocked SDK, key handling, rate limits). DB-backed tests use `TEST_DATABASE_URL`. The eval: `ANTHROPIC_API_KEY=… pnpm eval --prompt v2`.
+`pnpm test` runs Vitest (230 tests: chess math, the UCI parser, chess.com parsing against fixtures, prompt grounding, the explain and game routes with mocked upstreams, key handling, rate limits). The 4 DB-backed tests use `TEST_DATABASE_URL` and are skipped without it. The eval: `ANTHROPIC_API_KEY=… pnpm eval --prompt v2`.
 
 ## Stack
 
-Next.js 16 (App Router) on Vercel · Chakra UI v3 · Stockfish 19 WASM in a Web Worker · chess.js · Anthropic SDK (`claude-sonnet-5-5` explains, `claude-opus-5-5` grades the eval, server-side refusal fallbacks enabled) · Drizzle + Neon Postgres · Vitest. Board: my own hand-rolled board component, shared with my portfolio.
+Next.js 16 (App Router) on Vercel · Chakra UI v3 · Stockfish 19 WASM in a Web Worker · chess.js · Anthropic SDK (`claude-sonnet-5-5` explains, `claude-opus-5-5` grades the eval, server-side refusal fallbacks enabled) · Drizzle + Neon Postgres · Vitest. Board: my own board component (pieces from react-chessboard), shared with my portfolio.
 
 ## What I'd do next
 

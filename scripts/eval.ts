@@ -1,5 +1,5 @@
 /**
- * Grades Claude's explanations on the 40-position test set: "X% rated correct".
+ * Grades Claude's explanations on the 40-position test set and reports the share rated correct.
  *
  *   pnpm tsx scripts/eval.ts [--prompt v1|v2] [--level 1000|1600|2200] [--limit N] [--timestamp ID] [--concurrency 4]
  *

@@ -1,6 +1,6 @@
-# Eval: "X% rated correct"
+# Eval
 
-The portfolio number: how often Claude's blunder explanations are judged correct on a fixed set of
+How often Claude's blunder explanations are judged correct on a fixed set of
 40 positions where the right answer is known.
 
 ## The test set

@@ -6,6 +6,7 @@ import { parsePgn } from "@/lib/chess/pgn";
 import { CHESSCOM_HTTP_STATUS, ChessComError, fetchGameByUrl, parseGameUrl, USERNAME_RE } from "@/lib/chesscom";
 import { SAMPLE_GAME } from "@/lib/sample";
 import { optional } from "@/lib/optional";
+import { limitGameRequest } from "@/lib/rate-limit";
 
 export const maxDuration = 30;
 
@@ -30,7 +31,12 @@ const getQuery = z.object({
   username: z.string().trim().regex(USERNAME_RE).optional(),
 });
 
-const postBody = z.object({ pgn: z.string().min(1).max(200_000) });
+// The longest games ever played are under 600 plies; chess.com PGNs with clock comments for such a
+// game stay well under 50,000 characters.
+export const MAX_PGN_CHARS = 50_000;
+export const MAX_PLIES = 600;
+
+const postBody = z.object({ pgn: z.string().min(1).max(MAX_PGN_CHARS) });
 
 function fail(status: number, error: string, message: string) {
   return Response.json({ error, message }, { status });
@@ -89,6 +95,10 @@ export async function GET(request: Request) {
   const cached = await readCached(id);
   if (cached) return Response.json(cached, { headers: { "X-Cache": "hit" } });
 
+  // Only fresh lookups count: each one can fan out to several chess.com requests.
+  const limited = limitGameRequest(request);
+  if (limited) return limited;
+
   try {
     const g = await fetchGameByUrl(q.data.url, q.data.username);
     const body: GameResponse = {
@@ -111,7 +121,14 @@ export async function GET(request: Request) {
   }
 }
 
+/**
+ * Parses a pasted PGN and returns the players. Nothing is stored: the browser already has the PGN,
+ * so a server copy would only let anonymous callers fill the database.
+ */
 export async function POST(request: Request) {
+  const limited = limitGameRequest(request);
+  if (limited) return limited;
+
   let json: unknown;
   try {
     json = await request.json();
@@ -119,15 +136,19 @@ export async function POST(request: Request) {
     return fail(400, "invalid-body", "Send JSON like {\"pgn\": \"...\"}.");
   }
   const b = postBody.safeParse(json);
-  if (!b.success) return fail(400, "invalid-pgn", "Paste a PGN (up to 200 KB).");
+  if (!b.success) return fail(400, "invalid-pgn", "Paste a single game's PGN (up to 50,000 characters).");
 
   const pgn = b.data.pgn.trim();
-  let headers: Record<string, string>;
+  let parsed: ReturnType<typeof parsePgn>;
   try {
-    headers = parsePgn(pgn).headers;
+    parsed = parsePgn(pgn);
   } catch (e) {
     return fail(400, "invalid-pgn", e instanceof Error ? e.message : "That PGN could not be read.");
   }
+  if (parsed.plies.length > MAX_PLIES) {
+    return fail(400, "invalid-pgn", `That game is too long to analyse (over ${MAX_PLIES} half-moves).`);
+  }
+  const { headers } = parsed;
 
   const hash = createHash("sha256").update(pgn).digest("hex").slice(0, 16);
   const clean = (v: string | undefined) => (v && v !== "?" ? v : null);
@@ -138,6 +159,5 @@ export async function POST(request: Request) {
     white: clean(headers.White),
     black: clean(headers.Black),
   };
-  await writeCache(body);
   return Response.json(body);
 }
