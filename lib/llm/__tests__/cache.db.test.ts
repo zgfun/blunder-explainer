@@ -80,6 +80,15 @@ describe.skipIf(!available)("explanations cache (TEST_DATABASE_URL)", () => {
     expect(await countExplanationsToday(Date.now() + 86_400_000)).toBe(0);
   });
 
+  it("leaves visitor-key explanations out of the daily cap count, but caches them", async () => {
+    const { countExplanationsToday, findExplanation, saveExplanation } = await import("../cache");
+    const visitorKey = { ...key, level: 1600 as const };
+    const before = await countExplanationsToday();
+    await saveExplanation(visitorKey, { rawText: "Paid by a visitor.", model: "claude-sonnet-5-5", paidBy: "visitor" });
+    expect(await countExplanationsToday()).toBe(before);
+    expect((await findExplanation(visitorKey))?.text).toBe("Paid by a visitor.");
+  });
+
   it("serves the cached text from the route without an API key", async () => {
     const { POST } = await import("../../../app/api/explain/route");
     const res = await POST(

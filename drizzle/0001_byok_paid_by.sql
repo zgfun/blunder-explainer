@@ -1,0 +1,1 @@
+ALTER TABLE "explanations" ADD COLUMN "paid_by" text DEFAULT 'server' NOT NULL;

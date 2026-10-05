@@ -4,6 +4,7 @@ import { Box, Container, Flex, HStack, IconButton, Link, Stack, Text } from "@ch
 import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore, type ReactNode } from "react";
+import { ApiKeyButton } from "./ApiKeyDialog";
 
 const subscribe = () => () => {};
 
@@ -56,6 +57,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <Link asChild fontSize="sm" color="fg.muted" px="2">
                 <NextLink href="/sample">Sample game</NextLink>
               </Link>
+              <ApiKeyButton />
               <ThemeToggle />
             </HStack>
           </Flex>
@@ -68,7 +70,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <Container maxW="5xl" px={{ base: "4", md: "6" }} py="6">
           <Stack direction={{ base: "column", md: "row" }} justify="space-between" gap="2" fontSize="xs" color="fg.muted">
             <Text>Stockfish is GPL-3.0; this project is open source.</Text>
-            <Text>Games via the chess.com public API · explanations by Claude</Text>
+            <Text>Games via the chess.com public API · explanations by Claude, with your own Anthropic key</Text>
           </Stack>
         </Container>
       </Box>

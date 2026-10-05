@@ -9,7 +9,10 @@ import { SiteShell } from "./SiteShell";
 
 const STEPS = [
   { title: "Stockfish in your browser", body: "Every position is evaluated locally in a Web Worker. No engine server, nothing to wait for in a queue." },
-  { title: "Claude explains", body: "Your three costliest moves get a short, plain-language reason and a better plan, pitched at your level." },
+  {
+    title: "Claude explains, with your key",
+    body: "Your three costliest moves get a short, plain-language reason and a better plan, pitched at your level. New explanations use your own Anthropic API key, which stays in your browser; each one is cached and shown to anyone who analyses the same position.",
+  },
   { title: "Grounded in the engine line", body: "Explanations may only use the engine's own variation, so they can't invent moves that don't work." },
 ];
 

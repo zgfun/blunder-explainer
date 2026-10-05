@@ -9,6 +9,9 @@ type Db = typeof defaultDb;
 
 export type { ExplanationKey } from "./key";
 
+/** Whose API key paid for an explanation. */
+export type PaidBy = "server" | "visitor";
+
 export type CachedExplanation = { theme: Theme | null; text: string; model: string };
 
 /** The wire format the explain route streams: a JSON header line, then the prose. */
@@ -39,7 +42,7 @@ export async function findExplanation(key: ExplanationKey, database: Db = defaul
 /** Stores prose in `text` and the theme in its own column; the latest write wins. */
 export async function saveExplanation(
   key: ExplanationKey,
-  value: { rawText: string; model: string; inputTokens?: number; outputTokens?: number },
+  value: { rawText: string; model: string; inputTokens?: number; outputTokens?: number; paidBy?: PaidBy },
   database: Db = defaultDb,
 ): Promise<void> {
   const parsed = parseExplanation(value.rawText);
@@ -50,22 +53,34 @@ export async function saveExplanation(
     text: parsed.text,
     inputTokens: value.inputTokens ?? null,
     outputTokens: value.outputTokens ?? null,
+    paidBy: value.paidBy ?? "server",
   };
   await database
     .insert(explanations)
     .values(row)
     .onConflictDoUpdate({
       target: [explanations.fen, explanations.playedUci, explanations.level, explanations.promptVersion],
-      set: { model: row.model, theme: row.theme, text: row.text, inputTokens: row.inputTokens, outputTokens: row.outputTokens },
+      set: {
+        model: row.model,
+        theme: row.theme,
+        text: row.text,
+        inputTokens: row.inputTokens,
+        outputTokens: row.outputTokens,
+        paidBy: row.paidBy,
+      },
     });
 }
 
 /**
- * Explanations written since the start of the current UTC day, across every instance; backs the
- * global daily LLM cap, which an in-memory counter alone can't enforce on serverless.
+ * Explanations paid for by the server key since the start of the current UTC day, across every
+ * instance; backs the global daily LLM cap, which an in-memory counter alone can't enforce on
+ * serverless. Rows generated with a visitor's own key don't count.
  */
 export async function countExplanationsToday(now = Date.now(), database: Db = defaultDb): Promise<number> {
   const start = new Date(Math.floor(now / 86_400_000) * 86_400_000);
-  const rows = await database.select({ n: count() }).from(explanations).where(gte(explanations.createdAt, start));
+  const rows = await database
+    .select({ n: count() })
+    .from(explanations)
+    .where(and(gte(explanations.createdAt, start), eq(explanations.paidBy, "server")));
   return Number(rows[0]?.n ?? 0);
 }

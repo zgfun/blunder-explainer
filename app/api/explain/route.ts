@@ -1,11 +1,13 @@
 import { after } from "next/server";
 import { z } from "zod";
-import { countExplanationsToday, findExplanation, formatExplanation, saveExplanation } from "../../../lib/llm/cache";
+import { countExplanationsToday, findExplanation, formatExplanation, saveExplanation, type PaidBy } from "../../../lib/llm/cache";
 import { getClient } from "../../../lib/llm/client";
 import { DeriveError, deriveBlunder, MAX_PV_UCI } from "../../../lib/llm/derive";
 import { ExplainError, explainStream, type ExplainResult } from "../../../lib/llm/explain";
 import { validateExplanation } from "../../../lib/llm/grounding";
 import { explanationKey, promptId } from "../../../lib/llm/key";
+import { classifyUpstreamError, describeError } from "../../../lib/llm/upstream-error";
+import { readVisitorKey } from "../../../lib/llm/visitor-key";
 import { optional } from "../../../lib/optional";
 import { clientIp, dailyCap, getRateLimiter } from "../../../lib/rate-limit";
 import type { Blunder } from "../../../lib/chess/types";
@@ -35,6 +37,38 @@ const TEXT_HEADERS = { "Content-Type": "text/plain; charset=utf-8", "Cache-Contr
 
 function json(status: number, body: Record<string, unknown>, headers: Record<string, string> = {}) {
   return Response.json(body, { status, headers: { "Cache-Control": "no-store", ...headers } });
+}
+
+function rateLimited(error: string, retryAfter: number, extra: Record<string, unknown> = {}) {
+  return json(429, { error, retryAfter, ...extra }, { "Retry-After": String(retryAfter) });
+}
+
+const NEEDS_KEY = {
+  error: "explanations-unavailable",
+  needsKey: true,
+  message: "Explanations use your own Anthropic API key. Add one to get an explanation for this move.",
+};
+
+/** The JSON error for a failed upstream call. Key problems are the visitor's to fix only with their key. */
+function upstreamResponse(err: unknown, paidBy: PaidBy): Response {
+  const failure = classifyUpstreamError(err);
+  switch (failure.kind) {
+    case "invalid-key":
+      if (paidBy === "server") return json(503, NEEDS_KEY);
+      return json(401, { error: "invalid-key", message: "Anthropic did not accept this API key." });
+    case "insufficient-credit":
+      if (paidBy === "server") return json(503, NEEDS_KEY);
+      return json(402, {
+        error: "insufficient-credit",
+        message: "This Anthropic account has no credit left, or the key is not allowed to use this model.",
+      });
+    case "provider-rate-limited":
+      return rateLimited("provider-rate-limited", failure.retryAfter, { message: "Anthropic is rate-limiting this key." });
+    case "overloaded":
+      return json(503, { error: "provider-overloaded", retryable: true, message: "Anthropic is overloaded right now." });
+    default:
+      return json(502, { error: "upstream", message: "The explanation service failed. Please try again." });
+  }
 }
 
 function secondsToUtcMidnight(now = Date.now()): number {
@@ -81,27 +115,32 @@ export async function POST(request: Request): Promise<Response> {
     return new Response(formatExplanation(hit.theme, hit.text), { headers: { ...headers, "X-Cache": "hit" } });
   }
 
-  const client = getClient();
-  if (!client) {
-    return json(503, {
-      error: "explanations-unavailable",
-      message: "AI explanations are not available right now. The engine analysis is still accurate.",
+  // Precedence after the cache: the visitor's own key, then the server's, else ask for a key.
+  const visitor = readVisitorKey(request.headers);
+  if (visitor.kind === "malformed") {
+    // Distinct from invalid-key: Anthropic was never asked, the key just can't be one.
+    return json(400, {
+      error: "malformed-key",
+      message: "That does not look like a complete Anthropic API key: it can only contain letters, digits, - and _.",
     });
   }
+  const visitorKey = visitor.kind === "key" ? visitor.key : undefined;
+  const paidBy: PaidBy = visitorKey ? "visitor" : "server";
 
-  const cap = dailyCap();
-  const today = await optional(() => countExplanationsToday(), CACHE_READ_MS, "explain daily count");
-  if (today !== undefined && today >= cap) {
-    const retryAfter = secondsToUtcMidnight();
-    return json(429, { error: "rate-limited", reason: "daily", retryAfter }, { "Retry-After": String(retryAfter) });
+  const client = getClient(visitorKey);
+  if (!client) return json(503, NEEDS_KEY);
+
+  if (paidBy === "server") {
+    // The global daily cap protects the site's own budget, so only server-key calls count toward it.
+    const cap = dailyCap();
+    const today = await optional(() => countExplanationsToday(), CACHE_READ_MS, "explain daily count");
+    if (today !== undefined && today >= cap) {
+      return rateLimited("rate-limited", secondsToUtcMidnight(), { reason: "daily", needsKey: true });
+    }
   }
-  const limit = getRateLimiter().consume(clientIp(request.headers));
+  const limit = getRateLimiter(paidBy === "visitor" ? "byok" : "server").consume(clientIp(request.headers));
   if (!limit.ok) {
-    return json(
-      429,
-      { error: "rate-limited", reason: limit.reason, retryAfter: limit.retryAfter },
-      { "Retry-After": String(limit.retryAfter) },
-    );
+    return rateLimited("rate-limited", limit.retryAfter, { reason: limit.reason, needsKey: limit.reason === "daily" });
   }
 
   const stream = explainStream(blunder, level, { client, signal: request.signal });
@@ -115,8 +154,9 @@ export async function POST(request: Request): Promise<Response> {
     if (err instanceof ExplainError && err.code === "refusal") {
       return json(422, { error: "refused", message: "No explanation could be generated for this position." });
     }
-    console.error("[explain] upstream error:", err);
-    return json(502, { error: "upstream", message: "The explanation service failed. Please try again." });
+    // Log a description only: the error object can carry request details, and the key never goes to logs.
+    console.error("[explain] upstream error:", describeError(err, [visitorKey]));
+    return upstreamResponse(err, paidBy);
   }
 
   runAfterResponse(async () => {
@@ -138,7 +178,7 @@ export async function POST(request: Request): Promise<Response> {
         else controller.enqueue(encoder.encode(next.value));
       } catch (err) {
         if (request.signal.aborted) return;
-        console.error("[explain] stream interrupted:", err);
+        console.error("[explain] stream interrupted:", describeError(err, [visitorKey]));
         // Erroring the body (instead of closing it) tells the client the text is incomplete.
         controller.error(new Error("explanation interrupted"));
       }
@@ -150,7 +190,7 @@ export async function POST(request: Request): Promise<Response> {
 
   async function finish(controller: ReadableStreamDefaultController<Uint8Array>) {
     const result = await stream.result.catch((err: unknown) => {
-      console.warn("[explain] incomplete:", err instanceof Error ? err.message : err);
+      console.warn("[explain] incomplete:", describeError(err, [visitorKey]));
       return null;
     });
     if (!result || result.truncated) {
@@ -171,6 +211,7 @@ export async function POST(request: Request): Promise<Response> {
           model: result.model,
           inputTokens: result.inputTokens + result.cacheReadTokens + result.cacheWriteTokens,
           outputTokens: result.outputTokens,
+          paidBy,
         }),
       CACHE_WRITE_MS,
       "explain cache write",

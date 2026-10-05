@@ -24,7 +24,7 @@ type FakeMessage = {
   usage?: Record<string, number | null>;
 };
 
-export function fakeStream(deltas: string[], final: FakeMessage = {}, opts: { failAfter?: number } = {}) {
+export function fakeStream(deltas: string[], final: FakeMessage = {}, opts: { failAfter?: number; error?: unknown } = {}) {
   const text = deltas.join("");
   const message = {
     id: "msg_test",
@@ -40,8 +40,9 @@ export function fakeStream(deltas: string[], final: FakeMessage = {}, opts: { fa
   return {
     abort,
     async *[Symbol.asyncIterator]() {
+      if (opts.failAfter !== undefined && opts.failAfter >= deltas.length) throw opts.error ?? new Error("socket hang up");
       for (let i = 0; i < deltas.length; i++) {
-        if (opts.failAfter !== undefined && i === opts.failAfter) throw new Error("socket hang up");
+        if (opts.failAfter !== undefined && i === opts.failAfter) throw opts.error ?? new Error("socket hang up");
         yield { type: "content_block_delta", index: 0, delta: { type: "text_delta", text: deltas[i] } };
       }
     },

@@ -13,6 +13,7 @@ const state = vi.hoisted(() => ({
   today: 0,
   saved: [] as unknown[],
   limiter: null as ReturnType<typeof createRateLimiter> | null,
+  byokLimiter: null as ReturnType<typeof createRateLimiter> | null,
 }));
 
 vi.mock("../client", () => ({
@@ -36,7 +37,7 @@ vi.mock("../cache", async (importOriginal) => ({
 
 vi.mock("../../rate-limit", async (importOriginal) => ({
   ...(await importOriginal<typeof import("../../rate-limit")>()),
-  getRateLimiter: () => state.limiter!,
+  getRateLimiter: (kind = "server") => (kind === "byok" ? state.byokLimiter! : state.limiter!),
 }));
 
 const { POST } = await import("../../../app/api/explain/route");
@@ -61,6 +62,7 @@ beforeEach(() => {
   state.today = 0;
   state.saved = [];
   state.limiter = createRateLimiter({ perHour: 30, dailyCap: 500 });
+  state.byokLimiter = createRateLimiter({ perHour: 120, dailyCap: Number.POSITIVE_INFINITY });
 });
 
 describe("POST /api/explain validation", () => {
@@ -94,7 +96,7 @@ describe("POST /api/explain without a key", () => {
   it("returns 503 explanations-unavailable on a cache miss", async () => {
     const res = await post(VALID);
     expect(res.status).toBe(503);
-    expect(await res.json()).toMatchObject({ error: "explanations-unavailable" });
+    expect(await res.json()).toMatchObject({ error: "explanations-unavailable", needsKey: true });
   });
 
   it("serves a cached explanation with X-Cache: hit", async () => {
@@ -142,7 +144,7 @@ describe("POST /api/explain with a client", () => {
     expect(state.saved).toEqual([
       {
         key: explanationKey(SCHOLAR_BLUNDER, 1600),
-        value: { rawText: GOOD_ANSWER, model: "claude-sonnet-5-5", inputTokens: 940, outputTokens: 60 },
+        value: { rawText: GOOD_ANSWER, model: "claude-sonnet-5-5", inputTokens: 940, outputTokens: 60, paidBy: "server" },
       },
     ]);
   });

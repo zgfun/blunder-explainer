@@ -68,14 +68,21 @@ function envInt(name: string, fallback: number): number {
   return Number.isFinite(n) && n >= 0 ? n : fallback;
 }
 
-let shared: RateLimiter | null = null;
+/** Whose key pays for the call: the deployment's ("server") or the visitor's own ("byok"). */
+export type LimiterKind = "server" | "byok";
 
-export function getRateLimiter(): RateLimiter {
-  shared ??= createRateLimiter({
-    perHour: envInt("RATE_LIMIT_PER_HOUR", 30),
-    dailyCap: dailyCap(),
-  });
-  return shared;
+const shared: Partial<Record<LimiterKind, RateLimiter>> = {};
+
+/**
+ * Server-key calls get the per-IP limit and the global daily cap. Visitor-key calls cost the site
+ * nothing, so they only get a (higher) per-IP limit that stops the route being a free proxy.
+ */
+export function getRateLimiter(kind: LimiterKind = "server"): RateLimiter {
+  shared[kind] ??=
+    kind === "byok"
+      ? createRateLimiter({ perHour: envInt("RATE_LIMIT_PER_HOUR_BYOK", 120), dailyCap: Number.POSITIVE_INFINITY })
+      : createRateLimiter({ perHour: envInt("RATE_LIMIT_PER_HOUR", 30), dailyCap: dailyCap() });
+  return shared[kind];
 }
 
 export type ClientIpOptions = {

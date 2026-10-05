@@ -1,10 +1,11 @@
 "use client";
 
-import { Badge, Box, Button, Card, Flex, HStack, Skeleton, Stack, Text, Wrap } from "@chakra-ui/react";
+import { Badge, Box, Button, Card, Flex, HStack, Link, Skeleton, Stack, Text, Wrap } from "@chakra-ui/react";
 import { Chess } from "chess.js";
-import { useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import type { Blunder } from "@/lib/chess/types";
 import { ARROW_BEST, ARROW_PLAYED, AnnotatedBoard, tint } from "./AnnotatedBoard";
+import { CONSOLE_KEYS_URL, openKeyDialog, type KeyDialogReason } from "./apiKey";
 import { formatLoss, formatPawns, moveLabel, severity, type Level } from "./format";
 import { useExplanation } from "./useExplanation";
 
@@ -209,6 +210,26 @@ export function BlunderCard({ blunder: b, rank, level, id }: { blunder: Blunder;
   );
 }
 
+function KeyCallToAction({ children, action = "Add your Anthropic key", reason }: {
+  children: ReactNode;
+  action?: string;
+  reason?: Exclude<KeyDialogReason, null>;
+}) {
+  return (
+    <Stack gap="2.5" align="flex-start" data-testid="key-cta">
+      {children}
+      <HStack gap="3" wrap="wrap">
+        <Button size="xs" colorPalette="green" onClick={() => openKeyDialog(reason ?? null)}>
+          {action}
+        </Button>
+        <Link href={CONSOLE_KEYS_URL} target="_blank" rel="noreferrer" fontSize="xs" color="fg.muted">
+          Get a key ↗
+        </Link>
+      </HStack>
+    </Stack>
+  );
+}
+
 function ExplanationBody({ state }: { state: ReturnType<typeof useExplanation> }) {
   if (state.status === "loading") {
     return (
@@ -219,12 +240,36 @@ function ExplanationBody({ state }: { state: ReturnType<typeof useExplanation> }
       </Stack>
     );
   }
-  if (state.status === "unavailable") {
+  if (state.status === "needs-key") {
     return (
-      <Text fontSize="sm" color="fg.muted">
-        AI explanations are switched off on this deployment, so here is the engine&apos;s view only: compare the red arrow (what was
-        played) with the green one (what Stockfish wanted) and step through the line above.
-      </Text>
+      <KeyCallToAction>
+        <Text fontSize="sm" fontWeight="semibold">
+          Explanations use your own Anthropic key
+        </Text>
+        <Text fontSize="sm" color="fg.muted">
+          No explanation is cached for this move yet. Add an Anthropic API key to have Claude write one: the key stays in your
+          browser and is billed for this request only. Meanwhile, compare the red arrow (what was played) with the green one
+          (what Stockfish wanted) and step through the line above.
+        </Text>
+      </KeyCallToAction>
+    );
+  }
+  if (state.status === "invalid-key" || state.status === "insufficient-credit") {
+    return (
+      <KeyCallToAction action={state.status === "invalid-key" ? "Update your key" : "Use another key"} reason={state.keyReason}>
+        <Text fontSize="sm" color="fg.error" role="alert">
+          {state.message}
+        </Text>
+      </KeyCallToAction>
+    );
+  }
+  if (state.status === "rate-limited" && state.needsKey) {
+    return (
+      <KeyCallToAction>
+        <Text fontSize="sm" color="fg.warning">
+          {state.message} Add your own Anthropic key to keep going; the engine line above still shows the better move.
+        </Text>
+      </KeyCallToAction>
     );
   }
   if (state.status === "error" && state.text) {
@@ -233,17 +278,29 @@ function ExplanationBody({ state }: { state: ReturnType<typeof useExplanation> }
         <Text fontSize={{ base: "sm", md: "md" }} lineHeight="1.7" whiteSpace="pre-wrap">
           {state.text}
         </Text>
-        <Text fontSize="sm" color="fg.error">
-          {state.message} Change the level and back, or reload, to try again.
-        </Text>
+        <HStack gap="3" wrap="wrap">
+          <Text fontSize="sm" color="fg.error">
+            {state.message}
+          </Text>
+          <Button size="xs" variant="outline" onClick={state.retry}>
+            Try again
+          </Button>
+        </HStack>
       </Stack>
     );
   }
   if (state.status === "rate-limited" || state.status === "error") {
     return (
-      <Text fontSize="sm" color={state.status === "error" ? "fg.error" : "fg.warning"}>
-        {state.message} The engine line above still shows the better move.
-      </Text>
+      <Stack gap="2" align="flex-start">
+        <Text fontSize="sm" color={state.status === "error" ? "fg.error" : "fg.warning"}>
+          {state.message} The engine line above still shows the better move.
+        </Text>
+        {state.retryable && (
+          <Button size="xs" variant="outline" onClick={state.retry}>
+            Try again
+          </Button>
+        )}
+      </Stack>
     );
   }
   return (

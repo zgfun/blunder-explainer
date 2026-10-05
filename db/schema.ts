@@ -27,6 +27,8 @@ export const explanations = pgTable(
     text: text("text").notNull(),
     inputTokens: integer("input_tokens"),
     outputTokens: integer("output_tokens"),
+    /** Whose key generated it: only "server" rows count toward the global daily cap. */
+    paidBy: text("paid_by").$type<"server" | "visitor">().notNull().default("server"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [primaryKey({ columns: [t.fen, t.playedUci, t.level, t.promptVersion] })],
