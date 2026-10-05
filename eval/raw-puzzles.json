@@ -1,0 +1,1240 @@
+[
+  {
+    "puzzleId": "0BmwD",
+    "gameId": "BjDUWdMJ",
+    "rating": 1097,
+    "themes": [
+      "endgame",
+      "short",
+      "crushing",
+      "fork"
+    ],
+    "initialPly": 52,
+    "solution": [
+      "d8g5",
+      "g1f1",
+      "g5c1"
+    ],
+    "moves": "d4 d5 Bf4 c5 Nf3 Nc6 c3 Nf6 e3 Bg4 Nbd2 e6 Bb5 cxd4 Bxc6+ bxc6 cxd4 Bb4 O-O Bxd2 Qxd2 Bxf3 gxf3 O-O Rac1 Rc8 Rc5 Nd7 Ra5 Ra8 Ra6 Nb6 b3 Qc8 Qa5 Qb7 Rc1 Rfc8 Bd6 Qd7 Bc5 Qd8 Bxb6 axb6 Qa3 Rxa6 Qxa6 Ra8 Qe2 c5 dxc5 d4 exd4",
+    "angle": "fork"
+  },
+  {
+    "puzzleId": "0FXlP",
+    "gameId": "XMP15dXE",
+    "rating": 1299,
+    "themes": [
+      "endgame",
+      "advantage",
+      "attraction",
+      "fork",
+      "long"
+    ],
+    "initialPly": 44,
+    "solution": [
+      "d2f2",
+      "g1f2",
+      "d8d2",
+      "f2e1",
+      "d2c2"
+    ],
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O b5 Bb3 Bc5 a4 Bb7 c3 d6 d4 Ba7 Re1 Ne7 dxe5 dxe5 Qxd8+ Rxd8 Nxe5 O-O axb5 Nxe4 Rf1 Ng6 Nxg6 hxg6 bxa6 Ba8 Be3 Bxe3 fxe3 Kh7 Bc2 Nd2 Nxd2 Rxd2 Rf2 Rfd8 Rb1",
+    "angle": "fork"
+  },
+  {
+    "puzzleId": "0jMQs",
+    "gameId": "X3XRd72X",
+    "rating": 1496,
+    "themes": [
+      "middlegame",
+      "short",
+      "crushing",
+      "fork"
+    ],
+    "initialPly": 66,
+    "solution": [
+      "d8d4",
+      "g1h1",
+      "d4e5"
+    ],
+    "moves": "d4 e6 e4 c5 c3 cxd4 cxd4 a6 Nc3 Nc6 Nf3 g6 Bg5 Nge7 Bc4 Bg7 O-O b5 Bb3 Bb7 d5 h6 dxc6 Bxc6 Bxe7 Qxe7 Re1 Rc8 Nd5 Qd8 Nf4 Bxb2 Rb1 Bc3 Re2 b4 Nd4 Ba8 Rc1 e5 Nxg6 fxg6 Nf3 Rc6 Bd5 Rf6 a3 Rhf8 axb4 Bxb4 Nxe5 d6 Nc6 Bxc6 Bxc6+ Ke7 e5 dxe5 Rxe5+ Kf7 Bd5+ Kg7 f3 a5 Qe2 Kh8 Be4",
+    "angle": "fork"
+  },
+  {
+    "puzzleId": "0qizf",
+    "gameId": "gCAZgREi",
+    "rating": 1632,
+    "themes": [
+      "middlegame",
+      "crushing",
+      "fork",
+      "long"
+    ],
+    "initialPly": 61,
+    "solution": [
+      "c4e6",
+      "g8h7",
+      "e6f5",
+      "c2f5",
+      "f1f5"
+    ],
+    "moves": "e4 c6 d4 d5 exd5 cxd5 Bd3 Nc6 c3 e6 h3 a6 Nf3 h6 O-O f5 Ne5 Nxe5 dxe5 Bc5 Qh5+ Kf8 b4 Be7 Be3 Qe8 Qe2 Qg6 c4 dxc4 Bxc4 Bxb4 a3 Ba5 Bc5+ Kf7 Nd2 Ne7 Bxe7 Kxe7 Nb3 Bb6 a4 Rd8 a5 Ba7 Rad1 Bd7 Qd2 Bc6 Qb4+ Kf7 g3 f4 Kh2 Kg8 Rd6 fxg3+ fxg3 Qc2+ Nd2 Be3",
+    "angle": "fork"
+  },
+  {
+    "puzzleId": "00cxg",
+    "gameId": "gegRTD5O",
+    "rating": 1900,
+    "themes": [
+      "advantage",
+      "long",
+      "fork",
+      "middlegame"
+    ],
+    "initialPly": 33,
+    "solution": [
+      "d2d4",
+      "e4h1",
+      "d4h8",
+      "e8d7",
+      "h8d8"
+    ],
+    "moves": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6 f4 e6 Be3 Bd7 Be2 Be7 g4 h6 g5 hxg5 fxg5 Nh7 Qd2 Nxg5 O-O-O Nc6 Nxc6 Bxc6 h4 Nxe4 Nxe4 Bxe4 Rdg1 g6",
+    "angle": "fork"
+  },
+  {
+    "puzzleId": "2plbK",
+    "gameId": "dEoZJIYb",
+    "rating": 2100,
+    "themes": [
+      "exposedKing",
+      "endgame",
+      "advancedPawn",
+      "crushing",
+      "long",
+      "quietMove",
+      "fork"
+    ],
+    "initialPly": 58,
+    "solution": [
+      "a4c4",
+      "d2d1",
+      "c4c2",
+      "b2c2",
+      "b3c2"
+    ],
+    "moves": "d4 d5 Bf4 Bf5 c4 Nf6 Nc3 e6 e3 c5 Qb3 b6 Nf3 Be7 cxd5 exd5 Bb5+ Bd7 Ne5 O-O Nxd7 Nbxd7 O-O-O c4 Qc2 a6 Bxd7 Qxd7 e4 b5 exd5 Nxd5 Nxd5 Qxd5 f3 b4 Rhe1 Bf6 Qe4 Qb5 Be5 Bxe5 Qxe5 Qa4 Kb1 b3 a3 c3 d5 cxb2 Qxb2 Rac8 Rd2 Rc5 Rc1 Rfc8 Rxc5 Rxc5 d6",
+    "angle": "fork"
+  },
+  {
+    "puzzleId": "00n3G",
+    "gameId": "7me09or0",
+    "rating": 1120,
+    "themes": [
+      "deflection",
+      "middlegame",
+      "short",
+      "advantage",
+      "pin"
+    ],
+    "initialPly": 62,
+    "solution": [
+      "g6g3",
+      "f3g3",
+      "e5f4"
+    ],
+    "moves": "Nc3 d5 e4 d4 Nce2 e5 Nf3 f6 Ng3 Bg4 Bc4 c5 O-O Nc6 h3 Bxf3 Qxf3 Bd6 a3 Qd7 d3 O-O-O Nf5 g6 Ng3 Qe7 Bd2 a6 Qg4+ Kb8 f4 exf4 Bxf4 Bxf4 Rxf4 Ne5 Qe2 Nxc4 dxc4 Qe5 Raf1 Rd6 Qd3 Nh6 b4 b6 b5 a5 a4 Rf8 Ne2 f5 exf5 Nxf5 g4 Rdf6 gxf5 gxf5 Ng3 Rg8 Kh2 Rfg6 R1f3",
+    "angle": "pin"
+  },
+  {
+    "puzzleId": "05Fzd",
+    "gameId": "94js72O6",
+    "rating": 1353,
+    "themes": [
+      "short",
+      "crushing",
+      "sacrifice",
+      "pin",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 36,
+    "solution": [
+      "e8e3",
+      "d2e3",
+      "g7d4"
+    ],
+    "moves": "d4 Nf6 c4 g6 Nc3 d5 cxd5 Nxd5 e4 Nxc3 bxc3 c5 Bc4 Bg7 Ne2 O-O O-O b6 Be3 Bb7 f3 Nc6 Rc1 Rc8 Bd5 Qd7 Bxc6 Bxc6 d5 Ba4 Qd2 e6 c4 exd5 exd5 Rfe8 Ng3",
+    "angle": "pin"
+  },
+  {
+    "puzzleId": "09aaY",
+    "gameId": "kVDXlWjb",
+    "rating": 1600,
+    "themes": [
+      "middlegame",
+      "short",
+      "advantage",
+      "pin"
+    ],
+    "initialPly": 53,
+    "solution": [
+      "f1f7",
+      "g7h6",
+      "f7f6"
+    ],
+    "moves": "e4 e5 Bc4 Nc6 d3 Be7 f4 exf4 Bxf4 d6 Nf3 Nf6 O-O O-O Qd2 Bg4 Ng5 Bh5 Nc3 h6 Nf3 Bg6 Bxh6 gxh6 Qxh6 d5 Nxd5 Ng4 Qh3 Nf6 Rf2 Nxd5 Bxd5 Bc5 d4 Nxd4 Kh1 Nxf3 Rxf3 c6 Bb3 Qd4 Raf1 Rad8 Qg3 Qg7 e5 Be4 Qxg7+ Kxg7 Rg3+ Bg6 h4 Rh8",
+    "angle": "pin"
+  },
+  {
+    "puzzleId": "2RTtf",
+    "gameId": "YRUVzG7q",
+    "rating": 1886,
+    "themes": [
+      "endgame",
+      "master",
+      "crushing",
+      "long",
+      "pin"
+    ],
+    "initialPly": 74,
+    "solution": [
+      "f5d6",
+      "c1h6",
+      "f8e8",
+      "f2f3",
+      "d6e4"
+    ],
+    "moves": "e4 e6 d3 d5 Nd2 c5 Ngf3 Nc6 g3 Nf6 Bg2 Be7 O-O O-O e5 Nd7 Re1 Qc7 Qe2 b5 Nf1 Bb7 h4 Rac8 Bf4 Nd4 Qd2 Rfd8 N1h2 Bf8 Ng4 Nxf3+ Bxf3 d4 Be4 c4 h5 c3 bxc3 dxc3 Qe2 Bxe4 Qxe4 Qc6 Qe2 h6 Rad1 b4 d4 Nb6 Rd3 Qc4 Bxh6 Rxd4 Rxd4 Qxd4 Bf4 Nd5 Bc1 Qc4 Qf3 Ne7 h6 Nf5 hxg7 Bxg7 Nf6+ Bxf6 exf6 Kf8 Re4 Qd5 Qe2 Rd8 Kg2",
+    "angle": "pin"
+  },
+  {
+    "puzzleId": "0hFRn",
+    "gameId": "lWGEug0B",
+    "rating": 2077,
+    "themes": [
+      "advantage",
+      "pin",
+      "long",
+      "middlegame"
+    ],
+    "initialPly": 55,
+    "solution": [
+      "e2g4",
+      "e5e6",
+      "h2h6",
+      "f6h6",
+      "h1h6"
+    ],
+    "moves": "e4 c6 c3 d5 exd5 cxd5 d4 Nc6 Nf3 Bf5 Bb5 e6 Qa4 Qc7 O-O Bd6 Re1 Ne7 Nbd2 O-O Nh4 Bxh2+ Kh1 Bf4 Nxf5 Nxf5 Nf3 Bxc1 Raxc1 a6 Bd3 Nfe7 Qc2 h6 Qd2 Rac8 g3 b5 a3 Na5 Qc2 Nc4 Kg2 Nc6 Rh1 Qe7 Rh2 Qf6 Rch1 Rfe8 Qe2 e5 dxe5 N6xe5 Nxe5 Rxe5",
+    "angle": "pin"
+  },
+  {
+    "puzzleId": "0l5nU",
+    "gameId": "D3iq9aJw",
+    "rating": 1121,
+    "themes": [
+      "deflection",
+      "endgame",
+      "advantage",
+      "skewer",
+      "long"
+    ],
+    "initialPly": 41,
+    "solution": [
+      "b1b7",
+      "d7c8",
+      "b7e7",
+      "h8f8",
+      "e7a7"
+    ],
+    "moves": "e4 c6 d4 d5 e5 c5 Nf3 Nc6 Bb5 Bg4 h3 Bh5 Qd3 e6 Bg5 Qb6 Nc3 Be7 Na4 Qa5+ Nc3 Bxf3 Bxe7 Be4 b4 Bxd3 bxa5 Bxb5 Bxc5 Bc4 Rb1 Rb8 Bd6 Ba6 Bxb8 Nxb8 Nb5 Ne7 Nc7+ Kd7 Nxa6 bxa6",
+    "angle": "skewer"
+  },
+  {
+    "puzzleId": "1gHJd",
+    "gameId": "yuqBwLZb",
+    "rating": 1371,
+    "themes": [
+      "short",
+      "masterVsMaster",
+      "crushing",
+      "skewer",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 48,
+    "solution": [
+      "f5g4",
+      "e2e3",
+      "g4d1"
+    ],
+    "moves": "Nf3 f5 g3 Nf6 Bg2 d5 O-O e6 d3 Bd6 c4 O-O Nc3 c6 e4 dxe4 dxe4 fxe4 Ng5 Na6 Ngxe4 Nxe4 Nxe4 Bc7 Qe2 e5 Bg5 Qe8 Rad1 Qg6 Be7 Rf7 Bd6 Bg4 f3 Bf5 Bxc7 Bxe4 Bxe5 Bf5 Rd2 Re8 f4 Nc5 Re1 Nd3 Red1 Nxe5 fxe5",
+    "angle": "skewer"
+  },
+  {
+    "puzzleId": "1W0lk",
+    "gameId": "YzBHman4",
+    "rating": 1600,
+    "themes": [
+      "endgame",
+      "crushing",
+      "long",
+      "rookEndgame",
+      "skewer"
+    ],
+    "initialPly": 98,
+    "solution": [
+      "a7e7",
+      "e4d5",
+      "e7d7",
+      "d5c6",
+      "d7d1"
+    ],
+    "moves": "e4 c5 Nf3 Nc6 Bc4 g6 d4 cxd4 Nxd4 Bg7 Be3 Nf6 Nc3 Qa5 Nxc6 bxc6 O-O O-O Qd2 Ng4 Bd4 Bxd4 Qxd4 Qe5 Qxe5 Nxe5 Bb3 Kg7 f4 Ng4 Rfe1 e6 e5 Nh6 Ne2 Nf5 Ng3 Nd4 Ne2 Nxb3 axb3 a5 Nc3 Bb7 Na4 Ba6 Nc5 Bc8 b4 d6 exd6 Rd8 Red1 Bd7 Nxd7 Rxd7 bxa5 Kf6 g4 e5 fxe5+ Kxe5 b4 Rxd6 Rxd6 Kxd6 Rd1+ Ke6 Kf2 Ra6 Kf3 f5 gxf5+ Kxf5 Rd7 h5 c3 g5 Rf7+ Kg6 Rd7 g4+ Kf4 c5 Ke5 cxb4 cxb4 Kg5 Rd6 Ra7 a6 h4 b5 g3 hxg3 hxg3 Rd1 Kg4 Ke4",
+    "angle": "skewer"
+  },
+  {
+    "puzzleId": "1d982",
+    "gameId": "07QFxQ8d",
+    "rating": 1831,
+    "themes": [
+      "crushing",
+      "skewer",
+      "veryLong",
+      "middlegame"
+    ],
+    "initialPly": 41,
+    "solution": [
+      "c2e4",
+      "c8c1",
+      "d1c1",
+      "d5c5",
+      "e4b7",
+      "c5c1",
+      "e1c1"
+    ],
+    "moves": "d4 Nf6 c4 e6 Nc3 d5 Bg5 Be7 Nf3 O-O e3 c5 cxd5 exd5 Bd3 Nbd7 O-O b6 a3 Bb7 Bc2 Rc8 Rc1 h6 Bh4 Ne4 Nxe4 dxe4 Bxe7 Qxe7 Nd2 cxd4 exd4 e3 Re1 exf2+ Kxf2 Qh4+ Kg1 Qxd4+ Kh1 Qd5",
+    "angle": "skewer"
+  },
+  {
+    "puzzleId": "1cDoc",
+    "gameId": "pusih0y1",
+    "rating": 2158,
+    "themes": [
+      "exposedKing",
+      "deflection",
+      "middlegame",
+      "crushing",
+      "skewer",
+      "fork",
+      "long",
+      "interference"
+    ],
+    "initialPly": 76,
+    "solution": [
+      "g6h5",
+      "h2g2",
+      "h5g5",
+      "g2h3",
+      "g5g1"
+    ],
+    "moves": "e4 d6 d4 Nf6 Bd3 g6 Nf3 Bg7 c3 Bg4 O-O O-O h3 Bxf3 Qxf3 Nc6 Re1 e5 d5 Ne7 Bg5 Ne8 c4 f6 Bd2 f5 exf5 gxf5 Qg3 Rf6 Nc3 Rg6 Qh4 Bf6 Qh5 Ng7 Qe2 Qd7 f4 Kh8 Kh2 Rg8 Rg1 e4 Bc2 Bd4 Be3 Bxe3 Qxe3 Nh5 g3 R8g7 Ne2 Ng8 Nd4 Ngf6 Ne6 Re7 g4 fxg4 hxg4 Ng7 Nf8 Qe8 Nxg6+ Qxg6 Qh3 Nge8 g5 Nh5 Raf1 Neg7 Qc8+ Re8 Qxc7 Nxf4 Rxf4",
+    "angle": "skewer"
+  },
+  {
+    "puzzleId": "0gUGh",
+    "gameId": "ZnIRjz7p",
+    "rating": 1002,
+    "themes": [
+      "deflection",
+      "endgame",
+      "long",
+      "mateIn3",
+      "backRankMate",
+      "hangingPiece"
+    ],
+    "initialPly": 48,
+    "solution": [
+      "d6d1",
+      "f2f1",
+      "h6e3",
+      "g1h1",
+      "d1f1"
+    ],
+    "moves": "e4 e5 Nf3 Nf6 Nxe5 Nc6 d4 Nxe4 Qf3 Nxe5 Qxe4 d6 dxe5 dxe5 Qxe5+ Be7 Qxg7 Rf8 Qxh7 Bg4 f3 Be6 Bh6 Qd7 Bxf8 Bxf8 Qe4 Rd8 Bd3 Bg7 Nc3 Bh6 O-O f5 Qe2 Kf8 Rad1 Qf7 Nb5 a6 Nxc7 Qxc7 Qxe6 Qc5+ Rf2 Rd6 Qxf5+ Qxf5 Bxf5",
+    "angle": "hangingPiece"
+  },
+  {
+    "puzzleId": "03BAr",
+    "gameId": "jiqXwhmA",
+    "rating": 1323,
+    "themes": [
+      "short",
+      "hangingPiece",
+      "endgame",
+      "mateIn2"
+    ],
+    "initialPly": 77,
+    "solution": [
+      "c2c8",
+      "g5d8",
+      "c8d8"
+    ],
+    "moves": "e4 c5 Nf3 g6 Bc4 Bg7 c3 Nc6 O-O d6 d4 cxd4 cxd4 Nf6 Re1 O-O Nc3 Bg4 Be3 Rc8 h3 Bd7 Bb3 a6 Nd5 Nxd5 Bxd5 e6 Bb3 Qa5 Rb1 Na7 e5 d5 Bg5 Nb5 Bf6 Rc7 Qd3 Rfc8 Qe3 Na7 Qg5 Ba4 Bxa4 Qxa4 Bxg7 Kxg7 Qf6+ Kg8 Qh4 Qe8 Qf6 Qe7 Qf4 Nb5 h4 Rc2 h5 Na7 h6 Nc6 a3 Na5 b4 Nc4 Rbc1 Nxa3 Rxc2 Nxc2 Rc1 Qd8 Qd2 Qc7 Qg5 Qd8 Rxc2 Qxg5",
+    "angle": "hangingPiece"
+  },
+  {
+    "puzzleId": "2jj5g",
+    "gameId": "0gtmrCxo",
+    "rating": 1484,
+    "themes": [
+      "hangingPiece",
+      "advantage",
+      "short",
+      "endgame"
+    ],
+    "initialPly": 67,
+    "solution": [
+      "d1d4",
+      "a4a3",
+      "d4d1"
+    ],
+    "moves": "d4 d5 Nf3 c5 c3 e6 Bf4 Bd6 Bxd6 Qxd6 e3 Nc6 a3 cxd4 cxd4 Nge7 Nc3 O-O Be2 a6 O-O b5 h3 Na5 Ne5 Nc4 Nxc4 dxc4 Bf3 Rb8 b3 cxb3 Qxb3 Bb7 Bxb7 Rxb7 Ne4 Qd5 Qxd5 Nxd5 Nc5 Ra7 Rfc1 g6 Rc2 Rb8 Rac1 a5 e4 Nb6 Nd3 Nc4 a4 Nd6 e5 Nf5 axb5 Rxb5 Rc8+ Kg7 Rd8 Rd5 Rxd5 exd5 Nf4 Nxd4 Rd1 a4",
+    "angle": "hangingPiece"
+  },
+  {
+    "puzzleId": "0n0F6",
+    "gameId": "HXDXfBqW",
+    "rating": 1697,
+    "themes": [
+      "short",
+      "masterVsMaster",
+      "crushing",
+      "superGM",
+      "hangingPiece",
+      "defensiveMove",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 50,
+    "solution": [
+      "g6h5",
+      "f3g3",
+      "g7h6"
+    ],
+    "moves": "e4 Nc6 Nc3 Nd4 Nf3 c5 Nxd4 cxd4 Ne2 Nf6 e5 Ng4 Nxd4 Nxe5 Nf3 Qa5 Nxe5 Qxe5+ Be2 d5 d4 Qc7 O-O Bf5 Bd3 Bxd3 Qxd3 e6 c3 Bd6 f4 O-O Bd2 a6 Rae1 b5 Re3 Qc4 Qb1 g6 h4 h5 Rg3 Kh7 Rg5 f5 Qd1 Be7 Rxh5+ Kg7 Rf3",
+    "angle": "hangingPiece"
+  },
+  {
+    "puzzleId": "01M1X",
+    "gameId": "7Ybap0Fs",
+    "rating": 1911,
+    "themes": [
+      "middlegame",
+      "crushing",
+      "hangingPiece",
+      "short"
+    ],
+    "initialPly": 58,
+    "solution": [
+      "e4f3",
+      "d2d4",
+      "f7f6"
+    ],
+    "moves": "e4 e5 Nf3 d6 h3 c5 Nc3 Nc6 a3 Be7 Bc4 Nf6 d3 O-O Bg5 a6 Bxf6 Bxf6 Nd5 Be6 Ne3 Bxc4 Nxc4 b5 Ne3 Nd4 Nd5 Be7 c3 Ne6 h4 Nc7 Ne3 a5 g4 b4 axb4 axb4 Rxa8 Qxa8 Nf5 Re8 cxb4 cxb4 O-O Ne6 Qd2 Nf4 Rd1 Qb8 d4 g6 Nh6+ Kg7 g5 Qb7 dxe5 Qxe4 exd6",
+    "angle": "hangingPiece"
+  },
+  {
+    "puzzleId": "0Og0U",
+    "gameId": "uz4pzHR5",
+    "rating": 2053,
+    "themes": [
+      "advantage",
+      "hangingPiece",
+      "short",
+      "middlegame"
+    ],
+    "initialPly": 31,
+    "solution": [
+      "g1g2",
+      "c8h3",
+      "g2g3"
+    ],
+    "moves": "e4 e5 Nf3 Nc6 Bb5 Qf6 c3 Bc5 d3 a6 Ba4 Ba7 O-O h6 Na3 Nge7 Be3 d6 Bxa7 Rxa7 d4 b5 Bb3 O-O d5 Na5 Bc2 Ng6 Re1 Nf4 Qd2 Nxg2",
+    "angle": "hangingPiece"
+  },
+  {
+    "puzzleId": "20Xk5",
+    "gameId": "N4iZMbyW",
+    "rating": 1121,
+    "themes": [
+      "advancedPawn",
+      "middlegame",
+      "oneMove",
+      "promotion",
+      "mateIn1",
+      "backRankMate"
+    ],
+    "initialPly": 70,
+    "solution": [
+      "c2d1q"
+    ],
+    "moves": "d4 e6 Nf3 d5 Bf4 c5 e3 Nc6 Nbd2 Nge7 c3 Ng6 Bg3 Bd6 Bd3 O-O Qe2 Re8 Bxg6 hxg6 Ne5 Nxe5 dxe5 Bc7 O-O b6 Rad1 Bb7 c4 Qe7 cxd5 Bxd5 a3 Red8 Rfe1 Qe8 Nc4 b5 Nd6 Bxd6 exd6 Bc6 e4 e5 Qe3 c4 Qc5 Bd7 Qxe5 Be6 Qd4 a5 e5 b4 axb4 axb4 Ra1 Rac8 Ra7 c3 bxc3 bxc3 Rc1 Qc6 Qa4 Qd5 Qa3 c2 Rc7 Qd1+ Rxd1",
+    "angle": "backRankMate"
+  },
+  {
+    "puzzleId": "2LNUl",
+    "gameId": "xcelLy1m",
+    "rating": 1361,
+    "themes": [
+      "endgame",
+      "long",
+      "mateIn3",
+      "sacrifice",
+      "backRankMate"
+    ],
+    "initialPly": 45,
+    "solution": [
+      "c4e6",
+      "c8b8",
+      "e6e8",
+      "f8e8",
+      "e1e8"
+    ],
+    "moves": "e4 d6 d4 Nf6 Bd3 Nbd7 f4 e5 dxe5 dxe5 Nf3 Bc5 fxe5 Nxe5 Bg5 Bg4 Nbd2 Qd6 Qe2 h6 Bxf6 Qxf6 O-O-O O-O-O h3 Nxd3+ cxd3 Be6 Kb1 Qf4 Nc4 Rhe8 d4 Bxc4 Qxc4 Qxe4+ Ka1 Bb6 Rhe1 Qg6 Ne5 Qxg2 Nxf7 Rxe1 Rxe1 Rf8",
+    "angle": "backRankMate"
+  },
+  {
+    "puzzleId": "256YU",
+    "gameId": "OCQ3Jbnz",
+    "rating": 1596,
+    "themes": [
+      "veryLong",
+      "clearance",
+      "middlegame",
+      "sacrifice",
+      "mateIn4",
+      "backRankMate"
+    ],
+    "initialPly": 42,
+    "solution": [
+      "f2g2",
+      "f4g2",
+      "c2f2",
+      "g1h1",
+      "f2f1",
+      "a1f1",
+      "f8f1"
+    ],
+    "moves": "d4 d5 c4 c6 Nc3 Bf5 e3 e6 Nf3 Nd7 Bd3 Bg6 O-O Ne7 Re1 Nc8 e4 Bb4 exd5 Bxc3 bxc3 Bxd3 Qxd3 O-O dxe6 fxe6 Ng5 Rf5 Nxe6 Qf6 Qg3 Nd6 Qxd6 Rxf2 Bg5 Qf5 Re5 Qc2 Nf4 Rf8 Qe6+ Kh8 Qxd7",
+    "angle": "backRankMate"
+  },
+  {
+    "puzzleId": "2ABKy",
+    "gameId": "nDiW45cb",
+    "rating": 1889,
+    "themes": [
+      "mateIn5",
+      "middlegame",
+      "xRayAttack",
+      "sacrifice",
+      "backRankMate",
+      "deflection",
+      "veryLong"
+    ],
+    "initialPly": 51,
+    "solution": [
+      "f5f7",
+      "f8f7",
+      "e1e8",
+      "g6f8",
+      "d5e7",
+      "g8h8",
+      "e8f8",
+      "f7f8",
+      "f1f8"
+    ],
+    "moves": "e4 c6 Nf3 d5 exd5 cxd5 d4 Bg4 Nc3 Nc6 Bb5 Bxf3 Qxf3 e6 O-O Bd6 Bf4 Ne7 Qg3 Bxf4 Qxf4 O-O Bd3 a6 Ne2 b5 Qh4 Ng6 Qh3 Qb6 c3 Rac8 Rae1 a5 Kh1 a4 a3 Na5 f4 Nc4 f5 exf5 Qxf5 Nxb2 Nf4 Nxd3 Nxd3 Rxc3 Nf4 Qxd4 Nxd5 Rxa3",
+    "angle": "backRankMate"
+  },
+  {
+    "puzzleId": "2GNyR",
+    "gameId": "s32DEyLX",
+    "rating": 2107,
+    "themes": [
+      "middlegame",
+      "long",
+      "mateIn3",
+      "backRankMate"
+    ],
+    "initialPly": 76,
+    "solution": [
+      "b4f4",
+      "c1b1",
+      "f2f1",
+      "g1f1",
+      "f4f1"
+    ],
+    "moves": "e4 e5 Nf3 Nc6 Bc4 d6 Nc3 Bg4 h3 Bh5 g4 Bg6 d3 h6 Be3 Nf6 Qd2 Be7 O-O-O Qd7 g5 hxg5 Nxg5 Nb4 Bb3 O-O-O f4 exf4 Bxf4 a6 e5 dxe5 Bxe5 Nc6 Bf4 Nh5 Be3 Ng3 Rhg1 Bxg5 Bxg5 Nf5 Bxd8 Nxd8 Ba4 Qd4 Bb3 Rxh3 Ne4 Bh5 Rde1 Nh4 Ng5 Nf3 Nxf3 Bxf3 Ref1 Bh5 Bc4 Rf3 Re1 Qb6 Rxg7 Rf2 Qg5 Qb4 Rg1 Bg6 Rg8 b5 Rxd8+ Kb7 Qd5+ Kb6 Rb8+ Ka5 Bb3",
+    "angle": "backRankMate"
+  },
+  {
+    "puzzleId": "0AhrQ",
+    "gameId": "k3uqEUJq",
+    "rating": 1120,
+    "themes": [
+      "middlegame",
+      "advantage",
+      "discoveredAttack",
+      "short"
+    ],
+    "initialPly": 20,
+    "solution": [
+      "f6d5",
+      "c4d5",
+      "e7g5"
+    ],
+    "moves": "e4 c5 Nf3 Nc6 d4 Nxd4 Nxd4 cxd4 Qxd4 d6 c4 e5 Qd1 Nf6 Bd3 b6 Bg5 Be7 Nc3 Bb7 Nd5",
+    "angle": "discoveredAttack"
+  },
+  {
+    "puzzleId": "11XX6",
+    "gameId": "nL8OqEsj",
+    "rating": 1360,
+    "themes": [
+      "middlegame",
+      "advantage",
+      "long",
+      "sacrifice",
+      "discoveredAttack",
+      "pin"
+    ],
+    "initialPly": 67,
+    "solution": [
+      "e1e3",
+      "e8e3",
+      "f4h5",
+      "g7h6",
+      "f1f7"
+    ],
+    "moves": "c4 d6 g3 e5 Bg2 Nc6 e4 g6 Nc3 Bg7 Nge2 Nge7 d3 O-O Be3 f5 d4 exd4 Nxd4 fxe4 Nxe4 Ne5 b3 N7c6 Nxc6 bxc6 O-O Bg4 f3 Be6 Bd4 c5 Bc3 Rb8 f4 Bg4 Qd5+ Nf7 Bxg7 Kxg7 Qd2 Qd7 Nc3 Bh3 Nd5 Bxg2 Qc3+ Kh6 Kxg2 Nd8 Rae1 Nc6 Nf6 Qf5 Nd5 Qf7 Qf3 Nd4 Qg4 Rbe8 Qh4+ Kg7 f5 Nxf5 Qg4 c6 Nf4 Ne3+",
+    "angle": "discoveredAttack"
+  },
+  {
+    "puzzleId": "07XXn",
+    "gameId": "5OsQXTiD",
+    "rating": 1600,
+    "themes": [
+      "endgame",
+      "long",
+      "discoveredAttack",
+      "discoveredCheck",
+      "crushing"
+    ],
+    "initialPly": 52,
+    "solution": [
+      "g1d1",
+      "b3a3",
+      "e3c2",
+      "a3a4",
+      "c2d4"
+    ],
+    "moves": "e4 g6 e5 Bg7 f4 e6 d4 Ne7 c3 d6 Nf3 dxe5 fxe5 Nbc6 Bb5 Bd7 Bxc6 Bxc6 Qd3 Nd5 Bg5 f6 exf6 Bxf6 Bxf6 Qxf6 Ne5 O-O Rf1 Qh4+ g3 Qxh2 Nd2 Rf6 O-O-O Raf8 Nxc6 Rxf1 Rxf1 bxc6 Rxf8+ Kxf8 Qf3+ Kg7 Ne4 Qg1+ Kc2 Ne3+ Kb3 a5 Qf6+ Kh6 Qxe6",
+    "angle": "discoveredAttack"
+  },
+  {
+    "puzzleId": "16zSl",
+    "gameId": "87jheK7Z",
+    "rating": 1852,
+    "themes": [
+      "exposedKing",
+      "veryLong",
+      "endgame",
+      "discoveredAttack",
+      "discoveredCheck",
+      "crushing"
+    ],
+    "initialPly": 114,
+    "solution": [
+      "e2h2",
+      "h1g1",
+      "g5h3",
+      "g1f1",
+      "h2f2",
+      "f1e1",
+      "f2f3"
+    ],
+    "moves": "d4 Nf6 c4 e6 a3 d5 cxd5 Nxd5 e4 Nf6 Nc3 Be7 Bd3 O-O Nge2 Nc6 e5 Nd5 O-O h6 f4 Nxc3 bxc3 b6 Be4 Bb7 Bf3 Rb8 Be3 Qd7 Qc2 Na5 Bxb7 Nxb7 a4 c5 Rad1 Qc6 Qa2 Qe4 Rf3 Rfd8 Ng3 Qc6 Bf2 cxd4 cxd4 Rd5 Rc3 Qxc3 Ne4 Qc6 Be3 Rbd8 Rc1 Qd7 h3 Ra5 Nc3 Bb4 Ne4 Qxa4 Qf2 Qa2 Qg3 Qd5 Nf6+ Kh8 Nxd5 Raxd5 f5 exf5 Rc7 R5d7 Rc6 Re7 Bxh6 g6 Bg5 Rxd4 Bxe7 Bxe7 Qe3 Rh4 Rc8+ Kg7 Qg3 Re4 Qc3 Nc5 Rc7 Bh4 Kh2 Ne6 Rxa7 f4 Ra1 Bg3+ Kh1 Re3 Qb4 Rxe5 Qxb6 Ng5 Qb2 f6 Qb7+ Kh6 Qb8 f3 Qf8+ Kh5 Qxf6 Re2 gxf3",
+    "angle": "discoveredAttack"
+  },
+  {
+    "puzzleId": "07CCA",
+    "gameId": "WBMFRcXX",
+    "rating": 2045,
+    "themes": [
+      "exposedKing",
+      "advancedPawn",
+      "discoveredCheck",
+      "advantage",
+      "long",
+      "opening",
+      "discoveredAttack"
+    ],
+    "initialPly": 26,
+    "solution": [
+      "d4c3",
+      "d1c1",
+      "c3c2",
+      "e1f2",
+      "b4a4"
+    ],
+    "moves": "e4 c6 f4 d5 e5 Bf5 Nf3 f6 d4 c5 dxc5 Qa5+ Nc3 e6 Be3 Bxc5 Bb5+ Nc6 Bxc5 O-O-O Bxc6 Qxc5 Ba4 d4 Ne2 Qb4+ c3",
+    "angle": "discoveredAttack"
+  },
+  {
+    "puzzleId": "2iaJy",
+    "gameId": "vWQMuIUT",
+    "rating": 1116,
+    "themes": [
+      "trappedPiece",
+      "advantage",
+      "short",
+      "middlegame"
+    ],
+    "initialPly": 29,
+    "solution": [
+      "h2h3",
+      "g4g3",
+      "f2g3"
+    ],
+    "moves": "e4 c5 Nf3 Nc6 Bb5 d6 O-O g6 c3 Bg7 Qa4 Bd7 Rd1 a6 Bxc6 Bxc6 Qc2 Nf6 d3 O-O Bf4 b5 Nbd2 Qd7 d4 Qg4 d5 Bd7 Bg3 Nh5",
+    "angle": "trappedPiece"
+  },
+  {
+    "puzzleId": "0jRZJ",
+    "gameId": "FxhrE4zu",
+    "rating": 1373,
+    "themes": [
+      "middlegame",
+      "crushing",
+      "trappedPiece",
+      "long"
+    ],
+    "initialPly": 23,
+    "solution": [
+      "h3h6",
+      "g7h8",
+      "c1g5",
+      "d8g5",
+      "h6g5"
+    ],
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Nc3 Bc5 Nxe5 Nxe5 Bxf7+ Kxf7 d4 Bb4 dxe5 Bxc3+ bxc3 Ne8 Qh5+ g6 Qf3+ Kg7 Qh3 Rg8",
+    "angle": "trappedPiece"
+  },
+  {
+    "puzzleId": "1t51l",
+    "gameId": "Gh9MO8HT",
+    "rating": 1618,
+    "themes": [
+      "short",
+      "crushing",
+      "trappedPiece",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 39,
+    "solution": [
+      "e3f2",
+      "h5e2",
+      "f2h4"
+    ],
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 e5 d5 Bb5 Ne4 cxd4 Bb6 Nc3 O-O Be3 Bg4 h3 Bh5 Qc2 Bg6 Qb3 Ne7 O-O c6 Bd3 Nf5 Ne2 Nh4 Nxh4 Qxh4 f4 Bh5 Qc2 f5 exf6 Nxf6",
+    "angle": "trappedPiece"
+  },
+  {
+    "puzzleId": "1X6KE",
+    "gameId": "P9f3Bb5h",
+    "rating": 1763,
+    "themes": [
+      "endgame",
+      "advantage",
+      "defensiveMove",
+      "trappedPiece",
+      "long"
+    ],
+    "initialPly": 59,
+    "solution": [
+      "e4g2",
+      "h8g7",
+      "a1h1",
+      "h2h1",
+      "g2h1"
+    ],
+    "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nc3 Bb4 Nxc6 bxc6 Bg5 h6 Bh4 g5 Bg3 Nxe4 Qd4 Bxc3+ bxc3 Nf6 Be5 c5 Qe3 Kf8 Bd3 d6 Bg3 Kg7 O-O Be6 f4 Nd5 Qf3 gxf4 Bxf4 Nxf4 Qxf4 Qg5 Qf2 Rhg8 Be4 Rab8 g3 Kh8 Qe2 h5 Rf3 h4 Re3 hxg3 Rxg3 Qh4 Qe3 Rxg3+ hxg3 Rg8 Kf2 Qh2+",
+    "angle": "trappedPiece"
+  },
+  {
+    "puzzleId": "0FzgS",
+    "gameId": "mo3CQ30b",
+    "rating": 2081,
+    "themes": [
+      "trappedPiece",
+      "short",
+      "advantage",
+      "middlegame"
+    ],
+    "initialPly": 24,
+    "solution": [
+      "d7a4",
+      "b3b6",
+      "a7b6"
+    ],
+    "moves": "d4 d5 c4 dxc4 e4 e5 d5 c6 Bxc4 cxd5 Bxd5 Be6 Bxb7 Qa5+ Nc3 Nd7 Bxa8 Nb6 Bc6+ Bd7 Bd5 Nf6 Qb3 Nfxd5 exd5",
+    "angle": "trappedPiece"
+  },
+  {
+    "puzzleId": "0CFMn",
+    "gameId": "wSPMmx8m",
+    "rating": 1185,
+    "themes": [
+      "endgame",
+      "oneMove",
+      "mateIn1",
+      "pillsburysMate"
+    ],
+    "initialPly": 61,
+    "solution": [
+      "a7a5"
+    ],
+    "moves": "e4 a6 d4 c6 c4 d5 Nc3 dxe4 Bf4 Nf6 c5 Bf5 Bc4 e6 Nge2 b6 b4 b5 Bb3 a5 a3 axb4 axb4 Na6 Qd2 Nxb4 Rxa8 Qxa8 O-O Nd3 f3 Nxf4 Nxf4 Qd8 fxe4 Bxc5 exf5 Qxd4+ Qxd4 Bxd4+ Kh1 Bxc3 fxe6 fxe6 Nxe6 g6 Rf3 b4 Re3 Kd7 Nc5+ Kd6 Nb7+ Kc7 Re7+ Kb6 Nd6 Rd8 Nc4+ Kc5 Ra7 Kb5",
+    "angle": "mateIn1"
+  },
+  {
+    "puzzleId": "2fux0",
+    "gameId": "gRzDxbxE",
+    "rating": 1617,
+    "themes": [
+      "middlegame",
+      "oneMove",
+      "mateIn1",
+      "pin"
+    ],
+    "initialPly": 43,
+    "solution": [
+      "g6f6"
+    ],
+    "moves": "e4 c6 d4 d5 Nc3 dxe4 Nxe4 Nf6 Nxf6+ exf6 Be3 Bd6 Bd3 O-O h4 Qb6 b3 Re8 Ne2 Bb4+ c3 Bf8 Qc2 g6 h5 Qd8 hxg6 fxg6 O-O-O Bg7 Nf4 f5 g4 fxg4 Bc4+ Kf8 Nxg6+ hxg6 Qxg6 Qf6 Rh8+ Bxh8 Bh6+ Bg7",
+    "angle": "mateIn1"
+  },
+  {
+    "puzzleId": "0H8LG",
+    "gameId": "pW6rLvpM",
+    "rating": 2028,
+    "themes": [
+      "middlegame",
+      "operaMate",
+      "discoveredCheck",
+      "oneMove",
+      "mateIn1",
+      "pillsburysMate",
+      "doubleCheck"
+    ],
+    "initialPly": 40,
+    "solution": [
+      "e3d3"
+    ],
+    "moves": "e4 e5 Nf3 Nf6 Bc4 Nxe4 Nxe5 d5 Qf3 Nf6 Bb3 Nbd7 Nxd7 Qe7+ Qe2 Qxe2+ Kxe2 Bxd7 Re1 O-O-O d4 Ng4 f3 Bb5+ Kd1 Nf2+ Kd2 Bd6 a4 Ba6 Kc3 Rhe8 Be3 Nd1+ Rxd1 Rxe3+ Kd2 Rde8 Nc3 Bf4 Nxd5",
+    "angle": "mateIn1"
+  },
+  {
+    "puzzleId": "03eh3",
+    "gameId": "YZ7Q9Bvv",
+    "rating": 1139,
+    "themes": [
+      "mateIn2",
+      "middlegame",
+      "short",
+      "sacrifice",
+      "kingsideAttack"
+    ],
+    "initialPly": 47,
+    "solution": [
+      "h3h6",
+      "g7h6",
+      "g5h6"
+    ],
+    "moves": "e4 c5 Nc3 d6 f4 e6 Nf3 a6 Be2 Qc7 d3 Nd7 O-O Ngf6 Qe1 b5 Nh4 Be7 Qg3 O-O f5 Kh8 Bf4 b4 Nd1 Bb7 Ne3 Rg8 Ng4 Nh5 Ne5 dxe5 Bxh5 exf4 Qh3 Bxh4 Qxh4 Nf6 Rf3 exf5 Rh3 fxe4 Bg4 exd3 Bf5 h6 Qg5 Ne4",
+    "angle": "mateIn2"
+  },
+  {
+    "puzzleId": "0LJIP",
+    "gameId": "wD97OQEu",
+    "rating": 1464,
+    "themes": [
+      "mateIn2",
+      "middlegame",
+      "short"
+    ],
+    "initialPly": 73,
+    "solution": [
+      "g4h4",
+      "h6g7",
+      "h4h7"
+    ],
+    "moves": "e4 d6 d4 Nf6 Nc3 g6 f4 Bg7 Nf3 O-O Bd3 c5 dxc5 dxc5 e5 Nd5 Nxd5 Qxd5 Qe2 Nc6 O-O Bg4 Be4 Qd7 c3 Rad8 Be3 b6 Rad1 Qc8 h3 Bf5 Bd5 e6 Bc4 Na5 Ba6 Qc7 b4 cxb4 cxb4 Nc6 Rc1 Be4 b5 Bd3 Qf2 Qe7 Rxc6 Bxf1 Qxf1 Qa3 Qe2 Rd3 Kf2 Rfd8 Ne1 R3d7 h4 Bf8 h5 Qe7 Nf3 Rd3 Ng5 Qa3 Ne4 Qb4 Nf6+ Kg7 h6+ Kxh6 Qg4 Rxe3",
+    "angle": "mateIn2"
+  },
+  {
+    "puzzleId": "02pdf",
+    "gameId": "kWJHSmQJ",
+    "rating": 1760,
+    "themes": [
+      "mateIn2",
+      "middlegame",
+      "short",
+      "kingsideAttack"
+    ],
+    "initialPly": 51,
+    "solution": [
+      "e2e8",
+      "g8g7",
+      "e8f8"
+    ],
+    "moves": "c4 e5 Nc3 Nf6 e4 g6 d3 Bg7 Nf3 d6 g3 O-O Bg2 Nbd7 O-O c6 h3 Ne8 Be3 f5 exf5 gxf5 Nh4 f4 Bd2 Ndf6 Nf3 fxg3 fxg3 Nh5 Kh2 Qc7 Ne4 Nef6 Nxf6+ Rxf6 Bg5 Rg6 h4 d5 Qe2 e4 Bf4 Nxf4 gxf4 Qxf4+ Kg1 exf3 Rxf3 Bd4+ Kf1 Qxh4",
+    "angle": "mateIn2"
+  },
+  {
+    "puzzleId": "0GvhY",
+    "gameId": "mhANPEJV",
+    "rating": 2052,
+    "themes": [
+      "master",
+      "short",
+      "endgame",
+      "mateIn2"
+    ],
+    "initialPly": 67,
+    "solution": [
+      "a5c7",
+      "e5f5",
+      "g2g4"
+    ],
+    "moves": "d4 Nf6 Bg5 Ne4 Bf4 g5 Bc1 c5 f3 Qa5+ c3 Nd6 d5 h6 e4 Bg7 Nd2 b5 Bd3 c4 Bc2 b4 cxb4 Qxb4 Ne2 Bxb2 Rb1 c3 Nxc3 Qxc3 Bxb2 Qe3+ Qe2 Qxe2+ Kxe2 Rg8 e5 Ba6+ Ke3 Nc4+ Nxc4 Bxc4 Kd4 Bb5 a4 Ba6 Ba3 e6 Be4 exd5 Bxd5 Nc6+ Bxc6 dxc6 Rhd1 O-O-O+ Kc5 Kc7 Bb4 Rxd1 Ba5+ Kd7 Rxd1+ Ke6 Rd6+ Kxe5 Rxc6 Bf1",
+    "angle": "mateIn2"
+  },
+  {
+    "puzzleId": "02vTI",
+    "gameId": "lMIfcFKK",
+    "rating": 1166,
+    "themes": [
+      "deflection",
+      "middlegame",
+      "advantage",
+      "long"
+    ],
+    "initialPly": 62,
+    "solution": [
+      "g7g3",
+      "f2f1",
+      "c4e3",
+      "e2e3",
+      "g3e3"
+    ],
+    "moves": "d4 e6 Bf4 d6 Nf3 h6 e3 a6 Be2 b6 O-O Bb7 c4 Nd7 Nc3 g5 Bg3 h5 h3 g4 hxg4 hxg4 Nd2 Nh6 Bxg4 Nxg4 Qxg4 Qf6 Qf4 Qg7 Nf3 O-O-O b4 Be7 c5 Bxf3 Qxf3 d5 cxb6 Nxb6 Be5 Bf6 Bxf6 Qh7 Bxh8 Rxh8 Qh3 Qg7 Qg3 Qh6 f4 Nc4 Kf2 Qf8 a3 Rg8 Qh3 Rh8 Qg4 Rg8 Qe2 Qg7 Rg1",
+    "angle": "deflection"
+  },
+  {
+    "puzzleId": "0tI4s",
+    "gameId": "q9xrP7js",
+    "rating": 1600,
+    "themes": [
+      "deflection",
+      "endgame",
+      "short",
+      "crushing"
+    ],
+    "initialPly": 76,
+    "solution": [
+      "b6c4",
+      "d6c4",
+      "g8f7"
+    ],
+    "moves": "d4 d5 c4 dxc4 Nc3 a6 a4 e6 e4 Nc6 Nf3 Nf6 Bxc4 Be7 O-O O-O h3 Nb4 Be3 c5 dxc5 Qxd1 Rfxd1 Nc2 Rac1 Nxe3 fxe3 Bxc5 Kf2 b6 e5 Nd7 Ne4 Bb7 Neg5 Nb8 Bd3 h6 Be4 Ra7 Bxb7 Rxb7 Ne4 Nc6 Nxc5 bxc5 Rxc5 Ne7 Rc2 Rfb8 Rdd2 Rb4 a5 R4b5 Nd4 Rxa5 e4 Ra2 Ke3 a5 b3 Rxc2 Rxc2 Ng6 Rc5 Ra8 g3 Ne7 Rc7 Nc8 Nb5 Nb6 Nd6 a4 bxa4 Rxa4 Rxf7",
+    "angle": "deflection"
+  },
+  {
+    "puzzleId": "0GqWR",
+    "gameId": "P3FQFV92",
+    "rating": 2000,
+    "themes": [
+      "deflection",
+      "clearance",
+      "endgame",
+      "crushing",
+      "long",
+      "kingsideAttack"
+    ],
+    "initialPly": 56,
+    "solution": [
+      "f4h4",
+      "f3h4",
+      "h6e3",
+      "g1h2",
+      "f5f1"
+    ],
+    "moves": "e4 e5 Bc4 d6 c3 Nf6 d3 h6 f4 Ng4 Nf3 Be7 O-O h5 h3 Nf6 fxe5 dxe5 Nxe5 Be6 Bxe6 fxe6 Bg5 Nbd7 Nxd7 Qxd7 Bxf6 Bxf6 d4 O-O-O e5 Be7 Nd2 Qe8 a4 Qg6 a5 a6 Nf3 Rdf8 Qd2 h4 b4 Rh5 Qe2 Rhf5 Nh2 Qg3 Rxf5 Rxf5 Nf3 Bg5 Rf1 Bh6 Qf2 Qf4 Qxh4",
+    "angle": "deflection"
+  },
+  {
+    "puzzleId": "0iLMS",
+    "gameId": "8F0fLG6m",
+    "rating": 1227,
+    "themes": [
+      "short",
+      "capturingDefender",
+      "advantage",
+      "middlegame"
+    ],
+    "initialPly": 20,
+    "solution": [
+      "g4f3",
+      "g2f3",
+      "g6g5"
+    ],
+    "moves": "Nf3 e5 Nxe5 Bc5 d4 Bb6 g3 Qf6 Bg2 d6 Nf3 Bg4 c3 Nc6 O-O Nge7 Bg5 Qg6 Nbd2 O-O Nc4",
+    "angle": "capturingDefender"
+  },
+  {
+    "puzzleId": "0Zaza",
+    "gameId": "YsppM9Dn",
+    "rating": 1587,
+    "themes": [
+      "short",
+      "crushing",
+      "capturingDefender",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 26,
+    "solution": [
+      "c6f3",
+      "d1f3",
+      "e7g5"
+    ],
+    "moves": "e4 c5 c3 Nf6 e5 Nd5 d4 cxd4 Nf3 e6 cxd4 d6 Nc3 Nxc3 bxc3 Qc7 Bd2 Bd7 Bd3 Bc6 O-O Nd7 Re1 dxe5 dxe5 Be7 Bg5",
+    "angle": "capturingDefender"
+  },
+  {
+    "puzzleId": "0g5z0",
+    "gameId": "uJHOdnyj",
+    "rating": 2046,
+    "themes": [
+      "crushing",
+      "capturingDefender",
+      "short",
+      "middlegame"
+    ],
+    "initialPly": 45,
+    "solution": [
+      "c7c5",
+      "b6c5",
+      "g7f8"
+    ],
+    "moves": "e4 e6 d4 d5 e5 c5 c3 cxd4 cxd4 Qb6 Nf3 Nc6 Nc3 Nh6 Bd3 Bd7 O-O Nxd4 Nxd4 Qxd4 Nb5 Qb6 Be3 Qa5 Rc1 Bxb5 b4 Qa6 Bxb5+ Qxb5 Rc7 Bxb4 Bxh6 gxh6 Qh5 Be7 Qxh6 Rf8 Qxh7 Qb2 Qg7 b6 Rfc1 Kd8 h4 Bc5",
+    "angle": "capturingDefender"
+  },
+  {
+    "puzzleId": "2hq7S",
+    "gameId": "JXNrtAgw",
+    "rating": 1240,
+    "themes": [
+      "exposedKing",
+      "middlegame",
+      "advantage",
+      "long"
+    ],
+    "initialPly": 75,
+    "solution": [
+      "h8f8",
+      "e7d7",
+      "f1f7",
+      "e6f7",
+      "f8f7"
+    ],
+    "moves": "d3 c6 c3 d5 Nf3 Nf6 g3 Qc7 Bg2 e5 Nbd2 Bd6 e4 O-O h3 h6 Qe2 Be6 g4 Nh7 Nf1 f6 Ng3 Nd7 Nf5 Bc5 N3h4 Rf7 Ng6 Ndf8 Nxf8 Nxf8 h4 Qb6 g5 fxg5 hxg5 Bxf5 exf5 Rxf5 gxh6 Rxf2 Qg4 Rf7 hxg7 Rxg7 Qh3 Bf2+ Kd1 e4 dxe4 dxe4 Bxe4 Rd8+ Kc2 Qb5 Bd3 Qd5 Qh8+ Kf7 Rd1 Qe6 Qh5+ Kg8 Bf4 Bg3 Bxg3 Rxg3 Rh1 Rg2+ Kb1 Rxd3 Qh8+ Kf7 Rf1+ Ke7",
+    "angle": "exposedKing"
+  },
+  {
+    "puzzleId": "0cKrk",
+    "gameId": "01MPmjBd",
+    "rating": 1600,
+    "themes": [
+      "exposedKing",
+      "endgame",
+      "long",
+      "mateIn3"
+    ],
+    "initialPly": 60,
+    "solution": [
+      "e4c2",
+      "d1e1",
+      "b4d3",
+      "e1f1",
+      "c2d1"
+    ],
+    "moves": "e4 c5 Nf3 g6 d4 cxd4 Nxd4 Bg7 Nb5 Nc6 N1c3 a6 Na3 Nh6 Be3 O-O Qd2 Ng4 O-O-O Nxe3 Qxe3 d6 f4 Bg4 Be2 Bxe2 Nxe2 b5 h4 b4 Nc4 Qc7 h5 b3 axb3 a5 hxg6 h6 gxf7+ Rxf7 f5 a4 Rxh6 axb3 cxb3 Ra1+ Kc2 Nb4+ Kd2 Rxd1+ Kxd1 Qd7 Rg6 Rf6 Qg3 Rxg6 Qxg6 Qc6 Nf4 Qxe4 Ne6",
+    "angle": "exposedKing"
+  },
+  {
+    "puzzleId": "0fFBZ",
+    "gameId": "I8HNjk7x",
+    "rating": 1950,
+    "themes": [
+      "exposedKing",
+      "long",
+      "mateIn3",
+      "sacrifice",
+      "master",
+      "middlegame"
+    ],
+    "initialPly": 73,
+    "solution": [
+      "c7g7",
+      "h6h5",
+      "f1f5",
+      "g6f5",
+      "g7g5"
+    ],
+    "moves": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 Be2 O-O Qd2 Ng4 Bg5 Nc6 Nxc6 bxc6 f3 Ne5 O-O-O Rb8 b3 Nd7 Na4 Re8 h4 Nb6 Nxb6 Qxb6 Bh6 Bh8 h5 Qc5 Kb1 Be6 hxg6 hxg6 Be3 Qe5 Rxh8+ Qxh8 Bd4 Qh2 Qg5 Kh7 Bb2 f6 Qe3 c5 f4 Kg7 g4 Rh8 f5 Bf7 g5 Rh3 gxf6+ exf6 Qd2 Re8 fxg6 Bxg6 Rf1 Rxe4 Bxf6+ Kh7 Qa5 Qxe2 Qc7+ Kh6",
+    "angle": "exposedKing"
+  },
+  {
+    "puzzleId": "0SbHv",
+    "gameId": "cGdwoDii",
+    "rating": 1248,
+    "themes": [
+      "clearance",
+      "endgame",
+      "advancedPawn",
+      "crushing",
+      "long",
+      "promotion"
+    ],
+    "initialPly": 80,
+    "solution": [
+      "a1f1",
+      "f3g2",
+      "a2a1q",
+      "a8a1",
+      "f1a1"
+    ],
+    "moves": "e4 e5 Nf3 Nf6 d4 exd4 Nxd4 Nxe4 Qe2 Qe7 Nc3 Nxc3 Qxe7+ Bxe7 bxc3 O-O Bd3 c5 Nf5 Nc6 Nxe7+ Nxe7 Ba3 d6 Be4 Rb8 Rd1 f5 Bf3 Rf6 O-O Ng6 Bb2 b5 c4 bxc4 Bxf6 gxf6 Rxd6 Kg7 Rc6 Rb5 Rxc8 Rb2 Rc7+ Kh6 Rxc5 Rxc2 Be2 Rxe2 Rxc4 Rxa2 Rc5 Kg5 h3 a5 Rfc1 Nf4 R1c2 Ra1+ Kh2 a4 R5c3 h5 Kg3 h4+ Kf3 Nd5 Rc4 a3 Ra4 Nb6 Ra6 Nd5 Rd2 Nb4 Ra8 a2 g3 hxg3 fxg3",
+    "angle": "advancedPawn"
+  },
+  {
+    "puzzleId": "0Minj",
+    "gameId": "DD4Nnptm",
+    "rating": 1600,
+    "themes": [
+      "endgame",
+      "advancedPawn",
+      "master",
+      "short",
+      "crushing",
+      "rookEndgame"
+    ],
+    "initialPly": 69,
+    "solution": [
+      "a6a7",
+      "d3d2",
+      "b7d7"
+    ],
+    "moves": "Nf3 d5 d4 c6 Bf4 Nf6 e3 Bg4 Be2 e6 Ne5 Bxe2 Qxe2 Nbd7 O-O Nxe5 Bxe5 Be7 c4 O-O Nc3 Re8 c5 Nd7 Bg3 Bf6 Rab1 a5 a3 e5 dxe5 Bxe5 Na4 Bxg3 hxg3 Qe7 Qc2 Qe4 Rbc1 h6 Rfd1 Qxc2 Rxc2 Re4 Rd4 Rae8 Nb6 Nxb6 cxb6 Rxd4 exd4 Re1+ Kh2 Rd1 Rc5 Rxd4 Rxa5 Rd2 Ra8+ Kh7 Ra7 Rxb2 Rxb7 d4 a4 d3 a5 c5 a6 c4",
+    "angle": "advancedPawn"
+  },
+  {
+    "puzzleId": "0TIyQ",
+    "gameId": "m86mUl9u",
+    "rating": 1969,
+    "themes": [
+      "endgame",
+      "advancedPawn",
+      "master",
+      "short",
+      "crushing",
+      "quietMove",
+      "promotion"
+    ],
+    "initialPly": 95,
+    "solution": [
+      "d5e6",
+      "a1c2",
+      "c7c8q"
+    ],
+    "moves": "c4 Nf6 Nc3 c5 e4 e5 Rb1 Nc6 a3 a5 d3 g6 f4 d6 Be2 Bg7 Nf3 O-O O-O exf4 Bxf4 h6 Qd2 Kh7 h3 Qe7 g4 Ne5 Nxe5 dxe5 Bg3 Be6 Rf2 Nd7 Rbf1 Nb8 Nd5 Bxd5 exd5 Nd7 Bd1 Nb6 Bc2 Nc8 h4 Kg8 h5 g5 d4 e4 dxc5 e3 Qd3 exf2+ Bxf2 f5 Re1 Qf6 d6 Na7 Qd5+ Qf7 Bxf5 Qxd5 cxd5 Bxb2 Re7 Rab8 a4 b5 axb5 Nxb5 d7 a4 d6 Bd4 Be6+ Kh8 Bxd4+ Nxd4 Bd5 Rb1+ Kg2 a3 Re8 Rb8 Re4 Nb3 c6 a2 Re1 a1=Q Rxa1 Nxa1 c7 Rbd8",
+    "angle": "advancedPawn"
+  },
+  {
+    "puzzleId": "22g0C",
+    "gameId": "9ZjvtRLe",
+    "rating": 1199,
+    "themes": [
+      "endgame",
+      "rookEndgame",
+      "crushing",
+      "short"
+    ],
+    "initialPly": 112,
+    "solution": [
+      "b3b2",
+      "c1c3",
+      "b2c3"
+    ],
+    "moves": "e4 c6 d4 d5 Nd2 dxe4 Nxe4 Bf5 Ng3 Bg6 Nf3 e6 Bd3 Bxd3 Qxd3 Bd6 Ne4 Nf6 Nxd6+ Qxd6 g3 Nbd7 Bf4 Qb4+ Qc3 Qxc3+ bxc3 Nd5 Bd2 N7f6 O-O Ne4 a4 Nxd2 Nxd2 Nxc3 Nc4 O-O-O Ne5 Rxd4 Nxf7 Rf8 Ng5 Rf6 Nxh7 Rh6 Ng5 Rd5 Nf3 Rf5 Nd4 Rfh5 h4 e5 Nf3 e4 Ng5 Rd6 Rfe1 Rd2 Nxe4 Nxe4 Rxe4 Rxc2 Re8+ Kd7 Rae1 Rc4 R8e7+ Kd8 Rxb7 Rxa4 Rxg7 c5 Rd1+ Ke8 Rg8+ Kf7 Rc8 Ke6 Rc1 Ra5 Rc7 Rd5 Kg2 Kd6 Rh7 Ra2 Rh6+ Kc7 Rh7+ Kb6 Rb1+ Ka6 Rbb7 Rdd2 Rxa7+ Kb5 Rxa2 Rxa2 Rh5 Kb4 Kf1 c4 Re5 c3 Re1 Rb2 Rc1 Kb3 Ke1 Rd2 h5",
+    "angle": "rookEndgame"
+  },
+  {
+    "puzzleId": "0Z3KE",
+    "gameId": "7UoNejsQ",
+    "rating": 1554,
+    "themes": [
+      "endgame",
+      "advancedPawn",
+      "crushing",
+      "rookEndgame",
+      "long",
+      "promotion"
+    ],
+    "initialPly": 56,
+    "solution": [
+      "d2e2",
+      "e4d3",
+      "e2e7",
+      "f7e7",
+      "c2c1q"
+    ],
+    "moves": "e4 d5 exd5 Qxd5 d4 e5 dxe5 Qxd1+ Kxd1 Nc6 Nf3 Bg4 Bf4 Nge7 Bb5 Nf5 Nc3 Bxf3+ gxf3 Bb4 Nd5 Rd8 c4 O-O Rg1 a6 Bxc6 bxc6 a3 Bc5 b4 Bxf2 Rf1 Ne3+ Ke2 Nxf1 Kxf2 cxd5 Rxf1 dxc4 Rg1 c3 Bh6 Rd2+ Ke3 Rfd8 Rxg7+ Kh8 Rxf7 R8d3+ Ke4 Rd8 e6 c2 Bxd2 Rxd2 e7",
+    "angle": "rookEndgame"
+  },
+  {
+    "puzzleId": "0J6Gj",
+    "gameId": "t5n6ZGyi",
+    "rating": 1952,
+    "themes": [
+      "endgame",
+      "crushing",
+      "long",
+      "rookEndgame"
+    ],
+    "initialPly": 58,
+    "solution": [
+      "g8f8",
+      "g5e5",
+      "d8e8",
+      "e5e2",
+      "e8e2"
+    ],
+    "moves": "e4 e5 f4 Bc5 Nf3 Nc6 c3 Bb6 fxe5 Nxe5 d4 Nxf3+ Qxf3 Nf6 Bd3 d6 O-O O-O Bg5 c5 e5 dxe5 dxe5 c4+ Kh1 Qxd3 Qxd3 cxd3 exf6 g6 Nd2 Bg4 Nf3 Rfe8 Rae1 Rad8 Rd1 Re2 Rd2 Be3 Bxe3 Rxe3 Nd4 Be2 Rf2 Bg4 h3 Bh5 Kh2 g5 g4 Bg6 Nf5 Bxf5 Rxf5 Re2+ Rxe2 dxe2 Rxg5+",
+    "angle": "rookEndgame"
+  }
+]

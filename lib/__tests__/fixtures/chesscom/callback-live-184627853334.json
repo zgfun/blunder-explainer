@@ -1,0 +1,39 @@
+{
+  "game": {
+    "id": 184627853334,
+    "type": "chess",
+    "typeName": "Standard Chess",
+    "isFinished": true,
+    "isLiveGame": true,
+    "endTime": 1790809438,
+    "resultMessage": "Hikaru won by resignation",
+    "pgnHeaders": {
+      "Event": "Live Chess",
+      "Site": "Chess.com",
+      "Date": "2026.09.30",
+      "White": "mind1mover",
+      "Black": "Hikaru",
+      "Result": "0-1",
+      "ECO": "B42",
+      "WhiteElo": 3054,
+      "BlackElo": 3450,
+      "TimeControl": "180",
+      "EndTime": "23:03:58 GMT+0000",
+      "Termination": "Hikaru won by resignation",
+      "SetUp": "1",
+      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    }
+  },
+  "players": {
+    "top": {
+      "username": "Hikaru",
+      "color": "black",
+      "rating": 3450
+    },
+    "bottom": {
+      "username": "mind1mover",
+      "color": "white",
+      "rating": 3054
+    }
+  }
+}

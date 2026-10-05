@@ -1,0 +1,38 @@
+{
+  "game": {
+    "id": 1033338800,
+    "type": "chess",
+    "typeName": "Standard Chess",
+    "isFinished": true,
+    "endTime": 1790845181,
+    "resultMessage": "Rooketamine won by resignation",
+    "pgnHeaders": {
+      "Event": "Let\\'s Play!",
+      "Site": "Chess.com",
+      "Date": "2026.09.22",
+      "White": "Rooketamine",
+      "Black": "erik",
+      "Result": "1-0",
+      "ECO": "B07",
+      "WhiteElo": 1487,
+      "BlackElo": 1500,
+      "TimeControl": "1/604800",
+      "EndDate": "2026.10.01",
+      "Termination": "Rooketamine won by resignation",
+      "SetUp": "1",
+      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    }
+  },
+  "players": {
+    "top": {
+      "username": "erik",
+      "color": "black",
+      "rating": 1500
+    },
+    "bottom": {
+      "username": "Rooketamine",
+      "color": "white",
+      "rating": 1487
+    }
+  }
+}
